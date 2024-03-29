@@ -7,10 +7,10 @@
     </v-icon>
     <v-toolbar-title>AIGC-Web</v-toolbar-title>
     <v-spacer></v-spacer>
-    <v-btn text @click="navigateTo('/center/bot')">VRM体验</v-btn>
-    <v-btn text @click="navigateTo('/center/group')">Live2D</v-btn>
-<!--    <v-btn text @click="navigateTo('/center/index')">设置中心</v-btn>-->
-    <v-btn text @click="navigateTo('/center/user')">我的</v-btn>
+    <v-btn text @click="navigateTo('/v1/bot')">VRM体验</v-btn>
+    <v-btn text @click="navigateTo('/v1/group')">Live2D</v-btn>
+<!--    <v-btn text @click="navigateTo('/v1/index')">设置中心</v-btn>-->
+    <v-btn text @click="navigateTo('/v1/user')">我的</v-btn>
   </v-toolbar>
 </template>
 

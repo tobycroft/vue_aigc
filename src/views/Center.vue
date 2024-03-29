@@ -29,8 +29,8 @@ export default {
   components: {Topheader},
   data: () => ({}),
   mounted() {
-    if (TokenModel.Api_is_login()) {
-      Alert.SetGo("/Login")
+    if (!TokenModel.Api_is_login()) {
+      Alert.SetGo("/")
       Alert.SetAlert("未登录")
     }
   },

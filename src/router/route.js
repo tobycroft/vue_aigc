@@ -26,19 +26,19 @@ const routes = [
         component: () => import('@/views/Center.vue'),
     },
     {
-        path: '/center/bot',
+        path: '/v1/bot',
         component: () => import('@/views/v1/Bot.vue'),
     },
     {
-        path: '/center/group',
+        path: '/v1/group',
         component: () => import('@/views/v1/Group.vue'),
     },
     {
-        path: '/center/index',
+        path: '/v1/index',
         component: () => import('@/views/v1/Index.vue'),
     },
     {
-        path: '/center/user',
+        path: '/v1/user',
         component: () => import('@/views/v1/User.vue'),
     },
     {
