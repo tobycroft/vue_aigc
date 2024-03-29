@@ -10,17 +10,19 @@
 
   </v-tabs>
 
-  <myInfo v-if="tab===0"></myInfo>
+  <info v-if="tab===0"></info>
+  <team v-if="tab===1"></team>
 
 
 </template>
 
 <script>
 import Topheader from "@/components/center/header/topheader.vue";
-import myInfo from "@/views/v1/user/myInfo.vue"; // 引入 Net 方法
+import info from "@/views/v1/user/info.vue"; // 引入 Net 方法
+import team from "@/views/v1/user/team.vue";
 
 export default {
-  components: {myInfo, Topheader},
+  components: {info, team, Topheader},
   data() {
     return {
       tab: 0
