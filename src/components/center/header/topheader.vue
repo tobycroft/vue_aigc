@@ -5,11 +5,11 @@
     <v-icon size="60px" @click="navigateTo('/center')">
       <v-img src="@/assets/gobotq.png"></v-img>
     </v-icon>
-    <v-toolbar-title>GobotQ控制台</v-toolbar-title>
+    <v-toolbar-title>AIGC-Web</v-toolbar-title>
     <v-spacer></v-spacer>
-    <v-btn text @click="navigateTo('/center/bot')">机器人控制</v-btn>
-    <v-btn text @click="navigateTo('/center/group')">群管理</v-btn>
-    <v-btn text @click="navigateTo('/center/index')">发现</v-btn>
+    <v-btn text @click="navigateTo('/center/bot')">VRM体验</v-btn>
+    <v-btn text @click="navigateTo('/center/group')">Live2D</v-btn>
+<!--    <v-btn text @click="navigateTo('/center/index')">设置中心</v-btn>-->
     <v-btn text @click="navigateTo('/center/user')">我的</v-btn>
   </v-toolbar>
 </template>

@@ -3,14 +3,12 @@
     <!-- 顶部导航栏 -->
     <Topheader></Topheader>
     <v-container>
-      <v-stepper-header>欢迎使用GobotQ</v-stepper-header>
-      <v-card-text>这是GobotQ的首页，请通过顶部按钮进入功能</v-card-text>
-      <v-card-text>相关功能还在从Flutter版本迁移到Vue版</v-card-text>
+      <v-stepper-header>AIGC主页面</v-stepper-header>
     </v-container>
 
     <v-container>
       <v-stepper-header>当前为控制中心</v-stepper-header>
-      <v-card-text>未来将会在这里显示更多数据</v-card-text>
+      <v-card-text>当前为测试版</v-card-text>
     </v-container>
     <!-- 主页面内容区域 -->
     <v-main>
@@ -24,11 +22,17 @@
 <script>
 
 import Topheader from "@/components/center/header/topheader.vue";
+import TokenModel from "@/model/TokenModel.js";
+import Alert from "@/plugins/Alert.js";
 
 export default {
   components: {Topheader},
   data: () => ({}),
   mounted() {
+    if (TokenModel.Api_is_login()) {
+      Alert.SetGo("/Login")
+      Alert.SetAlert("未登录")
+    }
   },
   methods: {},
 
