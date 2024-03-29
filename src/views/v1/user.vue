@@ -28,7 +28,11 @@ export default {
       tab: 0
     };
   },
-  methods: {},
+  methods: {
+    changetab() {
+      // console.log(this.tab)
+    },
+  },
   mounted() {
   },
 };

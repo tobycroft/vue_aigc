@@ -32,7 +32,7 @@ export default {
   methods: {
     async fetchTeamList() {
       // 发送获取团队列表的请求
-      const ret = await new Net("/v1/user/team/list").Get();
+      const ret = await new Net("/v1/user/team/list").PostFormData();
       if (ret.code === 0) {
         // 更新 teamList
         this.teamList = ret.data;
