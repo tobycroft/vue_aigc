@@ -3,14 +3,15 @@
     <v-card>
       <v-card-title>团队列表</v-card-title>
       <v-card-text>
+        <v-btn @click="addTeam" color="primary">添加团队</v-btn>
         <v-list>
           <v-list-item v-for="team in teamList" :key="team.id">
-            <v-list-item-content>
+            <v-list-item>
               <v-list-item-title>{{ team.team_info.name }}</v-list-item-title>
               <v-list-item-subtitle v-if="team.nickname">{{ team.nickname }}</v-list-item-subtitle>
               <v-list-item-subtitle>{{ team.role }}</v-list-item-subtitle>
               <v-list-item-subtitle>{{ formattedDate(team.date) }}</v-list-item-subtitle>
-            </v-list-item-content>
+            </v-list-item>
           </v-list-item>
         </v-list>
       </v-card-text>
@@ -39,6 +40,9 @@ export default {
         // 处理请求失败的情况
         console.error(ret.echo);
       }
+    },
+    async addTeam() {
+      this.$router.push('/v1/user/create');
     },
     formattedDate(date) {
       // 格式化日期

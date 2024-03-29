@@ -73,7 +73,7 @@ export default {
   methods: {
     async fetchData() {
       // 发送获取个人信息的请求
-      const ret = await new Net("/v1/user/info/get").Get();
+      const ret = await new Net("/v1/user/info/get").PostFormData();
       if (ret.code === 0) {
         // 更新 formData
         this.formData = ret.data;
@@ -85,7 +85,7 @@ export default {
     logout() {
       // 处理退出逻辑
       TokenModel.Api_clear_uidAndToken();
-      this.$router.push('/v1/login');
+      this.$router.push('/');
     },
   },
   mounted() {

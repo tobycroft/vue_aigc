@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <!-- 顶部导航栏 -->
-    <Topheader></Topheader>
+    <top_header></top_header>
     <v-container>
       <v-stepper-header>AIGC主页面</v-stepper-header>
     </v-container>
@@ -21,12 +21,12 @@
 
 <script>
 
-import Topheader from "@/components/center/header/topheader.vue";
+import top_header from "@/components/center/header/topheader.vue";
 import TokenModel from "@/model/TokenModel.js";
 import Alert from "@/plugins/Alert.js";
 
 export default {
-  components: {Topheader},
+  components: {top_header: top_header},
   data: () => ({}),
   mounted() {
     if (!TokenModel.Api_is_login()) {

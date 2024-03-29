@@ -1,7 +1,7 @@
 // Composables
 import {createRouter, createWebHistory} from 'vue-router'
 
-const routes = [
+const routess = [
     {
         path: '/',
         // component: () => import('@/layouts/default/Default.vue'),
@@ -12,34 +12,34 @@ const routes = [
                 // this generates a separate chunk (Home-[hash].js) for this route
                 // which is lazy-loaded when the route is visited.
                 // component: () => import('@/views/Home.vue'),
-                component: () => import('@/views/user/Login.vue'),
+                component: () => import('@/views/user/login.vue'),
             },
 
         ],
     },
     {
         path: '/user/login',
-        component: () => import('@/views/user/Login.vue'),
+        component: () => import('@/views/user/login.vue'),
     },
     {
         path: '/center',
-        component: () => import('@/views/Center.vue'),
+        component: () => import('@/views/center.vue'),
     },
     {
         path: '/v1/bot',
-        component: () => import('@/views/v1/Bot.vue'),
+        component: () => import('@/views/v1/bot.vue'),
     },
     {
         path: '/v1/group',
-        component: () => import('@/views/v1/Group.vue'),
+        component: () => import('@/views/v1/group.vue'),
     },
     {
         path: '/v1/index',
-        component: () => import('@/views/v1/Index.vue'),
+        component: () => import('@/views/v1/index.vue'),
     },
     {
         path: '/v1/user',
-        component: () => import('@/views/v1/User.vue'),
+        component: () => import('@/views/v1/user.vue'),
     },
     {
         path: '/v1/bot/detail',
@@ -63,9 +63,44 @@ const routes = [
     },
 ]
 
-const router = createRouter({
+const routes = [
+    {
+        path: '/:pathMatch(.*)*',
+        component: () => import('@/router/superRouter.vue'), // 假设您有一个布局组件用于渲染页面
+        props: true // 将路由参数传递给组件
+    }
+]
+
+const MainRouter = createRouter({
     history: createWebHistory(),
     routes,
 })
 
-export default router
+MainRouter.beforeEach((to, from, next) => {
+    importer(to.params.pathMatch)
+        .then(component => {
+            to.meta.component = component.default; // 将加载的组件保存到路由元信息中
+            next();
+        })
+        .catch(() => {
+            // 如果无法加载页面组件，则重定向到 404 页面或其他默认页面
+            next('/404');
+        });
+});
+
+function importer(pagePath) {
+    switch (pagePath.length) {
+        case 1:
+            return import(`@/views/${pagePath[0]}.vue`);
+        case 2:
+            return import(`@/views/${pagePath[0]}/${pagePath[1]}.vue`);
+        case 3:
+            return import(`@/views/${pagePath[0]}/${pagePath[1]}/${pagePath[2]}.vue`);
+
+        default:
+            return import(`@/views/user/login.vue`);
+    }
+
+}
+
+export default MainRouter

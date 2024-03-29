@@ -6,10 +6,10 @@
 
 // Plugins
 import vuetify from './vuetify'
-import router from '../router/route'
+import MainRouter from '../router/route'
 
 export function registerPlugins (app) {
   app
     .use(vuetify)
-    .use(router)
+    .use(MainRouter)
 }
