@@ -6,20 +6,21 @@
           bg-color="indigo-darken-2"
   >
     <v-tab>我的信息</v-tab>
+    <v-tab>我的团队</v-tab>
 
   </v-tabs>
 
-  <My v-if="tab===0"></My>
+  <myInfo v-if="tab===0"></myInfo>
 
 
 </template>
 
 <script>
 import Topheader from "@/components/center/header/topheader.vue";
-import My from "@/views/v1/user/myInfo.vue"; // 引入 Net 方法
+import myInfo from "@/views/v1/user/myInfo.vue"; // 引入 Net 方法
 
 export default {
-  components: {My, Topheader},
+  components: {myInfo, Topheader},
   data() {
     return {
       tab: 0

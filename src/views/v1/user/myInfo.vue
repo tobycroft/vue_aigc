@@ -45,7 +45,7 @@ export default {
     logout() {
       // 处理退出逻辑，可以调用接口等操作
       TokenModel.Api_clear_uidAndToken()
-      this.$router.push('/user/login')
+      this.$router.push('/v1/login')
     },
     async fetchData() {
       // 发送获取个人信息的请求
