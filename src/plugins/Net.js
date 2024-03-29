@@ -2,7 +2,7 @@ import axios from 'axios';
 import Alert from "@/plugins/Alert";
 import TokenModel from "@/model/TokenModel";
 
-const baseURL = 'http://gobotq.tuuz.top:81';
+const baseURL = 'http://aigc.aerofsx.com:81';
 
 class Net {
   header = {};
