@@ -67,7 +67,6 @@ const routes = [
     {
         path: '/:pathMatch(.*)*',
         component: () => import('@/router/superRouter.vue'), // 假设您有一个布局组件用于渲染页面
-        props: true // 将路由参数传递给组件
     }
 ]
 
@@ -91,11 +90,11 @@ MainRouter.beforeEach((to, from, next) => {
 function importer(pagePath) {
     switch (pagePath.length) {
         case 1:
-            return import(`@/views/${pagePath[0]}.vue`);
+            return import(`@/views/${pagePath[0].toLowerCase()}.vue`);
         case 2:
-            return import(`@/views/${pagePath[0]}/${pagePath[1]}.vue`);
+            return import(`@/views/${pagePath[0].toLowerCase()}/${pagePath[1].toLowerCase()}.vue`);
         case 3:
-            return import(`@/views/${pagePath[0]}/${pagePath[1]}/${pagePath[2]}.vue`);
+            return import(`@/views/${pagePath[0].toLowerCase()}/${pagePath[1].toLowerCase()}/${pagePath[2].toLowerCase()}.vue`);
 
         default:
             return import(`@/views/user/login.vue`);

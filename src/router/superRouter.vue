@@ -6,7 +6,7 @@
 export default {
   computed: {
     component() {
-      return this.$route.meta.component || null;
+      return this.$route.meta.component;
     }
   }
 }
