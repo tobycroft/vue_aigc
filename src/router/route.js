@@ -95,6 +95,10 @@ function importer(pagePath) {
             return import(`@/views/${pagePath[0].toLowerCase()}/${pagePath[1].toLowerCase()}.vue`);
         case 3:
             return import(`@/views/${pagePath[0].toLowerCase()}/${pagePath[1].toLowerCase()}/${pagePath[2].toLowerCase()}.vue`);
+        case 4:
+            return import(`@/views/${pagePath[0].toLowerCase()}/${pagePath[1].toLowerCase()}/${pagePath[2].toLowerCase()}/${pagePath[3].toLowerCase()}.vue`);
+        case 5:
+            return import(`@/views/${pagePath[0].toLowerCase()}/${pagePath[1].toLowerCase()}/${pagePath[2].toLowerCase()}/${pagePath[3].toLowerCase()}/${pagePath[4].toLowerCase()}.vue`);
 
         default:
             return import(`@/views/user/login.vue`);

@@ -42,7 +42,7 @@ export default {
       }
     },
     async addTeam() {
-      this.$router.push('/v1/user/create');
+      this.$router.push('/v1/user/team/create');
     },
     formattedDate(date) {
       // 格式化日期
