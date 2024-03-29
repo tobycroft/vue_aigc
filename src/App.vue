@@ -11,8 +11,8 @@
           <v-spacer></v-spacer>
 
           <v-btn
-              text="Close Dialog"
-              @click="close"
+            text="Close Dialog"
+            @click="close"
           ></v-btn>
         </v-card-actions>
       </v-card>
