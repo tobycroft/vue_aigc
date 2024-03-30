@@ -1,7 +1,10 @@
 <template>
   <v-container>
     <v-card>
-      <v-card-title>团队 Token 列表</v-card-title>
+      <v-card-title>
+        <v-btn @click="goBack" color="grey" block class="mt-4">返回</v-btn>
+        团队 Token 列表
+      </v-card-title>
       <v-card-actions>
         <v-btn color="primary" @click="addToken">添加</v-btn>
       </v-card-actions>
@@ -76,6 +79,10 @@ export default {
     initialize() {
       // 重置表格数据
       this.tokenList = [];
+    },
+    goBack() {
+      // 返回到团队 Token 列表页面
+      this.$router.push({path: `/v1/user`});
     }
   }
 };

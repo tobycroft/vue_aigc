@@ -32,8 +32,10 @@
 <script>
 import Net from "@/plugins/Net";
 import moment from "moment";
+import top_header from "@/components/center/header/topheader.vue";
 
 export default {
+  components: {top_header},
   data() {
     return {
       teamList: [], // 存储团队列表数据
