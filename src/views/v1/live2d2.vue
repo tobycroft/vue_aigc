@@ -1,15 +1,3 @@
-<script setup>
-
-import '@/assets/live2d/js/live2d.js';
-import '@/assets/live2d/js/message.js';
-import Topheader from "@/components/center/header/topheader.vue";
-
-var message_Path = 'live2d/'
-var home_Path = 'https://localhost/'
-
-// loadlive2d("live2d", "@/assert/live2d/model/tia/model.json");
-</script>
-
 <template>
   <topheader></topheader>
   <!--  <head>-->
@@ -22,7 +10,24 @@ var home_Path = 'https://localhost/'
     <div class="hide-button">隐藏</div>
   </div>
 </template>
+<script setup>
 
-<style href="live2d/css/live2d.css">
+import Topheader from "@/components/center/header/topheader.vue";
+import('https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js')
 
-</style>
+
+import('@/assets/live2d/js/live2d.js')
+import('@/assets/live2d/js/message.js')
+
+
+import('@/assets/live2d/css/live2d.css')
+
+
+var message_Path = 'live2d/'
+var home_Path = 'https://localhost/'
+
+// loadlive2d("live2d", "@/assert/live2d/model/tia/model.json");
+</script>
+<!--<style href="live2d/css/live2d.css">-->
+<!---->
+<!--</style>-->
