@@ -1,0 +1,1 @@
+import{T as o}from"./topheader-zOh0spfU.js";import"https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js";import{c as r,o as e}from"./index-RAoTM10d.js";import"./gobotq-3Wa2au3z.js";import"./index-CC8CDgwQ.js";const n={__name:"live2d",setup(t){return(p,a)=>(e(),r(o))}};export{n as default};
