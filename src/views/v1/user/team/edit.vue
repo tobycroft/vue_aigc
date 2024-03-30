@@ -46,7 +46,8 @@ export default {
         id: this.team.team_id,
         name: this.name,
         img: "",
-        content: this.content
+        content: this.content,
+        prefix: this.prefix,
       };
 
       // 发送更新团队信息的请求
