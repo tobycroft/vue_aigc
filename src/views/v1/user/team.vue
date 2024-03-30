@@ -3,28 +3,31 @@
     <v-card>
       <v-card-title>团队列表</v-card-title>
       <v-card-text>
-        <v-btn @click="addTeam" color="primary">添加团队</v-btn>
         <v-list>
           <v-list-item v-for="team in teamList" :key="team.id">
-            <v-list-item>
-              <v-list-item>
+            <v-row align="center" justify="space-between">
+              <v-col cols="8">
                 <v-list-item-title>{{ team.team_info.name }}</v-list-item-title>
                 <v-list-item-subtitle v-if="team.nickname">{{ team.nickname }}</v-list-item-subtitle>
                 <v-list-item-subtitle>{{ team.role }}</v-list-item-subtitle>
                 <v-list-item-subtitle>{{ formattedDate(team.date) }}</v-list-item-subtitle>
-              </v-list-item>
-              <v-list-item-action>
-                <v-btn @click="editTeam(team)" color="primary">修改</v-btn>
-                <v-btn v-if="team.role === 'admin' || team.role === 'owner'" @click="deleteTeam(team)" color="error">解散团队</v-btn>
-                <v-btn v-if="team.role !== 'admin' && team.role !== 'owner'" @click="deleteTeam(team)" color="error">退出团队</v-btn>
-              </v-list-item-action>
-            </v-list-item>
+              </v-col>
+              <v-col cols="4">
+                <v-btn-group>
+                  <v-btn class="mt-4" @click="subtoken(team)" color="green">团队token管理</v-btn>
+                  <v-btn class="mt-4" @click="editTeam(team)" color="primary">修改团队信息</v-btn>
+                  <v-btn class="mt-4" v-if="team.role === 'admin' || team.role === 'owner'" @click="deleteTeam(team)" color="error">解散团队</v-btn>
+                  <v-btn class="mt-4" v-else @click="deleteTeam(team)" color="error">退出团队</v-btn>
+                </v-btn-group>
+              </v-col>
+            </v-row>
           </v-list-item>
         </v-list>
       </v-card-text>
     </v-card>
   </v-container>
 </template>
+
 
 <script>
 import Net from "@/plugins/Net";
@@ -65,6 +68,10 @@ export default {
     async editTeam(team) {
       // 根据团队信息跳转到编辑页面
       this.$router.push({path: '/v1/user/team/edit', query: team});
+    },
+    async subtoken(team) {
+      // 根据团队信息跳转到编辑页面
+      this.$router.push({path: `/v1/team/subtoken`, query: this.team});
     },
     formattedDate(date) {
       // 格式化日期
