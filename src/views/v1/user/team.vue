@@ -71,7 +71,7 @@ export default {
     },
     async subtoken(team) {
       // 根据团队信息跳转到编辑页面
-      this.$router.push({path: `/v1/team/subtoken`, query: this.team});
+      this.$router.push({path: `/v1/team/subtoken`, query: team});
     },
     formattedDate(date) {
       // 格式化日期
