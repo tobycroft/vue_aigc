@@ -15,8 +15,8 @@
               </v-list-item>
               <v-list-item-action>
                 <v-btn @click="editTeam(team)" color="primary">修改</v-btn>
-                <v-btn v-if="team.role === 'admin' || team.role === 'owner'" @click="deleteTeam(team.id)" color="error">解散团队</v-btn>
-                <v-btn v-if="team.role !== 'admin' && team.role !== 'owner'" @click="deleteTeam(team.id)" color="error">退出团队</v-btn>
+                <v-btn v-if="team.role === 'admin' || team.role === 'owner'" @click="deleteTeam(team)" color="error">解散团队</v-btn>
+                <v-btn v-if="team.role !== 'admin' && team.role !== 'owner'" @click="deleteTeam(team)" color="error">退出团队</v-btn>
               </v-list-item-action>
             </v-list-item>
           </v-list-item>
@@ -51,9 +51,9 @@ export default {
     async addTeam() {
       this.$router.push('/v1/user/team/create');
     },
-    async deleteTeam(id) {
+    async deleteTeam(team) {
       // 发送删除团队的请求
-      const ret = await new Net("/v1/user/team/delete").PostFormData({id: id});
+      const ret = await new Net("/v1/user/team/delete").PostFormData(team);
       if (ret.code === 0) {
         // 删除成功，重新获取团队列表数据
         this.fetchTeamList();
@@ -64,7 +64,7 @@ export default {
     },
     async editTeam(team) {
       // 根据团队信息跳转到编辑页面
-      this.$router.push({path: '/v1/user/team/edit', params: team});
+      this.$router.push({path: '/v1/user/team/edit', query: team});
     },
     formattedDate(date) {
       // 格式化日期

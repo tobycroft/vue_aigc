@@ -19,13 +19,13 @@ export default {
   data() {
     return {
       name: '', // 存储输入框中的团队名称
-      team: this.$route.params // 获取团队ID
+      team: this.$route.query // 获取团队ID
     };
   },
   methods: {
     async fetchTeamInfo() {
       // 获取团队信息
-      const ret = await new Net(`/v1/user/team/get`).PostFormData(this.team);
+      const ret = await new Net(`/v1/user/team/get`).PostFormData(this.team.team_id);
       if (ret.code === 0) {
         // 填充团队信息到表单中
         this.name = ret.data.name;

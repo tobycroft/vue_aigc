@@ -78,6 +78,7 @@ const MainRouter = createRouter({
 MainRouter.beforeEach((to, from, next) => {
     importer(to.params.pathMatch)
         .then(component => {
+            console.log(to,from)
             to.meta.component = component.default; // 将加载的组件保存到路由元信息中
             next();
         })
