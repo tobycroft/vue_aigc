@@ -7,10 +7,16 @@
         <v-list>
           <v-list-item v-for="team in teamList" :key="team.id">
             <v-list-item>
-              <v-list-item-title>{{ team.team_info.name }}</v-list-item-title>
-              <v-list-item-subtitle v-if="team.nickname">{{ team.nickname }}</v-list-item-subtitle>
-              <v-list-item-subtitle>{{ team.role }}</v-list-item-subtitle>
-              <v-list-item-subtitle>{{ formattedDate(team.date) }}</v-list-item-subtitle>
+              <v-list-item>
+                <v-list-item-title>{{ team.team_info.name }}</v-list-item-title>
+                <v-list-item-subtitle v-if="team.nickname">{{ team.nickname }}</v-list-item-subtitle>
+                <v-list-item-subtitle>{{ team.role }}</v-list-item-subtitle>
+                <v-list-item-subtitle>{{ formattedDate(team.date) }}</v-list-item-subtitle>
+              </v-list-item>
+              <v-list-item-action>
+                <v-btn @click="editTeam(team)" color="primary">修改</v-btn>
+                <v-btn @click="deleteTeam(team.team_info.id)" color="error">删除</v-btn>
+              </v-list-item-action>
             </v-list-item>
           </v-list-item>
         </v-list>
@@ -43,6 +49,21 @@ export default {
     },
     async addTeam() {
       this.$router.push('/v1/user/team/create');
+    },
+    async deleteTeam(id) {
+      // 发送删除团队的请求
+      const ret = await new Net("/v1/user/team/delete").PostFormData({id: id});
+      if (ret.code === 0) {
+        // 删除成功，重新获取团队列表数据
+        this.fetchTeamList();
+      } else {
+        // 处理删除失败的情况
+        console.error(ret.echo);
+      }
+    },
+    async editTeam(team) {
+      // 根据团队信息跳转到编辑页面
+      this.$router.push({name: 'editTeam', params: {teamId: team.id}});
     },
     formattedDate(date) {
       // 格式化日期

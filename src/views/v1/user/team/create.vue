@@ -1,17 +1,13 @@
 <template>
   <v-container>
-    <v-card>
-      <v-card-title>创建团队信息</v-card-title>
-      <v-card-text>
-        <v-form @submit.prevent="submitTeamInfo">
-          <v-text-field v-model="name" label="团队名称"></v-text-field>
-          <v-tab>
-            <v-btn type="submit" color="primary">提交</v-btn>
-            <v-btn @click="goBack" color="primary">返回</v-btn>
-          </v-tab>
-        </v-form>
-      </v-card-text>
-    </v-card>
+    <v-card-title>创建团队信息</v-card-title>
+    <v-form @submit.prevent="submitTeamInfo">
+      <v-text-field v-model="name" label="团队名称"></v-text-field>
+      <div class="d-flex flex-column">
+        <v-btn size="large" type="submit" color="primary" class="mt-4">提交</v-btn>
+        <v-btn size="large" @click="goBack" color="primary" class="mt-4">返回</v-btn>
+      </div>
+    </v-form>
   </v-container>
 </template>
 
