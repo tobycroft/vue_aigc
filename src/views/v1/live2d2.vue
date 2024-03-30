@@ -1,5 +1,5 @@
 <script setup>
-import 'https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js'
+
 import '@/assets/live2d/js/live2d.js';
 import '@/assets/live2d/js/message.js';
 import Topheader from "@/components/center/header/topheader.vue";
@@ -7,7 +7,7 @@ import Topheader from "@/components/center/header/topheader.vue";
 var message_Path = 'live2d/'
 var home_Path = 'https://localhost/'
 
-loadlive2d("live2d", "live2d/model/tia/model.json");
+// loadlive2d("live2d", "@/assert/live2d/model/tia/model.json");
 </script>
 
 <template>

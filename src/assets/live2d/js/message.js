@@ -1,3 +1,4 @@
+import 'https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js'
 function renderTip(template, context) {
     var tokenReg = /(\\)?\{([^\{\}\\]+)(\\)?\}/g;
     return template.replace(tokenReg, function (word, slash1, token, slash2) {
