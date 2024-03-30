@@ -1,7 +1,7 @@
 <template>
   <topheader></topheader>
   <!-- 使用示例 -->
-  <div style="margin: 2px 0">注意：如果有时候按钮不能点击，是因为模型 zIndex 挡住了按钮。</div>
+<!--  <div style="margin: 2px 0">注意：如果有时候按钮不能点击，是因为模型 zIndex 挡住了按钮。</div>-->
   <!--  <div>-->
   <!--    <span>position style：</span>-->
   <!--    <button @click="style = 'position: fixed; top: calc(50% - 250px); left: calc(50% - 200px)'">呆在中间</button>-->
@@ -11,16 +11,16 @@
   <!--    <button @click="style = 'position: fixed; bottom: 0; right: 0;'">呆在右下角</button>-->
   <!--    <button @click="style = ''">跟随流</button>-->
   <!--  </div>-->
-  <div>
-    <span>direction：</span>
-    <button @click="direction = 'right'">呆在右边</button>
-    <button @click="direction = 'left'">呆在左边</button>
-  </div>
-  <div>
-    <span>size：</span>
-    <button @click="size = size - 100; width = width - 100; height = height - 100;">减小</button>
-    <button @click="size = size + 100; width = width + 100; height = height + 100;">增大</button>
-  </div>
+<!--  <div>-->
+<!--    <span>direction：</span>-->
+<!--    <button @click="direction = 'right'">呆在右边</button>-->
+<!--    <button @click="direction = 'left'">呆在左边</button>-->
+<!--  </div>-->
+  <!--  <div>-->
+  <!--    <span>size：</span>-->
+  <!--    <button @click="size = size - 100; width = width - 100; height = height - 100;">减小</button>-->
+  <!--    <button @click="size = size + 100; width = width + 100; height = height + 100;">增大</button>-->
+  <!--  </div>-->
   <!-- 可尝试一个页面上多个模型： -->
   <!-- <live2d
     :model="[1, 53]"
@@ -43,7 +43,7 @@
  * import live2d from 'vue-live2d'
  */
 import Topheader from "@/components/center/header/topheader.vue";
-import live2d from 'vue-live2d'
+import live2d from '@/views/v1/live2d/index.vue'
 
 export default {
   name: 'App',
@@ -58,13 +58,8 @@ export default {
       width: 800,
       height: 800,
       size: 600,
-      apiPath:"https://live2d.fghrsh.net/api/",
-      tips: {
-        mouseover: [{
-          selector: '.vue-live2d',
-          texts: ['这样可以修改默认语句']
-        }]
-      }
+      apiPath: "https://live2d.fghrsh.net/api/",
+      tips: {}
     }
   },
   created() {
