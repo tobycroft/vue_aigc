@@ -6,14 +6,13 @@
         <v-btn color="primary" @click="addToken">添加</v-btn>
       </v-card-actions>
       <v-card-text>
-        <v-data-table :items="tokenList" item-key="id">
-          <template v-slot:items="props">
-            <td>{{ props.item.id }}</td>
-            <td>{{ props.item.key }}</td>
-            <td>{{ props.item.amount }}</td>
-            <td>{{ formatDate(props.item.change_date) }}</td>
-            <v-btn @click="editToken(props.item.id)" color="primary">修改</v-btn>
-            <v-btn @click="deleteToken(props.item.id)" color="error">删除</v-btn>
+        <v-data-table :headers="headers" :items="tokenList" item-key="id">
+          <template v-slot:item.actions="{ item }">
+            <v-icon class="me-2" size="small" @click="editToken(item.id)">mdi-pencil</v-icon>
+            <v-icon size="small" @click="deleteToken(item.id)">mdi-delete</v-icon>
+          </template>
+          <template v-slot:no-data>
+            <v-btn color="primary" @click="initialize">Reset</v-btn>
           </template>
         </v-data-table>
       </v-card-text>
@@ -29,6 +28,13 @@ export default {
     return {
       team: this.$route.query,
       tokenList: [], // 存储团队 Token 列表
+      headers: [
+        {title: 'ID', key: 'id'},
+        {title: 'Key', key: 'key'},
+        {title: '剩余量', key: 'amount'},
+        {title: '变动时间', key: 'change_date'},
+        {title: '操作', key: 'actions', sortable: false}
+      ]
     };
   },
   mounted() {
@@ -49,7 +55,7 @@ export default {
     },
     async deleteToken(tokenId) {
       try {
-        const response = await new Net("/v1/team/subtoken/delete").PostFormData({id: tokenId});
+        const response = await new Net("/v1/team/subtoken/delete").PostFormData({id: tokenId, team_id: this.team.team_id});
         if (response.code === 0) {
           this.tokenList = this.tokenList.filter(token => token.id !== tokenId);
         } else {
@@ -61,16 +67,16 @@ export default {
     },
     editToken(tokenId) {
       // 编辑团队 Token，将用户重定向到编辑页面，并将团队 Token 的 ID 作为查询参数传递
-      this.$router.push({path: `/v1/team/subtoken/edit`, query: {...this.team, id: tokenId}});
+      this.$router.push({path: `/v1/team/subtoken/edit`, query: {id: tokenId, team_id: this.team.team_id}});
     },
     addToken() {
       // 添加团队 Token，将用户重定向到添加页面
-      this.$router.push({path: `/v1/team/subtoken/add`, query: this.team});
+      this.$router.push({path: `/v1/team/subtoken/add`, query: {team_id: this.team.team_id}});
     },
-    formatDate(dateString) {
-      const date = new Date(dateString);
-      return date.toLocaleString();
-    },
-  },
+    initialize() {
+      // 重置表格数据
+      this.tokenList = [];
+    }
+  }
 };
 </script>
