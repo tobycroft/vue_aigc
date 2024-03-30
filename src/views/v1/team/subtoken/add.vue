@@ -19,15 +19,15 @@
                 <v-text-field v-model="formData.prefix" label="prefix标签"></v-text-field>
               </v-col>
               <v-col cols="12">
-                <v-text-field v-model="formData.amount" label="可以使用的余额"></v-text-field>
+                <v-text-field v-model="formData.amount" label="可以使用的余额,如果是-1就是无线，大于0就按正常的扣"></v-text-field>
               </v-col>
               <v-col cols="12">
                 <v-text-field v-model="formData.from_id" label="上级id"></v-text-field>
               </v-col>
             </v-row>
           </v-container>
-          <v-btn type="submit" color="primary">添加</v-btn>
-          <v-btn @click="goBack" color="primary">返回</v-btn>
+          <v-btn type="submit" color="primary" block class="mt-4">添加</v-btn>
+          <v-btn @click="goBack" color="grey" block class="mt-4">返回</v-btn>
         </v-form>
       </v-card-text>
     </v-card>
@@ -40,24 +40,38 @@ import Net from "@/plugins/Net";
 export default {
   data() {
     return {
+      team_info: {},
       team: this.$route.query,
       coinList: [],
       selectedCoinId: null,
       formData: {
-        name: '测试key名称',
-        team_id: this.team.team_id || '',
-        prefix: this.team.prefix || 'keyprefix',
+        name: '测试key名称，随便起一个',
+        team_id: '',
+        prefix: '',
         amount: '-1',
         from_id: '1'
       }
     };
   },
   methods: {
+    async fetchTeamInfo() {
+      // 获取团队信息
+      const ret = await new Net(`/v1/user/team/get`).PostFormData(this.team);
+      if (ret.code === 0) {
+        // 填充团队信息到表单中
+        this.team_info = ret.data.team_info
+        this.formData.prefix = ret.data.team_info.prefix
+        this.formData.team_id = ret.data.team_info.id
+        // 如果还有其他字段，也可以在这里填充
+      } else {
+        console.error(ret.echo);
+      }
+    },
     async fetchCoinList() {
       try {
         const response = await new Net('/v1/coin/info/list').PostFormData();
         if (response.code === 0) {
-          this.coinList = response.data.map(coin => ({id: coin.id, name: coin.name}));
+          this.coinList = response.data.map(coin => ({id: coin.id, title: coin.name}));
         } else {
           console.error('Failed to fetch coin list:', response.echo);
         }
@@ -92,6 +106,7 @@ export default {
     }
   },
   mounted() {
+    this.fetchTeamInfo()
     this.fetchCoinList();
   }
 }
