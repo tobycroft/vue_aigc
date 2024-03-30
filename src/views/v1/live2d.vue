@@ -62,6 +62,8 @@ export default {
     }
   },
   created() {
+    // this.components.live2d.methods.showMessage("aaa", 2000)
+    // live2d.methods.showMessage("aaa", 2000)
     // tips 未使用，可自行在组件绑定此参数，注意此参数只会初始化一次
     // this.tips = this.customTips
   }
