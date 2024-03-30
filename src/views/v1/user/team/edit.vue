@@ -25,7 +25,7 @@ export default {
   methods: {
     async fetchTeamInfo() {
       // 获取团队信息
-      const ret = await new Net(`/v1/user/team/get`).PostFormData(this.team.team_id);
+      const ret = await new Net(`/v1/user/team/get`).PostFormData(this.team);
       if (ret.code === 0) {
         // 填充团队信息到表单中
         this.name = ret.data.name;
