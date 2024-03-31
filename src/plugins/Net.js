@@ -2,7 +2,7 @@ import axios from 'axios';
 import Alert from "@/plugins/Alert";
 import TokenModel from "@/model/TokenModel";
 
-const baseURL = 'http://aigc.aerofsx.com:81';
+const baseURL = 'https://aigc.aerofsx.com:444';
 
 class Net {
   header = {};
