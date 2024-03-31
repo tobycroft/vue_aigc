@@ -56,6 +56,7 @@
 <script>
 import '@/styles/live2d.css'
 import '@/assets/live2d.min.js'
+import {au} from "../../../../dist/assets/index-CehaStzv.js";
 
 
 export default {
@@ -295,6 +296,7 @@ export default {
         console.log("VoiceSpeak", msg)
         this.stopVoice()
         localStorage.setItem("currentVoice", msg)
+        this.iflyVoice(msg)
         window.speechSynthesis.speak(speech)
       }
     },
@@ -302,9 +304,16 @@ export default {
       window.speechSynthesis.cancel()
     },
     async iflyVoice(msg = '') {
-      let fm=new FormData();
-      fm.set()
-      const audio = await this.Post(`${this.aigcUrl}/v1/iflytek/tts/audio`, msg)
+      // let fm = new FormData();
+      // fm.set("message", msg)
+      // const audio = await this.PostAsync(`${this.aigcUrl}/v1/iflytek/tts/auto`, fm)
+      //play mp3 file stream
+      // const blob = new Blob([audio], {type: 'audio/mpeg'})
+      // const url = window.URL.createObjectURL(blob)
+      // const audioElement = new Audio()
+      // audioElement.src = url
+      // audioElement.play()
+
     },
     takePhoto() {
       this.showMessage('照好了嘛，留个纪念吖~')
