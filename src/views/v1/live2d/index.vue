@@ -54,6 +54,7 @@
 </template>
 
 <script>
+import '@/styles/live2d.css'
 import '@/assets/live2d.min.js'
 
 import tips from '@/assets/options/tips.js'
@@ -117,6 +118,10 @@ export default {
       type: Number
     },
     apiKey: {
+      default: "",
+      type: String,
+    },
+    doAction: {
       default: "",
       type: String,
     }
@@ -205,7 +210,7 @@ export default {
       this.loadModel()
     },
     loadModel() {
-      console.log("loading...",this.customId, `${this.apiPath}/${this.modelPath}/${this.modelTexturesId}.json`)
+      console.log("loading...", this.customId, `${this.apiPath}/${this.modelPath}/${this.modelTexturesId}.json`)
       window.loadlive2d(this.customId, `${this.apiPath}/${this.modelPath}/${this.modelTexturesId}.json`)
       console.log(`Live2D 模型 ${this.modelPath}，服装 ${this.modelTexturesId} 加载完成`)
     },
@@ -321,8 +326,7 @@ export default {
     Post(url, data, success) {
       fetch(url, {
         method: 'POST',
-        headers: {
-        },
+        headers: {},
         body: data,
         mode: 'cors',
         credentials: 'include',
@@ -340,256 +344,3 @@ export default {
 }
 </script>
 
-<style scoped>
-/* live2d */
-.vue-live2d {
-  display: flex;
-  position: relative;
-  align-items: flex-end;
-}
-
-.vue-live2d-on-left {
-  flex-direction: row;
-}
-
-.vue-live2d-on-right {
-  flex-direction: row-reverse;
-}
-
-/* live2d-tip */
-.vue-live2d-tip {
-  box-sizing: border-box;
-  position: absolute;
-  width: 100%;
-  line-height: 1.5rem;
-  padding: 15px 20px;
-  font-size: .9rem;
-
-  word-break: break-all;
-  text-overflow: ellipsis;
-  border: 1px solid rgba(224, 186, 140, 0.62);
-  border-radius: 12px;
-  background-color: rgba(236, 217, 188, 0.5);
-  box-shadow: 0 3px 15px 2px rgba(191, 158, 118, 0.2);
-  animation: shake 50s ease-in-out 5s infinite;
-}
-
-.vue-live2d-tip-on-top {
-  top: 0;
-}
-
-.vue-live2d-tip-on-bottom {
-  bottom: 0;
-}
-
-/* live2d-main */
-.vue-live2d-main {
-  transition: padding .3s ease-in-out;
-  cursor: grab;
-}
-
-.vue-live2d-main-on-left:hover {
-  padding-left: 21px;
-}
-
-.vue-live2d-main-on-right:hover {
-  padding-right: 21px;
-}
-
-/* live2d-tool */
-.vue-live2d-tool {
-  position: absolute;
-  width: 20px;
-  bottom: 10px;
-  color: #5b6c7d;
-  text-align: center;
-  cursor: pointer;
-  padding: 0 10px;
-}
-
-.vue-live2d-tool span {
-  line-height: 30px;
-}
-
-.vue-live2d-tool span:hover {
-  color: #0684bd;
-}
-
-/* live2d-toggle */
-.vue-live2d-toggle {
-  width: 1.5rem;
-  bottom: 1rem;
-  padding: .3rem 0;
-  writing-mode: vertical-lr;
-  color: #fff;
-  background-color: #fa0;
-  font-size: 1rem;
-  cursor: pointer;
-  right: 0;
-}
-
-.vue-live2d-toggle:hover {
-  width: 1.7rem;
-}
-
-.vue-live2d-toggle-on-left {
-  border-radius: 0 .5rem .5rem 0;
-}
-
-.vue-live2d-toggle-on-right {
-  border-radius: .5rem 0 0 .5rem;
-}
-
-@keyframes shake {
-  2% {
-    transform: translate(0.5px, -1.5px) rotate(-0.5deg);
-  }
-  4% {
-    transform: translate(0.5px, 1.5px) rotate(1.5deg);
-  }
-  6% {
-    transform: translate(1.5px, 1.5px) rotate(1.5deg);
-  }
-  8% {
-    transform: translate(2.5px, 1.5px) rotate(0.5deg);
-  }
-  10% {
-    transform: translate(0.5px, 2.5px) rotate(0.5deg);
-  }
-  12% {
-    transform: translate(1.5px, 1.5px) rotate(0.5deg);
-  }
-  14% {
-    transform: translate(0.5px, 0.5px) rotate(0.5deg);
-  }
-  16% {
-    transform: translate(-1.5px, -0.5px) rotate(1.5deg);
-  }
-  18% {
-    transform: translate(0.5px, 0.5px) rotate(1.5deg);
-  }
-  20% {
-    transform: translate(2.5px, 2.5px) rotate(1.5deg);
-  }
-  22% {
-    transform: translate(0.5px, -1.5px) rotate(1.5deg);
-  }
-  24% {
-    transform: translate(-1.5px, 1.5px) rotate(-0.5deg);
-  }
-  26% {
-    transform: translate(1.5px, 0.5px) rotate(1.5deg);
-  }
-  28% {
-    transform: translate(-0.5px, -0.5px) rotate(-0.5deg);
-  }
-  30% {
-    transform: translate(1.5px, -0.5px) rotate(-0.5deg);
-  }
-  32% {
-    transform: translate(2.5px, -1.5px) rotate(1.5deg);
-  }
-  34% {
-    transform: translate(2.5px, 2.5px) rotate(-0.5deg);
-  }
-  36% {
-    transform: translate(0.5px, -1.5px) rotate(0.5deg);
-  }
-  38% {
-    transform: translate(2.5px, -0.5px) rotate(-0.5deg);
-  }
-  40% {
-    transform: translate(-0.5px, 2.5px) rotate(0.5deg);
-  }
-  42% {
-    transform: translate(-1.5px, 2.5px) rotate(0.5deg);
-  }
-  44% {
-    transform: translate(-1.5px, 1.5px) rotate(0.5deg);
-  }
-  46% {
-    transform: translate(1.5px, -0.5px) rotate(-0.5deg);
-  }
-  48% {
-    transform: translate(2.5px, -0.5px) rotate(0.5deg);
-  }
-  50% {
-    transform: translate(-1.5px, 1.5px) rotate(0.5deg);
-  }
-  52% {
-    transform: translate(-0.5px, 1.5px) rotate(0.5deg);
-  }
-  54% {
-    transform: translate(-1.5px, 1.5px) rotate(0.5deg);
-  }
-  56% {
-    transform: translate(0.5px, 2.5px) rotate(1.5deg);
-  }
-  58% {
-    transform: translate(2.5px, 2.5px) rotate(0.5deg);
-  }
-  60% {
-    transform: translate(2.5px, -1.5px) rotate(1.5deg);
-  }
-  62% {
-    transform: translate(-1.5px, 0.5px) rotate(1.5deg);
-  }
-  64% {
-    transform: translate(-1.5px, 1.5px) rotate(1.5deg);
-  }
-  66% {
-    transform: translate(0.5px, 2.5px) rotate(1.5deg);
-  }
-  68% {
-    transform: translate(2.5px, -1.5px) rotate(1.5deg);
-  }
-  70% {
-    transform: translate(2.5px, 2.5px) rotate(0.5deg);
-  }
-  72% {
-    transform: translate(-0.5px, -1.5px) rotate(1.5deg);
-  }
-  74% {
-    transform: translate(-1.5px, 2.5px) rotate(1.5deg);
-  }
-  76% {
-    transform: translate(-1.5px, 2.5px) rotate(1.5deg);
-  }
-  78% {
-    transform: translate(-1.5px, 2.5px) rotate(0.5deg);
-  }
-  80% {
-    transform: translate(-1.5px, 0.5px) rotate(-0.5deg);
-  }
-  82% {
-    transform: translate(-1.5px, 0.5px) rotate(-0.5deg);
-  }
-  84% {
-    transform: translate(-0.5px, 0.5px) rotate(1.5deg);
-  }
-  86% {
-    transform: translate(2.5px, 1.5px) rotate(0.5deg);
-  }
-  88% {
-    transform: translate(-1.5px, 0.5px) rotate(1.5deg);
-  }
-  90% {
-    transform: translate(-1.5px, -0.5px) rotate(-0.5deg);
-  }
-  92% {
-    transform: translate(-1.5px, -1.5px) rotate(1.5deg);
-  }
-  94% {
-    transform: translate(0.5px, 0.5px) rotate(-0.5deg);
-  }
-  96% {
-    transform: translate(2.5px, -0.5px) rotate(-0.5deg);
-  }
-  98% {
-    transform: translate(-1.5px, -1.5px) rotate(-0.5deg);
-  }
-  0%, 100% {
-    transform: translate(0, 0) rotate(0deg);
-  }
-}
-</style>

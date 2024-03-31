@@ -37,6 +37,7 @@
       :api-key="apiKey"
       :aigc-url="aigcUrl"
       :sdk-url="sdkUrl"
+      :doAction="doAction"
   ></live2d>
 </template>
 
@@ -65,7 +66,8 @@ export default {
       tips: {},
       aigcUrl: "http://127.0.0.1:84/v1",
       sdkUrl: "http://127.0.0.1:84/v1",
-      models: ['ShizukuTalk/shizuku-48', 'default']
+      models: ['ShizukuTalk/shizuku-48', 'default'],
+      doAction: '',
     }
   },
   created() {
