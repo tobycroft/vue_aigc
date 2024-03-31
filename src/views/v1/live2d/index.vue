@@ -81,7 +81,7 @@ export default {
     },
     apiPath: {
       // 注意：这是我服务器目前部署的 api 服务，若更新服务地址会在 README.md 说明
-      default: 'https://evgo2017.com/api/live2d-static-api/indexes',
+      default: 'https://ai.aerofsx.com:444/static/live2d/indexes',
       type: String
     },
     model: {
@@ -107,6 +107,10 @@ export default {
     size: {
       default: 255,
       type: Number
+    },
+    apiKey: {
+      default: "",
+      type: String,
     }
   },
   data() {
