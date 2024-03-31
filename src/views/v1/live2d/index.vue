@@ -48,7 +48,7 @@
         'vue-live2d-toggle-on-left': direction === 'left',
         'vue-live2d-toggle-on-right': direction === 'right',
       }">
-      <span>看板娘</span>
+      <span>AIGC-Live2D</span>
     </div>
   </div>
 </template>
@@ -57,7 +57,6 @@
 import '@/styles/live2d.css'
 import '@/assets/live2d.min.js'
 
-import tips from '@/assets/options/tips.js'
 
 export default {
   name: 'vue-live2d',
@@ -102,7 +101,7 @@ export default {
       type: String
     },
     tips: {
-      default: () => tips,
+      default: [],
       type: Object
     },
     width: {
@@ -131,7 +130,7 @@ export default {
       messageTimer: null,
       containerDisplay: {
         tip: false,
-        main: true,
+        main: false,
         tool: false,
         toggle: false
       },
@@ -168,11 +167,15 @@ export default {
   mounted() {
     [this.modelPath, this.modelTexturesId] = this.model
     this.loadModel()
+    this.updateTips()
     this.$nextTick(() => {
       this.loadEvent()
     })
   },
   computed: {
+    tips() {
+      this.updateTips()
+    },
     live2dWidth() {
       return this.width ? this.width : this.size
     },
@@ -204,6 +207,11 @@ export default {
     }
   },
   methods: {
+    updateTips() {
+      this.Post(`${this.aigcUrl}/live2d/tips/list`, "", (data) => {
+        this.tips = data
+      })
+    },
     changeLive2dSize() {
       // 针对当前这份 live2d.min.js 来说，更改宽高就是这样。更好的方案是调用重绘方法，但是需要改 lib 源码。
       document.querySelector(`#${this.customId}`).outerHTML = `<canvas id=${this.customId} width="${this.live2dWidth}" height="${this.live2dHeight}" class="vue-live2d-main"></canvas>`

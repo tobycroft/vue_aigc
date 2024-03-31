@@ -58,7 +58,7 @@ export default {
   data() {
     return {
       direction: 'right',
-      style: 'position: fixed; bottom: 0; right: 20px;',
+      style: 'position: fixed; bottom: 0; right: 0;',
       // width: 800,
       // height: 800,
       size: 600,
