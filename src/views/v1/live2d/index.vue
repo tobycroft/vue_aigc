@@ -101,7 +101,7 @@ export default {
       type: String
     },
     tips: {
-      default: [],
+      default: {},
       type: Object
     },
     width: {
@@ -123,6 +123,10 @@ export default {
     doAction: {
       default: "",
       type: String,
+    },
+    showOnLoad: {
+      default: true,
+      type: Boolean
     }
   },
   data() {
@@ -130,10 +134,11 @@ export default {
       messageTimer: null,
       containerDisplay: {
         tip: false,
-        main: false,
+        main: true,
         tool: false,
         toggle: false
       },
+      Tips: {},
       tipText: 'vue-live2d 看板娘',
       modelPath: '',
       modelTexturesId: '',
@@ -164,18 +169,15 @@ export default {
       }]
     }
   },
-  mounted() {
+  async mounted() {
     [this.modelPath, this.modelTexturesId] = this.model
     this.loadModel()
-    this.updateTips()
+    await this.updateTips()
     this.$nextTick(() => {
       this.loadEvent()
     })
   },
   computed: {
-    tips() {
-      this.updateTips()
-    },
     live2dWidth() {
       return this.width ? this.width : this.size
     },
@@ -207,10 +209,11 @@ export default {
     }
   },
   methods: {
-    updateTips() {
-      this.Post(`${this.aigcUrl}/live2d/tips/list`, "", (data) => {
-        this.tips = data
-      })
+    async updateTips() {
+      // this.Post(`${this.aigcUrl}/live2d/tips/list`, "", (data) => {
+      //   this.Tips = data
+      // })
+      this.Tips = await this.PostAsync(`${this.aigcUrl}/live2d/tips/list`, "")
     },
     changeLive2dSize() {
       // 针对当前这份 live2d.min.js 来说，更改宽高就是这样。更好的方案是调用重绘方法，但是需要改 lib 源码。
@@ -288,9 +291,10 @@ export default {
       this.containerDisplay.tool = true
     },
     loadEvent() {
-      for (const event in this.tips) {
+      let tips = this.Tips
+      for (const event in tips) {
         console.log("event", event)
-        for (const {selector, texts} of this.tips[event]) {
+        for (const {selector, texts} of tips[event]) {
           const dom = selector === 'document' ? document : document.querySelector(selector)
           if (dom == null) {
             continue
@@ -347,6 +351,17 @@ export default {
             console.log("fet-error:", err)
           })
 
+    },
+    async PostAsync(url, data) {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {},
+        body: data,
+        mode: 'cors',
+        credentials: 'include',
+      })
+      const ret = await response.json()
+      return ret.data
     }
   }
 }
