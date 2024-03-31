@@ -216,6 +216,7 @@ export default {
         localStorage.removeItem("doAction")
         try {
           const act = JSON.parse(action)
+          console.log(act)
           this.showMessage(act["text"], 2000)
         } catch (e) {
           console.log("doAction-error", e)
