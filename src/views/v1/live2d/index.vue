@@ -120,10 +120,6 @@ export default {
       default: "",
       type: String,
     },
-    doAction: {
-      default: "",
-      type: String,
-    },
     showOnLoad: {
       default: true,
       type: Boolean
@@ -176,6 +172,7 @@ export default {
     this.$nextTick(() => {
       this.loadEvent()
     })
+    setInterval(this.say, 500)
   },
   computed: {
     live2dWidth() {
@@ -206,13 +203,26 @@ export default {
     },
     size() {
       this.changeLive2dSize()
+    },
+    doAction() {
+      console.log(this.doAction)
+      this.doAction = {}
     }
   },
   methods: {
+    async say() {
+      const action = localStorage.getItem("doAction")
+      if (action) {
+        localStorage.removeItem("doAction")
+        try {
+          const act = JSON.parse(action)
+          this.showMessage(act["text"], 2000)
+        } catch (e) {
+          console.log("doAction-error", e)
+        }
+      }
+    },
     async updateTips() {
-      // this.Post(`${this.aigcUrl}/live2d/tips/list`, "", (data) => {
-      //   this.Tips = data
-      // })
       this.Tips = await this.PostAsync(`${this.aigcUrl}/live2d/tips/list`, "")
     },
     changeLive2dSize() {

@@ -2,7 +2,7 @@
   <topheader></topheader>
   <v-container>
     <v-card-title>创建团队信息</v-card-title>
-    <v-form @submit.prevent="submitTeamInfo">
+    <v-form @submit.prevent="updateMessage">
       <v-text-field v-model="message" label="你想让L2D说什么"></v-text-field>
       <div class="d-flex flex-column">
         <v-btn size="large" type="submit" color="primary" class="mt-4">确认</v-btn>
@@ -17,7 +17,6 @@
       :api-key="apiKey"
       :aigc-url="aigcUrl"
       :sdk-url="sdkUrl"
-      :doAction="doAction"
   ></live2d>
 </template>
 
@@ -48,7 +47,6 @@ export default {
       aigcUrl: "http://127.0.0.1:84/v1",
       sdkUrl: "http://127.0.0.1:84/v1",
       models: ['ShizukuTalk/shizuku-48', 'default'],
-      doAction: '',
     }
   },
   created() {
@@ -58,8 +56,11 @@ export default {
     // this.tips = this.customTips
   },
   methods: {
-    submitTeamInfo() {
-
+    updateMessage() {
+      localStorage.setItem("doAction", JSON.stringify({
+        type: "say",
+        text: this.message
+      }))
     }
   }
 }
