@@ -97,7 +97,7 @@ export default {
       type: Array
     },
     homePage: {
-      default: 'https://ai.aerofsx.com:444/',
+      default: 'https://ai.aerofsx.com:444',
       type: String
     },
     tips: {
@@ -224,7 +224,7 @@ export default {
       }
     },
     async updateTips() {
-      this.Tips = await this.PostAsync(`${this.aigcUrl}/live2d/tips/list`, "")
+      this.Tips = await this.PostAsync(`${this.aigcUrl}/v1/live2d/tips/list`, "")
     },
     changeLive2dSize() {
       // 针对当前这份 live2d.min.js 来说，更改宽高就是这样。更好的方案是调用重绘方法，但是需要改 lib 源码。
@@ -238,7 +238,7 @@ export default {
     },
     loadRandModel() {
       console.log("随机加载模型……")
-      this.Post(`${this.aigcUrl}/live2d/models/list`, "",
+      this.Post(`${this.aigcUrl}/v1/live2d/models/list`, "",
           (data) => {
             const models = data.filter(({modelPath}) => modelPath !== this.modelPath)
             const {modelPath, modelIntroduce} = models[Math.floor(Math.random() * models.length)]

@@ -44,8 +44,8 @@ export default {
       size: 600,
       apiKey: "testtest",
       tips: {},
-      aigcUrl: "http://127.0.0.1:84/v1",
-      sdkUrl: "http://127.0.0.1:84/v1",
+      // aigcUrl: "http://127.0.0.1:84",
+      // sdkUrl: "http://127.0.0.1:84",
       models: ['ShizukuTalk/shizuku-48', 'default'],
     }
   },
