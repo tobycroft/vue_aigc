@@ -1,0 +1,1 @@
+import{u as r}from"./topheader-0IYwMmEf-BwNfIFeE.js";import{Z as t,H as m}from"./index-2GhK7Pc3.js";import"./index-DOTyCMeZ-j8oI9t91.js";import"./gobotq-3Wa2au3z-DdkrL1Vq.js";import"./index-VZFVW0nk.js";const f={__name:"vrm",setup(o){return(a,p)=>(m(),t(r))}};export{f as default};
