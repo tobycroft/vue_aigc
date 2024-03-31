@@ -264,24 +264,34 @@ export default {
       if (this.messageTimer) {
         clearTimeout(this.messageTimer)
         this.messageTimer = null
+
       } else {
         this.containerDisplay.tip = true
       }
+      this.voice(msg)
       this.tipText = msg
       this.messageTimer = setTimeout(() => {
         this.containerDisplay.tip = false
         this.messageTimer = null
       }, timeout)
-      this.voice(msg)
+
     },
     voice(msg = '') {
       const speech = new SpeechSynthesisUtterance()
       speech.lang = 'zh-CN'
       speech.text = msg
       // speech.volume = 1
-      speech.rate = 1
+      speech.rate = 2
       speech.pitch = 1
-      window.speechSynthesis.speak(speech)
+      if (localStorage.getItem("currentVoice") !== msg) {
+        console.log("VoiceSpeak", msg)
+        this.stopVoice()
+        localStorage.setItem("currentVoice", msg)
+        window.speechSynthesis.speak(speech)
+      }
+    },
+    stopVoice() {
+      window.speechSynthesis.cancel()
     },
     takePhoto() {
       this.showMessage('照好了嘛，留个纪念吖~')
