@@ -272,6 +272,16 @@ export default {
         this.containerDisplay.tip = false
         this.messageTimer = null
       }, timeout)
+      this.voice(msg)
+    },
+    voice(msg = '') {
+      const speech = new SpeechSynthesisUtterance()
+      speech.lang = 'zh-CN'
+      speech.text = msg
+      // speech.volume = 1
+      speech.rate = 1
+      speech.pitch = 1
+      window.speechSynthesis.speak(speech)
     },
     takePhoto() {
       this.showMessage('照好了嘛，留个纪念吖~')
