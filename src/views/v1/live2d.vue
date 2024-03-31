@@ -31,9 +31,12 @@
   ></live2d> -->
   <live2d
       :style="style"
-      :model="['Potion-Maker/Pio', 'school-2017-costume-yellow']"
+      :model="models"
       :direction="direction"
       :size="size"
+      :api-key="apiKey"
+      :aigc-url="aigcUrl"
+      :sdk-url="sdkUrl"
   ></live2d>
 </template>
 
@@ -59,8 +62,10 @@ export default {
       // height: 800,
       size: 600,
       apiKey: "testtest",
-      tips: {}
-
+      tips: {},
+      aigcUrl: "http://127.0.0.1:84/v1",
+      sdkUrl: "http://127.0.0.1:84/v1",
+      models: ['ShizukuTalk/shizuku-48', 'default']
     }
   },
   created() {

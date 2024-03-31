@@ -84,6 +84,14 @@ export default {
       default: 'https://ai.aerofsx.com:444/static/live2d/indexes',
       type: String
     },
+    aigcUrl: {
+      default: 'https://aigc.aerofsx.com:444',
+      type: String
+    },
+    sdkUrl: {
+      default: '',
+      type: String,
+    },
     model: {
       default: () => ['Potion-Maker/Pio', 'school-2017-costume-yellow'],
       type: Array
@@ -197,20 +205,20 @@ export default {
       this.loadModel()
     },
     loadModel() {
+      console.log("loading...",this.customId, `${this.apiPath}/${this.modelPath}/${this.modelTexturesId}.json`)
       window.loadlive2d(this.customId, `${this.apiPath}/${this.modelPath}/${this.modelTexturesId}.json`)
       console.log(`Live2D 模型 ${this.modelPath}，服装 ${this.modelTexturesId} 加载完成`)
     },
     loadRandModel() {
-      this.http({
-        url: `${this.apiPath}/models.json`,
-        success: (data) => {
-          const models = data.filter(({modelPath}) => modelPath !== this.modelPath)
-          const {modelPath, modelIntroduce} = models[Math.floor(Math.random() * models.length)]
-          this.modelPath = modelPath
-          this.showMessage(`${modelIntroduce}`, 4000)
-          this.loadRandTextures(true)
-        }
-      })
+      console.log("随机加载模型……")
+      this.Post(`${this.aigcUrl}/live2d/models/list`, "",
+          (data) => {
+            const models = data.filter(({modelPath}) => modelPath !== this.modelPath)
+            const {modelPath, modelIntroduce} = models[Math.floor(Math.random() * models.length)]
+            this.modelPath = modelPath
+            this.showMessage(`${modelIntroduce}`, 4000)
+            this.loadRandTextures(true)
+          })
     },
     loadRandTextures(isAfterRandModel = false) {
       this.http({
@@ -295,6 +303,38 @@ export default {
       }
       xhr.open('GET', url)
       xhr.send(null)
+    },
+    http2({url, data, success}) {
+      const xhr = new XMLHttpRequest()
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          if ((xhr.status >= 200 || xhr.status < 300) || xhr.status === 304) {
+            success && success(JSON.parse(xhr.response).data)
+          } else {
+            console.error(xhr)
+          }
+        }
+      }
+      xhr.open('POST', url)
+      xhr.send(data)
+    },
+    Post(url, data, success) {
+      fetch(url, {
+        method: 'POST',
+        headers: {
+        },
+        body: data,
+        mode: 'cors',
+        credentials: 'include',
+      })
+          .then(ret => ret.json())
+          .then(ret => {
+            success && success(ret.data)
+          })
+          .catch((err) => {
+            console.log("fet-error:", err)
+          })
+
     }
   }
 }
