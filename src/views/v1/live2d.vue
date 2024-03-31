@@ -9,7 +9,7 @@
       </div>
     </v-form>
   </v-container>
-  <live2d
+  <live2d autofocus
       :style="style"
       :model="models"
       :direction="direction"

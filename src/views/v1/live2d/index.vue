@@ -296,26 +296,30 @@ export default {
       speech.pitch = 1
       if (localStorage.getItem("currentVoice") !== msg) {
         console.log("VoiceSpeak", msg)
-        this.stopVoice()
+        await this.stopVoice()
         localStorage.setItem("currentVoice", msg)
         // window.speechSynthesis.speak(speech)
-        await this.iflyVoice(msg)
+        this.iflyVoice(msg)
       }
     },
-    stopVoice() {
+    async stopVoice() {
       window.speechSynthesis.cancel()
       //stop AudioStream
-      this.AudioStream.pause()
+      try {
+        await this.AudioStream.pause()
+      } catch (e) {
+
+      }
     },
     async iflyVoice(msg = '') {
       let fm = new FormData();
       fm.set("message", msg)
       const audio = await this.PostAsync(`${this.aigcUrl}/v1/iflytek/tts/auto`, fm)
-      // play audio stream
+      // play audio stream and make it play as blob as background level
       const blob = await audio.blob()
+      // this.AudioStream = new Audio()
       this.AudioStream.src = URL.createObjectURL(blob)
       this.AudioStream.play()
-
     },
     takePhoto() {
       this.showMessage('照好了嘛，留个纪念吖~')
