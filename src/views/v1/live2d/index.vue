@@ -56,7 +56,6 @@
 <script>
 import '@/styles/live2d.css'
 import '@/assets/live2d.min.js'
-import {au} from "../../../../dist/assets/index-CehaStzv.js";
 
 
 export default {
@@ -171,7 +170,8 @@ export default {
         className: 'custom-fa-times',
         svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 -40 432 592" fill="currentColor" height="20px" width="20px"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"/></svg>',
         click: this.closeLive2dMain
-      }]
+      }],
+      AudioStream: new Audio(),
     }
   },
   async mounted() {
@@ -233,7 +233,9 @@ export default {
       }
     },
     async updateTips() {
-      this.Tips = await this.PostAsync(`${this.aigcUrl}/v1/live2d/tips/list`, "")
+      const ret = await (await this.PostAsync(`${this.aigcUrl}/v1/live2d/tips/list`, "")).json()
+      // console.log("tips", ret.data)
+      this.Tips = ret.data
     },
     changeLive2dSize() {
       // 针对当前这份 live2d.min.js 来说，更改宽高就是这样。更好的方案是调用重绘方法，但是需要改 lib 源码。
@@ -285,7 +287,7 @@ export default {
       }, timeout)
 
     },
-    voice(msg = '') {
+    async voice(msg = '') {
       const speech = new SpeechSynthesisUtterance()
       speech.lang = 'zh-CN'
       speech.text = msg
@@ -296,23 +298,23 @@ export default {
         console.log("VoiceSpeak", msg)
         this.stopVoice()
         localStorage.setItem("currentVoice", msg)
-        this.iflyVoice(msg)
-        window.speechSynthesis.speak(speech)
+        // window.speechSynthesis.speak(speech)
+        await this.iflyVoice(msg)
       }
     },
     stopVoice() {
       window.speechSynthesis.cancel()
+      //stop AudioStream
+      this.AudioStream.pause()
     },
     async iflyVoice(msg = '') {
-      // let fm = new FormData();
-      // fm.set("message", msg)
-      // const audio = await this.PostAsync(`${this.aigcUrl}/v1/iflytek/tts/auto`, fm)
-      //play mp3 file stream
-      // const blob = new Blob([audio], {type: 'audio/mpeg'})
-      // const url = window.URL.createObjectURL(blob)
-      // const audioElement = new Audio()
-      // audioElement.src = url
-      // audioElement.play()
+      let fm = new FormData();
+      fm.set("message", msg)
+      const audio = await this.PostAsync(`${this.aigcUrl}/v1/iflytek/tts/auto`, fm)
+      // play audio stream
+      const blob = await audio.blob()
+      this.AudioStream.src = URL.createObjectURL(blob)
+      this.AudioStream.play()
 
     },
     takePhoto() {
@@ -409,7 +411,7 @@ export default {
 
     },
     async PostAsync(url, data) {
-      const response = await fetch(url, {
+      return await fetch(url, {
         method: 'POST',
         headers: {
           uid: this.uid,
@@ -418,9 +420,8 @@ export default {
         body: data,
         mode: 'cors',
         credentials: 'include',
+        // timeout: 1000
       })
-      const ret = await response.json()
-      return ret.data
     }
   }
 }
