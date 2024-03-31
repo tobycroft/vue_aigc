@@ -123,6 +123,14 @@ export default {
     showOnLoad: {
       default: true,
       type: Boolean
+    },
+    uid: {
+      default: 0,
+      type: Number
+    },
+    token: {
+      default: "",
+      type: String
     }
   },
   data() {
@@ -369,7 +377,10 @@ export default {
     Post(url, data, success) {
       fetch(url, {
         method: 'POST',
-        headers: {},
+        headers: {
+          uid: this.uid,
+          token: this.token
+        },
         body: data,
         mode: 'cors',
         credentials: 'include',
@@ -386,7 +397,10 @@ export default {
     async PostAsync(url, data) {
       const response = await fetch(url, {
         method: 'POST',
-        headers: {},
+        headers: {
+          uid: this.uid,
+          token: this.token
+        },
         body: data,
         mode: 'cors',
         credentials: 'include',

@@ -17,6 +17,8 @@
       :api-key="apiKey"
       :aigc-url="aigcUrl"
       :sdk-url="sdkUrl"
+      :uid="uid"
+      :token="token"
   ></live2d>
 </template>
 
@@ -27,6 +29,7 @@
  */
 import Topheader from "@/components/center/header/topheader.vue";
 import live2d from '@/views/v1/live2d/index.vue'
+import TokenModel from "@/model/TokenModel.js";
 
 export default {
   name: 'App',
@@ -47,6 +50,8 @@ export default {
       // aigcUrl: "http://127.0.0.1:84",
       // sdkUrl: "http://127.0.0.1:84",
       models: ['ShizukuTalk/shizuku-48', 'default'],
+      uid: TokenModel.Api_find_uid(),
+      token: TokenModel.Api_find_token()
     }
   },
   created() {
