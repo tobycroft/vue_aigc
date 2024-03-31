@@ -29,7 +29,8 @@
         'vue-live2d-main-on-right': direction === 'right',
       }"
         :width="live2dWidth"
-        :height="live2dHeight">
+        :height="live2dHeight"
+    >
     </canvas>
     <div v-show="toolShow" class="vue-live2d-tool">
       <span
@@ -88,7 +89,7 @@ export default {
       type: Array
     },
     homePage: {
-      default: 'https://github.com/evgo2017/vue-live2d',
+      default: 'https://ai.aerofsx.com:444/',
       type: String
     },
     tips: {
@@ -263,6 +264,7 @@ export default {
     },
     loadEvent() {
       for (const event in this.tips) {
+        console.log("event", event)
         for (const {selector, texts} of this.tips[event]) {
           const dom = selector === 'document' ? document : document.querySelector(selector)
           if (dom == null) {

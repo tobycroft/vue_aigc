@@ -61,6 +61,7 @@ export default {
         url: `${this.messagePath}message.json`,
         dataType: "json",
         success: result => {
+          console.log("result",result)
           result.mouseover.forEach(tips => {
             $(tips.selector).mouseover(() => {
               let text = Array.isArray(tips.text) ? tips.text[Math.floor(Math.random() * tips.text.length)] : tips.text;
