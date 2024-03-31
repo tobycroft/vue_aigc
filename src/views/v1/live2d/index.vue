@@ -301,6 +301,11 @@ export default {
     stopVoice() {
       window.speechSynthesis.cancel()
     },
+    async iflyVoice(msg = '') {
+      let fm=new FormData();
+      fm.set()
+      const audio = await this.Post(`${this.aigcUrl}/v1/iflytek/tts/audio`, msg)
+    },
     takePhoto() {
       this.showMessage('照好了嘛，留个纪念吖~')
       window.Live2D.captureName = 'photo.png'
