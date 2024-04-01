@@ -1,5 +1,5 @@
-import { p as propsFactory, m as makeComponentProps, l as genericComponent, b as ref, t as useRender, v as createVNode, ab as forwardRefs } from "./index-BAlY9acN.js";
-import { b as makeFormProps, c as createForm } from "./VTextField-nH0G-sFg.js";
+import { p as propsFactory, m as makeComponentProps, l as genericComponent, b as ref, t as useRender, v as createVNode, ab as forwardRefs } from "./index-DKOs80CD.js";
+import { b as makeFormProps, c as createForm } from "./VTextField-DO9T_jCA.js";
 const makeVFormProps = propsFactory({
   ...makeComponentProps(),
   ...makeFormProps()
