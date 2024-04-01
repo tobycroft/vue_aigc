@@ -1,4 +1,4 @@
-import { l as genericComponent, bx as TransitionGroup, by as Transition, bp as h, p as propsFactory, bz as camelize } from "./index-CpmOKSy5.js";
+import { l as genericComponent, bx as TransitionGroup, by as Transition, bp as h, p as propsFactory, bz as camelize } from "./index-DcvAd3NA.js";
 const makeTransitionProps = propsFactory({
   disabled: Boolean,
   group: Boolean,

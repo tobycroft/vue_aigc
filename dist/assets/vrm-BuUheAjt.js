@@ -1,11 +1,11 @@
-import { T as Topheader } from "./topheader-B02tgkZ5.js";
-import { _ as _export_sfc, a5 as __vitePreload, o as openBlock, c as createBlock, a0 as createElementBlock, v as createVNode, y as withCtx, a2 as Fragment, a6 as VCardTitle, z as createTextVNode, $ as withModifiers, G as createBaseVNode, E as VBtn, B as resolveComponent } from "./index-CpmOKSy5.js";
-import { V as VContainer } from "./VContainer-CDLywMdx.js";
+import { T as Topheader } from "./topheader-Dmb9_9Jt.js";
+import { _ as _export_sfc, a5 as __vitePreload, o as openBlock, c as createBlock, a0 as createElementBlock, v as createVNode, y as withCtx, a2 as Fragment, a6 as VCardTitle, z as createTextVNode, $ as withModifiers, G as createBaseVNode, E as VBtn, B as resolveComponent } from "./index-DcvAd3NA.js";
+import { V as VContainer } from "./VContainer-wq5_P_JB.js";
 import { T as TokenModel } from "./TokenModel-fnmBdSAh.js";
-import { V as VForm } from "./VForm-D6yo6KpE.js";
-import { V as VTextField } from "./VTextField-G5y6Jntn.js";
+import { V as VForm } from "./VForm-DMINnMKu.js";
+import { V as VTextField } from "./VTextField-Cn6mFgCr.js";
 import "./gobotq-CybS7j7m.js";
-import "./index-DchQ6ETf.js";
+import "./index-BKcMlBDW.js";
 const _sfc_main$1 = {
   name: "App",
   components: {
@@ -153,7 +153,9 @@ const _sfc_main = {
     return {
       message: "",
       uid: TokenModel.Api_find_uid(),
-      token: TokenModel.Api_find_token()
+      token: TokenModel.Api_find_token(),
+      width: screen.width,
+      height: screen.height / 3
     };
   },
   async mounted() {
@@ -183,11 +185,11 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     createVNode(VContainer, null, {
       default: withCtx(() => [
         createVNode(_component_vrm, {
-          height: 300,
-          width: 300,
+          height: $data.height,
+          width: $data.width,
           uid: $data.uid,
           token: $data.token
-        }, null, 8, ["uid", "token"]),
+        }, null, 8, ["height", "width", "uid", "token"]),
         createVNode(VCardTitle, null, {
           default: withCtx(() => [
             createTextVNode("VRM语音+显示")
@@ -255,7 +257,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   ], 64);
 }
-const vrm = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-7b5ad9b7"]]);
+const vrm = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-961e8298"]]);
 export {
   vrm as default
 };

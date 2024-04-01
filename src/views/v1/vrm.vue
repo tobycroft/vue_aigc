@@ -15,6 +15,8 @@ export default {
       message: "",
       uid: TokenModel.Api_find_uid(),
       token: TokenModel.Api_find_token(),
+      width: screen.width,
+      height: screen.height / 3,
     }
   },
   async mounted() {
@@ -41,8 +43,8 @@ export default {
   <Topheader></Topheader>
   <v-container>
     <vrm
-        :height="300"
-        :width="300"
+        :height="height"
+        :width="width"
         :uid="uid"
         :token="token"
     ></vrm>
