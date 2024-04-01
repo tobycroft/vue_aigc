@@ -59,7 +59,7 @@ import '@/assets/live2d.min.js'
 
 
 export default {
-  name: 'vue-live2d',
+  name: 'live2d',
   props: {
     direction: {
       default: 'right',
@@ -76,7 +76,7 @@ export default {
       type: String
     },
     customId: {
-      default: 'vue-live2d-main',
+      default: 'vue-live2d-main1',
       type: String
     },
     apiPath: {
