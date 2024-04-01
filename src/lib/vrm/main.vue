@@ -66,9 +66,9 @@ export default {
 
     await viewer.loadVrm("https://raw.githubusercontent.com/josephrocca/ChatVRM-js/main/avatars/AvatarSample_B.vrm");
 
-    viewer.model.emoteController.playEmotion("angry"); // Valid expressions: neutral, happy, angry, sad, relaxed
+    viewer.model.emoteController.playEmotion("relaxed"); // Valid expressions: neutral, happy, angry, sad, relaxed
 
-    // await viewer.model.loadAnimation("https://cdn.jsdelivr.net/gh/josephrocca/ChatVRM-js@v0.0.28/OpenCharacters/animations/silly_dancing.fbx");
+    await viewer.model.loadAnimation("https://cdn.jsdelivr.net/gh/josephrocca/ChatVRM-js@v0.0.28/OpenCharacters/animations/silly_dancing.fbx");
 
     // if (!navigator.userActivation?.hasBeenActive) {
     //   await new Promise(resolve => window.addEventListener("click", resolve, {once: false}));
