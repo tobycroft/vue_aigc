@@ -58,8 +58,8 @@
 </template>
 
 <script>
+import("@/lib/live2d.min.js")
 import '@/styles/live2d.scss'
-import '@/assets/live2d.min.js'
 
 
 export default {
