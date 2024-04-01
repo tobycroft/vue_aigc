@@ -67,15 +67,15 @@ export default {
   },
   methods: {
     updateMessage() {
-      localStorage.setItem("doAction", JSON.stringify({
-        type: "say",
-        text: this.message
-      }))
+      this.doAction("say", this.message)
     },
     chatMessage() {
+      this.doAction("chat", this.message)
+    },
+    doAction(type, text) {
       localStorage.setItem("doAction", JSON.stringify({
-        type: "chat",
-        text: this.message
+        type: type,
+        text: text
       }))
     }
   }
