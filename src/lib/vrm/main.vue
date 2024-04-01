@@ -66,8 +66,7 @@ export default {
     await viewer.loadVrm("https://ai.aerofsx.com:444/vrm/avatars/AvatarSample_B.vrm");
 
     viewer.model.emoteController.playEmotion("relaxed"); // Valid expressions: neutral, happy, angry, sad, relaxed
-
-    await viewer.model.loadAnimation("https://ai.aerofsx.com:444/vrm/animations/silly_dancing.fbx");
+    await viewer.model.loadAnimation("https://ai.aerofsx.com:444/vrm/OpenCharacters/animations/silly_dancing.fbx");
 
     // if (!navigator.userActivation?.hasBeenActive) {
     //   await new Promise(resolve => window.addEventListener("click", resolve, {once: false}));
