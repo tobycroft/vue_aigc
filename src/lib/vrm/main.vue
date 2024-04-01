@@ -1,5 +1,8 @@
 <script>
 
+const Viewer = (await import("https://ai.aerofsx.com:444/vrm/features/vrmViewer/viewer.js")).Viewer;
+let viewer = null;
+viewer = new Viewer();
 
 export default {
   name: 'App',
@@ -42,15 +45,18 @@ export default {
       default: "",
     }
   },
+  async created() {
+
+  },
   data() {
     return {
       message: "",
+      AudioStream: new Audio(),
     }
   },
   async mounted() {
-    const Viewer = await import("https://ai.aerofsx.com:444/vrm/features/vrmViewer/viewer.js").then(m => m.Viewer);
-    let viewer = null;
-    viewer = new Viewer();
+    setInterval(this.say, 500)
+
 
     const canvas = document.createElement("canvas");
     canvas.height = this.height ? this.height : 300;
@@ -85,11 +91,11 @@ export default {
           const act = JSON.parse(action)
           switch (act.type) {
             case "say":
-              this.showMessage(act["text"], 2000)
+              this.speak(act["text"])
               break
 
             case "chat":
-              this.chatMessage(act["text"])
+              this.chat(act["text"])
               break
 
             default:
@@ -102,6 +108,50 @@ export default {
         }
       }
     },
+    async speak(msg) {
+      this.iflyVoice(msg)
+    },
+    async iflyVoice(msg = '') {
+      let fm = new FormData();
+      fm.set("message", msg)
+      const audio = await this.Post(`${this.aigcUrl}/v1/iflytek/tts/auto`, fm)
+      // play audio stream and make it play as blob as background level
+      try {
+        const blob = await audio.blob()
+        // this.AudioStream = new Audio()
+        let arrayBuffer = await fetch(URL.createObjectURL(blob)).then(r => r.arrayBuffer());
+        await viewer.model.speak(arrayBuffer, {expression: "happy"});
+
+        this.AudioStream.src = URL.createObjectURL(blob)
+        this.AudioStream.play()
+      } catch (e) {
+        console.log("iflyVoice-error", e)
+      }
+    },
+    async chat(msg) {
+      let fd = new FormData();
+      fd.set("message", msg)
+      fd.set("chat_id", "111")
+      let ret = await (await this.Post(`${this.aigcUrl}/v1/fastgpt/api/auto`, fd)).json();
+      if (ret.code !== 0) {
+        console.log("chat-error", ret.echo)
+      }
+      this.speak(ret.echo)
+      return ret.echo
+    },
+    async Post(url, data) {
+      return await fetch(url, {
+        method: 'POST',
+        headers: {
+          uid: this.uid,
+          token: this.token
+        },
+        body: data,
+        mode: 'cors',
+        credentials: 'include',
+        // timeout: 1000
+      })
+    }
   },
 }
 </script>

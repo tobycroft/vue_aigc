@@ -1,6 +1,7 @@
 <script>
 import Topheader from "@/components/center/header/topheader.vue";
 import vrm from '@/lib/vrm/main.vue'
+import TokenModel from "@/model/TokenModel.js";
 
 
 export default {
@@ -12,6 +13,8 @@ export default {
   data() {
     return {
       message: "",
+      uid: TokenModel.Api_find_uid(),
+      token: TokenModel.Api_find_token(),
     }
   },
   async mounted() {
@@ -19,10 +22,16 @@ export default {
   },
   methods: {
     updateMessage() {
-
+      this.doAction("say", this.message)
     },
     chatMessage() {
-
+      this.doAction("chat", this.message)
+    },
+    doAction(type, text) {
+      localStorage.setItem("doAction", JSON.stringify({
+        type: type,
+        text: text
+      }))
     }
   },
 }
@@ -32,8 +41,10 @@ export default {
   <Topheader></Topheader>
   <v-container>
     <vrm
-    :height="300"
-    :width="300"
+        :height="300"
+        :width="300"
+        :uid="uid"
+        :token="token"
     ></vrm>
     <v-card-title>VRM语音+显示</v-card-title>
     <v-form @submit.prevent="updateMessage">
