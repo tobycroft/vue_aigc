@@ -39,7 +39,7 @@
     <div v-show="toolShow" class="vue-live2d-tool">
       <span
           v-for="(tool, index) in tools"
-          :key="index"
+          :key="l2d"
           :class="tool.className"
           v-html="tool.svg"
           @click="tool.click"/>

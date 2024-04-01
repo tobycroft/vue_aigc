@@ -36,7 +36,7 @@
  * import live2d from 'vue-live2d'
  */
 import Topheader from "@/components/center/header/topheader.vue";
-import live2d from '@/lib/index.vue'
+import live2d from '@/lib/main.vue'
 import TokenModel from "@/model/TokenModel.js";
 
 export default {
