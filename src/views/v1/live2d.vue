@@ -10,13 +10,15 @@
     </v-form>
   </v-container>
   <live2d autofocus
-      :style="style"
-      :model="models"
-      :direction="direction"
-      :size="size"
-      :api-key="apiKey"
-      :uid="uid"
-      :token="token"
+          :style="style"
+          :model="models"
+          :direction="direction"
+          :size="size"
+          :api-key="apiKey"
+          :aigc-url="aigcUrl"
+          :sdk-url="sdkUrl"
+          :uid="uid"
+          :token="token"
   ></live2d>
 </template>
 
@@ -45,8 +47,8 @@ export default {
       size: 600,
       apiKey: "testtest",
       tips: {},
-      // aigcUrl: "http://127.0.0.1:84",
-      // sdkUrl: "http://127.0.0.1:84",
+      aigcUrl: "https://aigc.aerofsx.com:444",
+      sdkUrl: "http://127.0.0.1:84",
       models: ['ShizukuTalk/shizuku-48', 'default'],
       uid: TokenModel.Api_find_uid(),
       token: TokenModel.Api_find_token()
