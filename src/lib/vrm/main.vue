@@ -121,9 +121,6 @@ export default {
         // this.AudioStream = new Audio()
         let arrayBuffer = await fetch(URL.createObjectURL(blob)).then(r => r.arrayBuffer());
         await viewer.model.speak(arrayBuffer, {expression: "happy"});
-
-        this.AudioStream.src = URL.createObjectURL(blob)
-        this.AudioStream.play()
       } catch (e) {
         console.log("iflyVoice-error", e)
       }
