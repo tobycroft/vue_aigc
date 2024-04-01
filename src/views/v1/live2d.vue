@@ -8,6 +8,12 @@
         <v-btn size="large" type="submit" color="primary" class="mt-4">确认</v-btn>
       </div>
     </v-form>
+    <v-form @submit.prevent="chatMessage">
+      <v-text-field v-model="message" label="输入聊天内容"></v-text-field>
+      <div class="d-flex flex-column">
+        <v-btn size="large" type="submit" color="primary" class="mt-4">确认</v-btn>
+      </div>
+    </v-form>
   </v-container>
   <live2d autofocus
           :style="style"
@@ -66,6 +72,12 @@ export default {
     updateMessage() {
       localStorage.setItem("doAction", JSON.stringify({
         type: "say",
+        text: this.message
+      }))
+    },
+    chatMessage() {
+      localStorage.setItem("doAction", JSON.stringify({
+        type: "chat",
         text: this.message
       }))
     }

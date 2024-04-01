@@ -234,7 +234,16 @@ export default {
         try {
           const act = JSON.parse(action)
           console.log(act)
-          this.showMessage(act["text"], 2000)
+          switch (act) {
+            case "say":
+              this.showMessage(act["text"], 2000)
+              break
+
+            case "chat":
+              this.chatMessage(act["text"])
+              break
+          }
+
         } catch (e) {
           console.log("doAction-error", e)
         }
@@ -284,6 +293,22 @@ export default {
       })
     },
     showMessage(msg = '', timeout = 6000) {
+      if (this.messageTimer) {
+        clearTimeout(this.messageTimer)
+        this.messageTimer = null
+
+      } else {
+        this.containerDisplay.tip = true
+      }
+      this.voice(msg)
+      this.tipText = msg
+      this.messageTimer = setTimeout(() => {
+        this.containerDisplay.tip = false
+        this.messageTimer = null
+      }, timeout)
+
+    },
+    chatMessage(msg = '', timeout = 6000) {
       if (this.messageTimer) {
         clearTimeout(this.messageTimer)
         this.messageTimer = null
