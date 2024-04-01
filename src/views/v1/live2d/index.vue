@@ -257,7 +257,7 @@ export default {
           })
     },
     loadRandTextures(isAfterRandModel = false) {
-      this.http({
+      this.Get({
         url: `${this.apiPath}/${this.modelPath}/textures.json`,
         success: (data) => {
           const modelTexturesIds = data.filter(modelTexturesId => modelTexturesId !== this.modelTexturesId)
@@ -325,7 +325,7 @@ export default {
       window.Live2D.captureFrame = true
     },
     showHitokoto() {
-      this.http({
+      this.Get({
         url: 'https://v1.hitokoto.cn',
         success: ({hitokoto, id, creator, from}) => {
           this.showMessage(`${hitokoto} <br> - by <a href="https://hitokoto.cn?id=${id}">${creator}</a> from 《${from} 》`)
@@ -378,19 +378,15 @@ export default {
       xhr.open('GET', url)
       xhr.send(null)
     },
-    http2({url, data, success}) {
-      const xhr = new XMLHttpRequest()
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          if ((xhr.status >= 200 || xhr.status < 300) || xhr.status === 304) {
-            success && success(JSON.parse(xhr.response).data)
-          } else {
-            console.error(xhr)
-          }
-        }
-      }
-      xhr.open('POST', url)
-      xhr.send(data)
+    Get(url, success) {
+      fetch(url, {
+        method: 'GET',
+        headers: {},
+        mode: 'cors',
+        credentials: 'include',
+      }).then(ret => ret.json()).then(ret => {
+        success && success(ret)
+      })
     },
     Post(url, data, success) {
       fetch(url, {
