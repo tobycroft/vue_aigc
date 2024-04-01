@@ -53,7 +53,7 @@ export default {
       style: 'position: fixed; bottom: 0; right: 0;',
       // width: 800,
       // height: 800,
-      size: screen.width / 4,
+      size: screen.width / 6,
       apiKey: "testtest",
       tips: {},
       // aigcUrl: "https://aigc.aerofsx.com:444",
