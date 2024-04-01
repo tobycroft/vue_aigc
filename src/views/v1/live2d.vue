@@ -45,8 +45,8 @@ export default {
       // aigcUrl: "https://aigc.aerofsx.com:444",
       // sdkUrl: "http://127.0.0.1:84",
       models: ['ShizukuTalk/shizuku-48', 'default'],
-      // uid: TokenModel.Api_find_uid(),
-      // token: TokenModel.Api_find_token()
+      uid: TokenModel.Api_find_uid(),
+      token: TokenModel.Api_find_token()
     }
   },
   created() {
