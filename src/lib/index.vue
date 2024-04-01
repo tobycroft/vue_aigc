@@ -242,6 +242,10 @@ export default {
     },
     async updateTips() {
       const ret = await (await this.PostAsync(`${this.aigcUrl}/v1/live2d/tips/list`, "")).json()
+      if (ret.code !== 0) {
+        console.log("update-tips-error", ret.echo)
+        return
+      }
       // console.log("tips", ret.data)
       this.Tips = ret.data
     },
@@ -323,6 +327,10 @@ export default {
       let fm = new FormData();
       fm.set("message", msg)
       const audio = await this.PostAsync(`${this.aigcUrl}/v1/iflytek/tts/auto`, fm)
+      if (ret.code !== 0) {
+        console.log("iflyVoice-error", ret.echo)
+        return
+      }
       // play audio stream and make it play as blob as background level
       const blob = await audio.blob()
       // this.AudioStream = new Audio()
