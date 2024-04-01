@@ -23,7 +23,6 @@
  * import live2d from 'vue-live2d'
  */
 import Topheader from "@/components/center/header/topheader.vue";
-// import Live from 'live2d'
 import live2d from '@/lib/index.vue'
 
 export default {
