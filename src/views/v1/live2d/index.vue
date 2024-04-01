@@ -263,7 +263,7 @@ export default {
     },
     loadRandTextures(isAfterRandModel = false) {
       this.Get({
-        url: `${this.resourcePath}/${this.modelPath}/textures.json`,
+        url: `${this.apiPath}/${this.modelPath}/textures.json`,
         success: (data) => {
           const modelTexturesIds = data.filter(modelTexturesId => modelTexturesId !== this.modelTexturesId)
           this.modelTexturesId = modelTexturesIds[Math.floor(Math.random() * modelTexturesIds.length)]
