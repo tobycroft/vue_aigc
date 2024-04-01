@@ -1,11 +1,11 @@
-import { T as Topheader } from "./topheader-BQbz4qkI.js";
-import { _ as _export_sfc, o as openBlock, a0 as createElementBlock, Y as withDirectives, Z as vShow, G as createBaseVNode, a1 as normalizeClass, a2 as Fragment, a3 as renderList, a4 as normalizeStyle, a5 as __vitePreload, v as createVNode, y as withCtx, B as resolveComponent, a6 as VCardTitle, z as createTextVNode, $ as withModifiers, E as VBtn } from "./index-949p_sDn.js";
+import { T as Topheader } from "./topheader-hmdwNeT3.js";
+import { _ as _export_sfc, o as openBlock, a0 as createElementBlock, Y as withDirectives, Z as vShow, G as createBaseVNode, a1 as normalizeClass, a2 as Fragment, a3 as renderList, a4 as normalizeStyle, a5 as __vitePreload, v as createVNode, y as withCtx, B as resolveComponent, a6 as VCardTitle, z as createTextVNode, $ as withModifiers, E as VBtn } from "./index-d9xhvnCq.js";
 import { T as TokenModel } from "./TokenModel-fnmBdSAh.js";
-import { V as VContainer } from "./VContainer-CojaPIuz.js";
-import { V as VForm } from "./VForm-D9pAZrD3.js";
-import { V as VTextField } from "./VTextField-BTygkpjp.js";
+import { V as VContainer } from "./VContainer-CDzjmMbO.js";
+import { V as VForm } from "./VForm-BEDz8rPP.js";
+import { V as VTextField } from "./VTextField-BBj7ms7V.js";
 import "./gobotq-CybS7j7m.js";
-import "./index-CRjXcZ4I.js";
+import "./index-1DmmwlO_.js";
 const Live2dLibURL = "/assets/live2d.min-DvSL-thp.js";
 async function loadLive2dLib() {
   await __vitePreload(() => import(Live2dLibURL), true ? [] : void 0);
@@ -462,7 +462,7 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
     withDirectives(createBaseVNode("div", _hoisted_3, [
       (openBlock(true), createElementBlock(Fragment, null, renderList($data.tools, (tool, index) => {
         return openBlock(), createElementBlock("span", {
-          key: index,
+          key: _ctx.l2d,
           class: normalizeClass(tool.className),
           innerHTML: tool.svg,
           onClick: tool.click
@@ -512,15 +512,15 @@ const _sfc_main = {
   },
   methods: {
     updateMessage() {
-      localStorage.setItem("doAction", JSON.stringify({
-        type: "say",
-        text: this.message
-      }));
+      this.doAction("say", this.message);
     },
     chatMessage() {
+      this.doAction("chat", this.message);
+    },
+    doAction(type, text) {
       localStorage.setItem("doAction", JSON.stringify({
-        type: "chat",
-        text: this.message
+        type,
+        text
       }));
     }
   }
