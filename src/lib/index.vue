@@ -1,8 +1,8 @@
 <template>
 
-<!--  <component :is="'script'" src="/live2d.min.js">-->
-<!--    // JS Here-->
-<!--  </component>-->
+  <!--  <component :is="'script'" src="/live2d.min.js">-->
+  <!--    // JS Here-->
+  <!--  </component>-->
   <div
       :class="{
       'vue-live2d': true,
@@ -182,9 +182,10 @@ export default {
     }
   },
   async mounted() {
-    [this.modelPath, this.modelTexturesId] = this.model
-    this.loadModel()
-    await this.updateTips()
+    await this.updateTips();
+    [this.modelPath, this.modelTexturesId] = this.model;
+    this.loadModel();
+
     this.$nextTick(() => {
       this.loadEvent()
     })
