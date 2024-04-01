@@ -261,8 +261,8 @@ export default {
             this.loadRandTextures(true)
           })
     },
-    loadRandTextures(isAfterRandModel = false) {
-      this.Get({
+    async loadRandTextures(isAfterRandModel = false) {
+      await this.http({
         url: `${this.apiPath}/${this.modelPath}/textures.json`,
         success: (data) => {
           const modelTexturesIds = data.filter(modelTexturesId => modelTexturesId !== this.modelTexturesId)
@@ -329,8 +329,8 @@ export default {
       window.Live2D.captureName = 'photo.png'
       window.Live2D.captureFrame = true
     },
-    showHitokoto() {
-      this.Get({
+    async showHitokoto() {
+      await this.http({
         url: 'https://v1.hitokoto.cn',
         success: ({hitokoto, id, creator, from}) => {
           this.showMessage(`${hitokoto} <br> - by <a href="https://hitokoto.cn?id=${id}">${creator}</a> from 《${from} 》`)
@@ -369,24 +369,24 @@ export default {
         }
       }
     },
-    // http({url, success}) {
-    //   const xhr = new XMLHttpRequest()
-    //   xhr.onreadystatechange = function () {
-    //     if (xhr.readyState === 4) {
-    //       if ((xhr.status >= 200 || xhr.status < 300) || xhr.status === 304) {
-    //         success && success(JSON.parse(xhr.response))
-    //       } else {
-    //         console.error(xhr)
-    //       }
-    //     }
-    //   }
-    //   xhr.open('GET', url)
-    //   xhr.send(null)
-    // },
-    Get({url, success}) {
+    http({url, success}) {
+      const xhr = new XMLHttpRequest()
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          if ((xhr.status >= 200 || xhr.status < 300) || xhr.status === 304) {
+            success && success(JSON.parse(xhr.response))
+          } else {
+            console.error(xhr)
+          }
+        }
+      }
+      xhr.open('GET', url)
+      xhr.send(null)
+    },
+    async Get({url, success}) {
       // 如果已经包含查询字符串，则在原有查询字符串的基础上添加时间戳参数
       // url = url + '?ver=' + Date.now();
-      fetch(url, {
+      const response = await fetch(url, {
         method: 'GET',
         headers: {
           uid: this.uid,
@@ -396,11 +396,20 @@ export default {
           // 'Pragma': 'no-cache',
           // 'Expires': 0
         },
-        mode: 'cors',
-        credentials: 'include',
-      }).then(ret => ret.json()).then(ret => {
-        success && success(ret)
+
+        mode: 'no-cors',
+        // credentials: 'include',
       })
+      console.log("a:", response)
+      const ret = await response.json()
+
+      if ((ret.status >= 200) || ret.status === 304) {
+        // const ret = await response.json()
+        console.log(ret)
+        success && success(ret)
+      } else {
+        console.error(response)
+      }
     },
     Post(url, data, success) {
       fetch(url, {
