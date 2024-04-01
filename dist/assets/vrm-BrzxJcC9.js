@@ -1,15 +1,80 @@
-import { T as Topheader } from "./topheader-0cCq9irW.js";
-import { _ as _export_sfc, a0 as createElementBlock, v as createVNode, y as withCtx, a2 as Fragment, o as openBlock, a6 as VCardTitle, z as createTextVNode, $ as withModifiers, G as createBaseVNode, E as VBtn, B as resolveComponent } from "./index-CuxFFZ4S.js";
-import { V as VContainer } from "./VContainer-DsjXmrYk.js";
-import { V as VForm } from "./VForm-CesX6RsC.js";
-import { V as VTextField } from "./VTextField-DeRscHrO.js";
+import { T as Topheader } from "./topheader-CHB2pZSk.js";
+import { _ as _export_sfc, a5 as __vitePreload, o as openBlock, c as createBlock, a0 as createElementBlock, v as createVNode, y as withCtx, a2 as Fragment, a6 as VCardTitle, z as createTextVNode, $ as withModifiers, G as createBaseVNode, E as VBtn, B as resolveComponent } from "./index-KwTp66Fd.js";
+import { V as VContainer } from "./VContainer-BqnsARYB.js";
+import { V as VForm } from "./VForm-C_eKDtU4.js";
+import { V as VTextField } from "./VTextField-B_h-dY-c.js";
 import "./gobotq-CybS7j7m.js";
-import "./index-CT8j0z4_.js";
+import "./index-BtsNw6wv.js";
+const _sfc_main$1 = {
+  name: "App",
+  components: {
+    // Live,
+  },
+  props: {
+    aigcUrl: {
+      default: "https://aigc.aerofsx.com:444",
+      type: String
+    },
+    sdkUrl: {
+      default: "",
+      type: String
+    },
+    model: {
+      default: () => ["Potion-Maker/Pio", "school-2017-costume-yellow"],
+      type: Array
+    },
+    homePage: {
+      default: "https://ai.aerofsx.com:444",
+      type: String
+    },
+    width: {
+      default: 0,
+      type: Number
+    },
+    height: {
+      default: 0,
+      type: Number
+    },
+    size: {
+      default: 255,
+      type: Number
+    },
+    uid: {
+      default: 0
+    },
+    token: {
+      default: ""
+    }
+  },
+  data() {
+    return {
+      message: ""
+    };
+  },
+  async mounted() {
+    const Viewer = await __vitePreload(() => import("https://cdn.jsdelivr.net/gh/josephrocca/ChatVRM-js@v0.0.28/features/vrmViewer/viewer.js"), true ? [] : void 0).then((m) => m.Viewer);
+    let viewer = null;
+    viewer = new Viewer();
+    const canvas = document.createElement("canvas");
+    canvas.height = this.height ? this.height : 300;
+    canvas.width = this.width ? this.width : 300;
+    document.getElementById("canvas").appendChild(canvas);
+    viewer.setup(canvas);
+    await viewer.loadVrm("https://raw.githubusercontent.com/josephrocca/ChatVRM-js/main/avatars/AvatarSample_B.vrm");
+    viewer.model.emoteController.playEmotion("relaxed");
+    await viewer.model.loadAnimation("https://cdn.jsdelivr.net/gh/josephrocca/ChatVRM-js@v0.0.28/OpenCharacters/animations/silly_dancing.fbx");
+  },
+  methods: {}
+};
+function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createBlock(VContainer, { id: "canvas" });
+}
+const vrm$1 = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1], ["__scopeId", "data-v-8e0d28bd"]]);
 const _sfc_main = {
   name: "App",
   components: {
-    Topheader
-    // vrm,
+    Topheader,
+    vrm: vrm$1
   },
   data() {
     return {
@@ -105,7 +170,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   ], 64);
 }
-const vrm = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-fc93bafc"]]);
+const vrm = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-3ff224cb"]]);
 export {
   vrm as default
 };

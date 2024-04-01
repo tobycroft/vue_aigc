@@ -1,7 +1,5 @@
 <script>
 
-const Viewer = await import("https://cdn.jsdelivr.net/gh/josephrocca/ChatVRM-js@v0.0.28/features/vrmViewer/viewer.js").then(m => m.Viewer);
-let viewer = null;
 
 export default {
   name: 'App',
@@ -50,7 +48,8 @@ export default {
     }
   },
   async mounted() {
-
+    const Viewer = await import("https://cdn.jsdelivr.net/gh/josephrocca/ChatVRM-js@v0.0.28/features/vrmViewer/viewer.js").then(m => m.Viewer);
+    let viewer = null;
     viewer = new Viewer();
 
     const canvas = document.createElement("canvas");
@@ -77,9 +76,7 @@ export default {
     // let arrayBuffer = await fetch("https://cdn.jsdelivr.net/gh/josephrocca/ChatVRM-js@v0.0.22/OpenCharacters/dummy-audio/12.mp3").then(r => r.arrayBuffer());
     // await viewer.model.speak(arrayBuffer, {expression: "happy"});
   },
-  methods: {
-
-  },
+  methods: {},
 }
 </script>
 
