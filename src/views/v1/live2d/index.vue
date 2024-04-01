@@ -126,11 +126,9 @@ export default {
     },
     uid: {
       default: 0,
-      type: Number
     },
     token: {
       default: "",
-      type: String
     }
   },
   data() {
