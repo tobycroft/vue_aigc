@@ -381,7 +381,14 @@ export default {
     Get(url, success) {
       fetch(url, {
         method: 'GET',
-        headers: {},
+        headers: {
+          uid: this.uid,
+          token: this.token,
+          //no cache
+          'Cache-Control': 'no-cache',
+          'Pragma': 'no-cache',
+          'Expires': 0
+        },
         mode: 'cors',
         credentials: 'include',
       }).then(ret => ret.json()).then(ret => {
