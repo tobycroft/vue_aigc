@@ -61,9 +61,9 @@
 import Live2dLibURL from "./live2d.min.js?url"
 import '@/styles/live2d.scss'
 
+
 async function loadLive2dLib() {
-  // 通过url动态导入，防止vite将live2d.min.js再次压缩，因为未知的原因，这会导致live2d.min.js的代码不能正常执行
-  await import(Live2dLibURL);
+  await import(/* @vite-ignore */Live2dLibURL);
 }
 
 
