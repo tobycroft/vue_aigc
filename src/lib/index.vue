@@ -344,13 +344,14 @@ export default {
       }
     },
     async stopVoice() {
-      window.speechSynthesis.cancel()
       //stop AudioStream
       try {
         await this.AudioStream.pause()
       } catch (e) {
 
       }
+      window.speechSynthesis.cancel()
+
     },
     async iflyVoice(msg = '') {
       let fm = new FormData();
