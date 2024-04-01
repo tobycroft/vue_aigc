@@ -1,11 +1,11 @@
-import { T as Topheader } from "./topheader-DmKYNAb4.js";
-import { a0 as __vitePreload, _ as _export_sfc, o as openBlock, a1 as createElementBlock, Y as withDirectives, Z as vShow, G as createBaseVNode, a2 as normalizeClass, a3 as Fragment, a4 as renderList, a5 as normalizeStyle, v as createVNode, y as withCtx, B as resolveComponent, a6 as VCardTitle, z as createTextVNode, $ as withModifiers, E as VBtn } from "./index-DKOs80CD.js";
+import { T as Topheader } from "./topheader-EGbf_esY.js";
+import { a0 as __vitePreload, _ as _export_sfc, o as openBlock, a1 as createElementBlock, Y as withDirectives, Z as vShow, G as createBaseVNode, a2 as normalizeClass, a3 as Fragment, a4 as renderList, a5 as normalizeStyle, v as createVNode, y as withCtx, B as resolveComponent, a6 as VCardTitle, z as createTextVNode, $ as withModifiers, E as VBtn } from "./index-j6QDyzdN.js";
 import { T as TokenModel } from "./TokenModel-fnmBdSAh.js";
-import { V as VContainer } from "./VContainer-BTDt3FME.js";
-import { V as VForm } from "./VForm-DojS6u4C.js";
-import { V as VTextField } from "./VTextField-DO9T_jCA.js";
+import { V as VContainer } from "./VContainer-DPGlbnsW.js";
+import { V as VForm } from "./VForm-DElK1DZB.js";
+import { V as VTextField } from "./VTextField-B3BCKJpF.js";
 import "./gobotq-CybS7j7m.js";
-import "./index-Dk0PHoE4.js";
+import "./index-DCfVq1kC.js";
 __vitePreload(() => import("./live2d.min-DR6MBsXU.js"), true ? [] : void 0);
 const _sfc_main$1 = {
   name: "live2d",
@@ -492,8 +492,8 @@ const _sfc_main = {
       message: "",
       direction: "right",
       style: "position: fixed; bottom: 0; right: 0;",
-      // width: 800,
-      // height: 800,
+      width: screen.width / 3,
+      height: screen.height / 3,
       size: screen.width / 6,
       apiKey: "testtest",
       tips: {},
