@@ -379,6 +379,13 @@ export default {
       xhr.send(null)
     },
     Get(url, success) {
+      if (url.indexOf('?') !== -1) {
+        // 如果已经包含查询字符串，则在原有查询字符串的基础上添加时间戳参数
+        url = url + '&ver=' + Date.now();
+      } else {
+        // 如果没有查询字符串，则添加时间戳参数作为查询字符串
+        url = url + '?ver=' + Date.now();
+      }
       fetch(url, {
         method: 'GET',
         headers: {
