@@ -66,7 +66,8 @@ export default {
     await viewer.loadVrm("https://ai.aerofsx.com:444/vrm/avatars/AvatarSample_B.vrm");
 
     viewer.model.emoteController.playEmotion("relaxed"); // Valid expressions: neutral, happy, angry, sad, relaxed
-    await viewer.model.loadAnimation("https://ai.aerofsx.com:444/vrm/OpenCharacters/animations/silly_dancing.fbx");
+    // await viewer.model.loadAnimation("https://ai.aerofsx.com:444/vrm/OpenCharacters/animations/silly_dancing.fbx");
+    // await viewer.model.loadAnimation("https://ai.aerofsx.com:444/vrm/OpenCharacters/animations/angry.fbx");
 
     // if (!navigator.userActivation?.hasBeenActive) {
     //   await new Promise(resolve => window.addEventListener("click", resolve, {once: false}));
@@ -75,7 +76,33 @@ export default {
     // let arrayBuffer = await fetch("https://cdn.jsdelivr.net/gh/josephrocca/ChatVRM-js@v0.0.22/OpenCharacters/dummy-audio/12.mp3").then(r => r.arrayBuffer());
     // await viewer.model.speak(arrayBuffer, {expression: "happy"});
   },
-  methods: {},
+  methods: {
+    async say() {
+      const action = localStorage.getItem("doAction")
+      if (action) {
+        localStorage.removeItem("doAction")
+        try {
+          const act = JSON.parse(action)
+          switch (act.type) {
+            case "say":
+              this.showMessage(act["text"], 2000)
+              break
+
+            case "chat":
+              this.chatMessage(act["text"])
+              break
+
+            default:
+              console.log(act)
+
+          }
+
+        } catch (e) {
+          console.log("doAction-error", e)
+        }
+      }
+    },
+  },
 }
 </script>
 

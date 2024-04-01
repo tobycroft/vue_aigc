@@ -1,10 +1,10 @@
-import { T as Topheader } from "./topheader-_MjJKDEV.js";
-import { _ as _export_sfc, a5 as __vitePreload, o as openBlock, c as createBlock, a0 as createElementBlock, v as createVNode, y as withCtx, a2 as Fragment, a6 as VCardTitle, z as createTextVNode, $ as withModifiers, G as createBaseVNode, E as VBtn, B as resolveComponent } from "./index-BS1Sml2B.js";
-import { V as VContainer } from "./VContainer-wonMyjic.js";
-import { V as VForm } from "./VForm-05iFe3Gk.js";
-import { V as VTextField } from "./VTextField-BKNV5Hnl.js";
+import { T as Topheader } from "./topheader-C8bH38r1.js";
+import { _ as _export_sfc, a5 as __vitePreload, o as openBlock, c as createBlock, a0 as createElementBlock, v as createVNode, y as withCtx, a2 as Fragment, a6 as VCardTitle, z as createTextVNode, $ as withModifiers, G as createBaseVNode, E as VBtn, B as resolveComponent } from "./index-CQqqxKV4.js";
+import { V as VContainer } from "./VContainer-e9pQfuHK.js";
+import { V as VForm } from "./VForm-FA4eC7CW.js";
+import { V as VTextField } from "./VTextField-B6vZaGM7.js";
 import "./gobotq-CybS7j7m.js";
-import "./index-CYzeyN3J.js";
+import "./index-BxK0EBjD.js";
 const _sfc_main$1 = {
   name: "App",
   components: {
@@ -62,14 +62,14 @@ const _sfc_main$1 = {
     viewer.setup(canvas);
     await viewer.loadVrm("https://ai.aerofsx.com:444/vrm/avatars/AvatarSample_B.vrm");
     viewer.model.emoteController.playEmotion("relaxed");
-    await viewer.model.loadAnimation("https://ai.aerofsx.com:444/vrm/animations/silly_dancing.fbx");
+    await viewer.model.loadAnimation("https://ai.aerofsx.com:444/vrm/OpenCharacters/animations/silly_dancing.fbx");
   },
   methods: {}
 };
 function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createBlock(VContainer, { id: "canvas" });
 }
-const vrm$1 = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1], ["__scopeId", "data-v-547f548a"]]);
+const vrm$1 = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1], ["__scopeId", "data-v-72927308"]]);
 const _sfc_main = {
   name: "App",
   components: {
