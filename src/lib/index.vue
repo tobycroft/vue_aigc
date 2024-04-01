@@ -308,21 +308,22 @@ export default {
       }, timeout)
 
     },
-    chatMessage(msg = '', timeout = 6000) {
-      if (this.messageTimer) {
-        clearTimeout(this.messageTimer)
-        this.messageTimer = null
-
-      } else {
-        this.containerDisplay.tip = true
+    async chatMessage(msg = '') {
+      if (msg.length < 1) {
+        return
       }
-      this.voice(msg)
-      this.tipText = msg
-      this.messageTimer = setTimeout(() => {
-        this.containerDisplay.tip = false
-        this.messageTimer = null
-      }, timeout)
-
+      let reply = await this.chat(msg)
+      this.showMessage(reply)
+    },
+    async chat(msg) {
+      let fd = new FormData();
+      fd.set("message", msg)
+      fd.set("chat_id", "111")
+      let ret = await (await this.PostAsync(`${this.aigcUrl}/v1/fastgpt/api/auto`, fd)).json();
+      if (ret.code !== 0) {
+        console.log("chat-error", ret.echo)
+      }
+      return ret.echo
     },
     async voice(msg = '') {
       const speech = new SpeechSynthesisUtterance()

@@ -1,13 +1,14 @@
 <template>
   <topheader></topheader>
   <v-container>
-    <v-card-title>创建团队信息</v-card-title>
+    <v-card-title>L2D语音+显示</v-card-title>
     <v-form @submit.prevent="updateMessage">
       <v-text-field v-model="message" label="你想让L2D说什么"></v-text-field>
       <div class="d-flex flex-column">
         <v-btn size="large" type="submit" color="primary" class="mt-4">确认</v-btn>
       </div>
     </v-form>
+    <v-card-title>L2D语音+聊天</v-card-title>
     <v-form @submit.prevent="chatMessage">
       <v-text-field v-model="message" label="输入聊天内容"></v-text-field>
       <div class="d-flex flex-column">
