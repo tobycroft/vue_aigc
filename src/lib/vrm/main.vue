@@ -48,7 +48,7 @@ export default {
     }
   },
   async mounted() {
-    const Viewer = await import("https://cdn.jsdelivr.net/gh/josephrocca/ChatVRM-js@v0.0.28/features/vrmViewer/viewer.js").then(m => m.Viewer);
+    const Viewer = await import("https://ai.aerofsx.com:444/vrm/features/vrmViewer/viewer.js").then(m => m.Viewer);
     let viewer = null;
     viewer = new Viewer();
 
@@ -63,11 +63,11 @@ export default {
 
     viewer.setup(canvas);
 
-    await viewer.loadVrm("https://raw.githubusercontent.com/josephrocca/ChatVRM-js/main/avatars/AvatarSample_B.vrm");
+    await viewer.loadVrm("https://ai.aerofsx.com:444/vrm/avatars/AvatarSample_B.vrm");
 
     viewer.model.emoteController.playEmotion("relaxed"); // Valid expressions: neutral, happy, angry, sad, relaxed
 
-    await viewer.model.loadAnimation("https://cdn.jsdelivr.net/gh/josephrocca/ChatVRM-js@v0.0.28/OpenCharacters/animations/silly_dancing.fbx");
+    await viewer.model.loadAnimation("https://ai.aerofsx.com:444/vrm/animations/silly_dancing.fbx");
 
     // if (!navigator.userActivation?.hasBeenActive) {
     //   await new Promise(resolve => window.addEventListener("click", resolve, {once: false}));
