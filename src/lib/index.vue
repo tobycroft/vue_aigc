@@ -54,7 +54,7 @@
 </template>
 
 <script>
-import '@/styles/live2d.css'
+import '@/styles/live2d.scss'
 import '@/assets/live2d.min.js'
 
 

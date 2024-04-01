@@ -11,14 +11,9 @@
   </v-container>
   <live2d autofocus
           :style="style"
-          :model="models"
           :direction="direction"
           :size="size"
-          :api-key="apiKey"
-          :aigc-url="aigcUrl"
-          :sdk-url="sdkUrl"
-          :uid="uid"
-          :token="token"
+          :models="models"
   ></live2d>
 </template>
 
@@ -28,14 +23,15 @@
  * import live2d from 'vue-live2d'
  */
 import Topheader from "@/components/center/header/topheader.vue";
-import live2d from '@/views/v1/live2d/index.vue'
-import TokenModel from "@/model/TokenModel.js";
+// import Live from 'live2d'
+import live2d from '@/lib/index.vue'
 
 export default {
   name: 'App',
   components: {
     Topheader,
-    live2d
+    live2d,
+    // Live,
   },
   data() {
     return {
@@ -47,11 +43,11 @@ export default {
       size: 600,
       apiKey: "testtest",
       tips: {},
-      aigcUrl: "https://aigc.aerofsx.com:444",
-      sdkUrl: "http://127.0.0.1:84",
+      // aigcUrl: "https://aigc.aerofsx.com:444",
+      // sdkUrl: "http://127.0.0.1:84",
       models: ['ShizukuTalk/shizuku-48', 'default'],
-      uid: TokenModel.Api_find_uid(),
-      token: TokenModel.Api_find_token()
+      // uid: TokenModel.Api_find_uid(),
+      // token: TokenModel.Api_find_token()
     }
   },
   created() {
