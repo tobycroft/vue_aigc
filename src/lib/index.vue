@@ -1,4 +1,8 @@
 <template>
+
+  <component :is="'script'" src="./live2d.min.js">
+    // JS Here
+  </component>
   <div
       :class="{
       'vue-live2d': true,
@@ -55,7 +59,7 @@
 
 <script>
 import '@/styles/live2d.scss'
-import '@/assets/live2d.min.js'
+import '/public/live2d.min.js'
 
 
 export default {
