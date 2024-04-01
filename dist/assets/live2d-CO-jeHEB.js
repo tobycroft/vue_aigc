@@ -1,11 +1,11 @@
-import { T as Topheader } from "./topheader-EGbf_esY.js";
-import { a0 as __vitePreload, _ as _export_sfc, o as openBlock, a1 as createElementBlock, Y as withDirectives, Z as vShow, G as createBaseVNode, a2 as normalizeClass, a3 as Fragment, a4 as renderList, a5 as normalizeStyle, v as createVNode, y as withCtx, B as resolveComponent, a6 as VCardTitle, z as createTextVNode, $ as withModifiers, E as VBtn } from "./index-j6QDyzdN.js";
+import { T as Topheader } from "./topheader-CXF8QvkX.js";
+import { a0 as __vitePreload, _ as _export_sfc, o as openBlock, a1 as createElementBlock, Y as withDirectives, Z as vShow, G as createBaseVNode, a2 as normalizeClass, a3 as Fragment, a4 as renderList, a5 as normalizeStyle, v as createVNode, y as withCtx, B as resolveComponent, a6 as VCardTitle, z as createTextVNode, $ as withModifiers, E as VBtn } from "./index-BG_w0Khm.js";
 import { T as TokenModel } from "./TokenModel-fnmBdSAh.js";
-import { V as VContainer } from "./VContainer-DPGlbnsW.js";
-import { V as VForm } from "./VForm-DElK1DZB.js";
-import { V as VTextField } from "./VTextField-B3BCKJpF.js";
+import { V as VContainer } from "./VContainer-CU1T9I-k.js";
+import { V as VForm } from "./VForm-BB--1k60.js";
+import { V as VTextField } from "./VTextField-ehMtwEoz.js";
 import "./gobotq-CybS7j7m.js";
-import "./index-DCfVq1kC.js";
+import "./index-BCbdFtaS.js";
 __vitePreload(() => import("./live2d.min-DR6MBsXU.js"), true ? [] : void 0);
 const _sfc_main$1 = {
   name: "live2d",
@@ -494,7 +494,7 @@ const _sfc_main = {
       style: "position: fixed; bottom: 0; right: 0;",
       width: screen.width / 3,
       height: screen.height / 3,
-      size: screen.width / 6,
+      // size: screen.width / 3,
       apiKey: "testtest",
       tips: {},
       // aigcUrl: "https://aigc.aerofsx.com:444",
@@ -599,7 +599,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       autofocus: "",
       style: normalizeStyle($data.style),
       direction: $data.direction,
-      size: $data.size,
+      size: _ctx.size,
       model: $data.models,
       uid: $data.uid,
       token: $data.token,

@@ -1,15 +1,15 @@
-import { N as Net } from "./Net-i97iN7ew.js";
-import { _ as _export_sfc, c as createBlock, y as withCtx, o as openBlock, v as createVNode, a6 as VCardTitle, z as createTextVNode, V as VCardText, $ as withModifiers, E as VBtn, W as VCard } from "./index-j6QDyzdN.js";
-import { V as VContainer } from "./VContainer-DPGlbnsW.js";
-import { V as VForm } from "./VForm-DElK1DZB.js";
-import { V as VRow, a as VCol } from "./VRow-Bm7Wxw9J.js";
-import { V as VSelect } from "./VSelect-BshXGFmZ.js";
-import { V as VTextField } from "./VTextField-B3BCKJpF.js";
+import { N as Net } from "./Net-C7x45aDP.js";
+import { _ as _export_sfc, c as createBlock, y as withCtx, o as openBlock, v as createVNode, a6 as VCardTitle, E as VBtn, z as createTextVNode, V as VCardText, $ as withModifiers, W as VCard } from "./index-BG_w0Khm.js";
+import { V as VContainer } from "./VContainer-CU1T9I-k.js";
+import { V as VForm } from "./VForm-BB--1k60.js";
+import { V as VRow, a as VCol } from "./VRow-Ca7D4DSj.js";
+import { V as VSelect } from "./VSelect-CCiiAp2J.js";
+import { V as VTextField } from "./VTextField-ehMtwEoz.js";
 import "./TokenModel-fnmBdSAh.js";
-import "./VList-Ba_RIwuh.js";
-import "./index-DCfVq1kC.js";
-import "./ssrBoot-BM19qL53.js";
-import "./VSlideGroup-C6qq3thB.js";
+import "./VList-B5oGquvm.js";
+import "./index-BCbdFtaS.js";
+import "./ssrBoot-DIj4mRt2.js";
+import "./VSlideGroup-BfB-Nzvw.js";
 const _sfc_main = {
   data() {
     return {
@@ -85,7 +85,18 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         default: withCtx(() => [
           createVNode(VCardTitle, null, {
             default: withCtx(() => [
-              createTextVNode("添加团队 Token")
+              createVNode(VBtn, {
+                onClick: $options.goBack,
+                color: "grey",
+                block: "",
+                class: "mt-4"
+              }, {
+                default: withCtx(() => [
+                  createTextVNode("返回")
+                ]),
+                _: 1
+              }, 8, ["onClick"]),
+              createTextVNode(" 添加团队 Token ")
             ]),
             _: 1
           }),
@@ -203,7 +214,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
   });
 }
-const add = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
+const edit = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
 export {
-  add as default
+  edit as default
 };
