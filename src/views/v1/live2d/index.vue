@@ -386,7 +386,7 @@ export default {
     async Get({url, success}) {
       // 如果已经包含查询字符串，则在原有查询字符串的基础上添加时间戳参数
       // url = url + '?ver=' + Date.now();
-      const response = await fetch(url, {
+      let response = await fetch(url, {
         method: 'GET',
         headers: {
           uid: this.uid,
@@ -396,12 +396,11 @@ export default {
           // 'Pragma': 'no-cache',
           // 'Expires': 0
         },
-
         mode: 'no-cors',
-        // credentials: 'include',
-      })
+        credentials: 'include',
+      });
       console.log("a:", response)
-      const ret = await response.json()
+      let ret = await response.json()
 
       if ((ret.status >= 200) || ret.status === 304) {
         // const ret = await response.json()
