@@ -1,13 +1,13 @@
 <script>
 import Topheader from "@/components/center/header/topheader.vue";
-import vrm from '@/lib/vrm/main.vue'
+// import vrm from '@/lib/vrm/main.vue'
 
 
 export default {
   name: 'App',
   components: {
     Topheader,
-    vrm,
+    // vrm,
   },
   data() {
     return {
