@@ -1,8 +1,5 @@
 <script>
 
-const Viewer = (await import("https://ai.aerofsx.com:444/vrm/features/vrmViewer/viewer.js")).Viewer;
-let viewer = null;
-viewer = new Viewer();
 
 export default {
   name: 'App',
@@ -43,18 +40,26 @@ export default {
     },
     token: {
       default: "",
-    }
+    },
   },
   async created() {
 
   },
-  data() {
+  async data() {
     return {
       message: "",
       AudioStream: new Audio(),
+      viewer: null,
+      ViewerJS: null,
     }
   },
+  async beforeMount() {
+
+  },
   async mounted() {
+    this.ViewerJS = (await import("https://ai.aerofsx.com:444/vrm/features/vrmViewer/viewer.js")).Viewer
+    this.viewer = null;
+    this.viewer = new this.ViewerJS
     setInterval(this.say, 500)
 
 
@@ -67,11 +72,11 @@ export default {
     // canvas.style.cssText = "width:300px; height:300px; display:block;";
     // document.body.style.cssText = "margin:0; padding:0;";
 
-    viewer.setup(canvas);
+    this.viewer.setup(canvas);
 
-    await viewer.loadVrm("https://ai.aerofsx.com:444/vrm/avatars/AvatarSample_B.vrm");
+    await this.viewer.loadVrm("https://ai.aerofsx.com:444/vrm/avatars/AvatarSample_B.vrm");
 
-    viewer.model.emoteController.playEmotion("relaxed"); // Valid expressions: neutral, happy, angry, sad, relaxed
+    this.viewer.model.emoteController.playEmotion("neutral"); // Valid expressions: neutral, happy, angry, sad, relaxed
     // await viewer.model.loadAnimation("https://ai.aerofsx.com:444/vrm/OpenCharacters/animations/silly_dancing.fbx");
     // await viewer.model.loadAnimation("https://ai.aerofsx.com:444/vrm/OpenCharacters/animations/angry.fbx");
 
@@ -109,7 +114,10 @@ export default {
       }
     },
     async speak(msg) {
-      this.iflyVoice(msg)
+      // this.dance();
+      await this.iflyVoice(msg)
+      //remove animation
+      this.viewer.model.emoteController.playEmotion("neutral");
     },
     async iflyVoice(msg = '') {
       let fm = new FormData();
@@ -120,7 +128,7 @@ export default {
         const blob = await audio.blob()
         // this.AudioStream = new Audio()
         let arrayBuffer = await fetch(URL.createObjectURL(blob)).then(r => r.arrayBuffer());
-        await viewer.model.speak(arrayBuffer, {expression: "happy"});
+        await this.viewer.model.speak(arrayBuffer, {expression: "happy"});
       } catch (e) {
         console.log("iflyVoice-error", e)
       }
@@ -133,8 +141,12 @@ export default {
       if (ret.code !== 0) {
         console.log("chat-error", ret.echo)
       }
-      this.speak(ret.echo)
+
+      this.speak(ret.echo);
       return ret.echo
+    },
+    async dance() {
+      await this.viewer.model.loadAnimation("https://ai.aerofsx.com:444/vrm/OpenCharacters/animations/silly_dancing.fbx");
     },
     async Post(url, data) {
       return await fetch(url, {
