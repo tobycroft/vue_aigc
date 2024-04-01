@@ -1,6 +1,6 @@
 function __vite__mapDeps(indexes) {
   if (!__vite__mapDeps.viteFileDeps) {
-    __vite__mapDeps.viteFileDeps = ["assets/center-BB9NPR6_.js","assets/topheader-CXF8QvkX.js","assets/gobotq-CybS7j7m.js","assets/index-BCbdFtaS.js","assets/topheader-1sIHJ2mT.css","assets/TokenModel-fnmBdSAh.js","assets/VContainer-CU1T9I-k.js","assets/ssrBoot-DIj4mRt2.js","assets/center-cRp043es.css","assets/home-2hL97lOj.js","assets/VRow-Ca7D4DSj.js","assets/login-ZJ8Y-ZDd.js","assets/Net-C7x45aDP.js","assets/VForm-BB--1k60.js","assets/VTextField-ehMtwEoz.js","assets/VTextField-BHw_gr_H.css","assets/login-COYMm_r_.css","assets/live2d-CO-jeHEB.js","assets/live2d-DzPAiFvU.css","assets/user-C_qm5hT6.js","assets/info-Bu35A7y7.js","assets/moment-D5u_x0RX.js","assets/team-B9YuEc2Y.js","assets/VList-B5oGquvm.js","assets/VList-DuB24XFb.css","assets/VSlideGroup-BfB-Nzvw.js","assets/VSlideGroup-Ch6w-Ga8.css","assets/user--rgiivAS.css","assets/vrm-Dgs1sfp2.js","assets/subtoken-D0s3iVx2.js","assets/VSelect-CCiiAp2J.js","assets/VSelect-C6sTOpwI.css","assets/subtoken-BemhnZV_.css","assets/add-DiGv2YSV.js","assets/edit-Dr74uE1E.js","assets/create-Cniqy3Xa.js","assets/edit-DG3evQwO.js"]
+    __vite__mapDeps.viteFileDeps = ["assets/center-SQB6bzDN.js","assets/topheader-BQbz4qkI.js","assets/gobotq-CybS7j7m.js","assets/index-CRjXcZ4I.js","assets/topheader-1sIHJ2mT.css","assets/TokenModel-fnmBdSAh.js","assets/VContainer-CojaPIuz.js","assets/ssrBoot-B5fi3Mha.js","assets/center-cRp043es.css","assets/home-BcfKWmPd.js","assets/VRow-BOAxxBYv.js","assets/login-B0MGCr0I.js","assets/Net-CfaFoo1k.js","assets/VForm-D9pAZrD3.js","assets/VTextField-BTygkpjp.js","assets/VTextField-BHw_gr_H.css","assets/login-COYMm_r_.css","assets/live2d-G03ggTkM.js","assets/live2d-DzPAiFvU.css","assets/user-C5YqulbU.js","assets/info-Dv8IPxN8.js","assets/moment-D5u_x0RX.js","assets/team-CVRwh8fs.js","assets/VList-_sPoRDTN.js","assets/VList-DuB24XFb.css","assets/VSlideGroup-BUgM_hIO.js","assets/VSlideGroup-Ch6w-Ga8.css","assets/user--rgiivAS.css","assets/vrm-BeR9lVji.js","assets/subtoken-BVj_dezZ.js","assets/VSelect-BR7oeZOH.js","assets/VSelect-C6sTOpwI.css","assets/subtoken-BemhnZV_.css","assets/add-Bl9O0nU2.js","assets/edit-BXuIcI6D.js","assets/create-D1VSJAbJ.js","assets/edit-08BCq-zZ.js"]
   }
   return indexes.map((i) => __vite__mapDeps.viteFileDeps[i])
 }
@@ -11651,7 +11651,7 @@ function extractChangingRecords(to, from) {
 const routes = [
   {
     path: "/:pathMatch(.*)*",
-    component: () => __vitePreload(() => import("./superRouter-BqMMOMYX.js"), true ? [] : void 0)
+    component: () => __vitePreload(() => import("./superRouter-yyi0tuer.js"), true ? [] : void 0)
     // 假设您有一个布局组件用于渲染页面
   }
 ];
@@ -11670,17 +11670,17 @@ MainRouter.beforeEach((to, from, next) => {
 function importer(pagePath) {
   switch (pagePath.length) {
     case 1:
-      return __variableDynamicImportRuntimeHelper(/* @__PURE__ */ Object.assign({ "../views/center.vue": () => __vitePreload(() => import("./center-BB9NPR6_.js"), true ? __vite__mapDeps([0,1,2,3,4,5,6,7,8]) : void 0), "../views/home.vue": () => __vitePreload(() => import("./home-2hL97lOj.js"), true ? __vite__mapDeps([9,10,6]) : void 0) }), `../views/${pagePath[0].toLowerCase()}.vue`);
+      return __variableDynamicImportRuntimeHelper(/* @__PURE__ */ Object.assign({ "../views/center.vue": () => __vitePreload(() => import("./center-SQB6bzDN.js"), true ? __vite__mapDeps([0,1,2,3,4,5,6,7,8]) : void 0), "../views/home.vue": () => __vitePreload(() => import("./home-BcfKWmPd.js"), true ? __vite__mapDeps([9,10,6]) : void 0) }), `../views/${pagePath[0].toLowerCase()}.vue`);
     case 2:
-      return __variableDynamicImportRuntimeHelper(/* @__PURE__ */ Object.assign({ "../views/user/login.vue": () => __vitePreload(() => import("./login-ZJ8Y-ZDd.js"), true ? __vite__mapDeps([11,12,5,2,3,6,13,14,15,16]) : void 0), "../views/v1/live2d.vue": () => __vitePreload(() => import("./live2d-CO-jeHEB.js"), true ? __vite__mapDeps([17,1,2,3,4,5,6,13,14,15,18]) : void 0), "../views/v1/user.vue": () => __vitePreload(() => import("./user-C_qm5hT6.js"), true ? __vite__mapDeps([19,1,2,3,4,20,12,5,21,6,10,22,23,7,24,25,26,27]) : void 0), "../views/v1/vrm.vue": () => __vitePreload(() => import("./vrm-Dgs1sfp2.js"), true ? __vite__mapDeps([28,1,2,3,4]) : void 0) }), `../views/${pagePath[0].toLowerCase()}/${pagePath[1].toLowerCase()}.vue`);
+      return __variableDynamicImportRuntimeHelper(/* @__PURE__ */ Object.assign({ "../views/user/login.vue": () => __vitePreload(() => import("./login-B0MGCr0I.js"), true ? __vite__mapDeps([11,12,5,2,3,6,13,14,15,16]) : void 0), "../views/v1/live2d.vue": () => __vitePreload(() => import("./live2d-G03ggTkM.js"), true ? __vite__mapDeps([17,1,2,3,4,5,6,13,14,15,18]) : void 0), "../views/v1/user.vue": () => __vitePreload(() => import("./user-C5YqulbU.js"), true ? __vite__mapDeps([19,1,2,3,4,20,12,5,21,6,10,22,23,7,24,25,26,27]) : void 0), "../views/v1/vrm.vue": () => __vitePreload(() => import("./vrm-BeR9lVji.js"), true ? __vite__mapDeps([28,1,2,3,4]) : void 0) }), `../views/${pagePath[0].toLowerCase()}/${pagePath[1].toLowerCase()}.vue`);
     case 3:
-      return __variableDynamicImportRuntimeHelper(/* @__PURE__ */ Object.assign({ "../views/v1/team/subtoken.vue": () => __vitePreload(() => import("./subtoken-D0s3iVx2.js"), true ? __vite__mapDeps([29,12,5,6,30,14,3,15,23,7,24,25,26,31,32]) : void 0), "../views/v1/user/info.vue": () => __vitePreload(() => import("./info-Bu35A7y7.js"), true ? __vite__mapDeps([20,12,5,21,6,10]) : void 0), "../views/v1/user/team.vue": () => __vitePreload(() => import("./team-B9YuEc2Y.js"), true ? __vite__mapDeps([22,12,5,21,1,2,3,4,6,23,7,24,10]) : void 0) }), `../views/${pagePath[0].toLowerCase()}/${pagePath[1].toLowerCase()}/${pagePath[2].toLowerCase()}.vue`);
+      return __variableDynamicImportRuntimeHelper(/* @__PURE__ */ Object.assign({ "../views/v1/team/subtoken.vue": () => __vitePreload(() => import("./subtoken-BVj_dezZ.js"), true ? __vite__mapDeps([29,12,5,6,30,14,3,15,23,7,24,25,26,31,32]) : void 0), "../views/v1/user/info.vue": () => __vitePreload(() => import("./info-Dv8IPxN8.js"), true ? __vite__mapDeps([20,12,5,21,6,10]) : void 0), "../views/v1/user/team.vue": () => __vitePreload(() => import("./team-CVRwh8fs.js"), true ? __vite__mapDeps([22,12,5,21,1,2,3,4,6,23,7,24,10]) : void 0) }), `../views/${pagePath[0].toLowerCase()}/${pagePath[1].toLowerCase()}/${pagePath[2].toLowerCase()}.vue`);
     case 4:
-      return __variableDynamicImportRuntimeHelper(/* @__PURE__ */ Object.assign({ "../views/v1/team/subtoken/add.vue": () => __vitePreload(() => import("./add-DiGv2YSV.js"), true ? __vite__mapDeps([33,12,5,6,13,14,3,15,10,30,23,7,24,25,26,31]) : void 0), "../views/v1/team/subtoken/edit.vue": () => __vitePreload(() => import("./edit-Dr74uE1E.js"), true ? __vite__mapDeps([34,12,5,6,13,14,3,15,10,30,23,7,24,25,26,31]) : void 0), "../views/v1/user/team/create.vue": () => __vitePreload(() => import("./create-Cniqy3Xa.js"), true ? __vite__mapDeps([35,12,5,6,14,3,15,13]) : void 0), "../views/v1/user/team/edit.vue": () => __vitePreload(() => import("./edit-DG3evQwO.js"), true ? __vite__mapDeps([36,12,5,6,14,3,15,13]) : void 0) }), `../views/${pagePath[0].toLowerCase()}/${pagePath[1].toLowerCase()}/${pagePath[2].toLowerCase()}/${pagePath[3].toLowerCase()}.vue`);
+      return __variableDynamicImportRuntimeHelper(/* @__PURE__ */ Object.assign({ "../views/v1/team/subtoken/add.vue": () => __vitePreload(() => import("./add-Bl9O0nU2.js"), true ? __vite__mapDeps([33,12,5,6,13,14,3,15,10,30,23,7,24,25,26,31]) : void 0), "../views/v1/team/subtoken/edit.vue": () => __vitePreload(() => import("./edit-BXuIcI6D.js"), true ? __vite__mapDeps([34,12,5,6,13,14,3,15,10,30,23,7,24,25,26,31]) : void 0), "../views/v1/user/team/create.vue": () => __vitePreload(() => import("./create-D1VSJAbJ.js"), true ? __vite__mapDeps([35,12,5,6,14,3,15,13]) : void 0), "../views/v1/user/team/edit.vue": () => __vitePreload(() => import("./edit-08BCq-zZ.js"), true ? __vite__mapDeps([36,12,5,6,14,3,15,13]) : void 0) }), `../views/${pagePath[0].toLowerCase()}/${pagePath[1].toLowerCase()}/${pagePath[2].toLowerCase()}/${pagePath[3].toLowerCase()}.vue`);
     case 5:
       return __variableDynamicImportRuntimeHelper(/* @__PURE__ */ Object.assign({}), `../views/${pagePath[0].toLowerCase()}/${pagePath[1].toLowerCase()}/${pagePath[2].toLowerCase()}/${pagePath[3].toLowerCase()}/${pagePath[4].toLowerCase()}.vue`);
     default:
-      return __vitePreload(() => import("./login-ZJ8Y-ZDd.js"), true ? __vite__mapDeps([11,12,5,2,3,6,13,14,15,16]) : void 0);
+      return __vitePreload(() => import("./login-B0MGCr0I.js"), true ? __vite__mapDeps([11,12,5,2,3,6,13,14,15,16]) : void 0);
   }
 }
 function registerPlugins(app2) {
@@ -15918,12 +15918,12 @@ export {
   _export_sfc as _,
   computed as a,
   useLink as a$,
-  __vitePreload as a0,
-  createElementBlock as a1,
-  normalizeClass as a2,
-  Fragment as a3,
-  renderList as a4,
-  normalizeStyle as a5,
+  createElementBlock as a0,
+  normalizeClass as a1,
+  Fragment as a2,
+  renderList as a3,
+  normalizeStyle as a4,
+  __vitePreload as a5,
   VCardTitle as a6,
   omit as a7,
   makeVBtnProps as a8,

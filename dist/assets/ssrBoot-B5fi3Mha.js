@@ -1,4 +1,4 @@
-import { s as shallowRef, e as onMounted, a as computed, bn as readonly } from "./index-BG_w0Khm.js";
+import { s as shallowRef, e as onMounted, a as computed, bn as readonly } from "./index-949p_sDn.js";
 function useSsrBoot() {
   const isBooted = shallowRef(false);
   onMounted(() => {

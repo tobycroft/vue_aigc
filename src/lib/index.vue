@@ -58,7 +58,7 @@
 </template>
 
 <script>
-import Live2dLibURL from "./lib/live2d.min.js?url"
+import Live2dLibURL from "./live2d.min.js?url"
 import '@/styles/live2d.scss'
 
 async function loadLive2dLib() {

@@ -1,12 +1,15 @@
-import { T as Topheader } from "./topheader-CXF8QvkX.js";
-import { a0 as __vitePreload, _ as _export_sfc, o as openBlock, a1 as createElementBlock, Y as withDirectives, Z as vShow, G as createBaseVNode, a2 as normalizeClass, a3 as Fragment, a4 as renderList, a5 as normalizeStyle, v as createVNode, y as withCtx, B as resolveComponent, a6 as VCardTitle, z as createTextVNode, $ as withModifiers, E as VBtn } from "./index-BG_w0Khm.js";
+import { T as Topheader } from "./topheader-BQbz4qkI.js";
+import { _ as _export_sfc, o as openBlock, a0 as createElementBlock, Y as withDirectives, Z as vShow, G as createBaseVNode, a1 as normalizeClass, a2 as Fragment, a3 as renderList, a4 as normalizeStyle, a5 as __vitePreload, v as createVNode, y as withCtx, B as resolveComponent, a6 as VCardTitle, z as createTextVNode, $ as withModifiers, E as VBtn } from "./index-949p_sDn.js";
 import { T as TokenModel } from "./TokenModel-fnmBdSAh.js";
-import { V as VContainer } from "./VContainer-CU1T9I-k.js";
-import { V as VForm } from "./VForm-BB--1k60.js";
-import { V as VTextField } from "./VTextField-ehMtwEoz.js";
+import { V as VContainer } from "./VContainer-CojaPIuz.js";
+import { V as VForm } from "./VForm-D9pAZrD3.js";
+import { V as VTextField } from "./VTextField-BTygkpjp.js";
 import "./gobotq-CybS7j7m.js";
-import "./index-BCbdFtaS.js";
-__vitePreload(() => import("./live2d.min-DR6MBsXU.js"), true ? [] : void 0);
+import "./index-CRjXcZ4I.js";
+const Live2dLibURL = "/assets/live2d.min-DvSL-thp.js";
+async function loadLive2dLib() {
+  await __vitePreload(() => import(Live2dLibURL), true ? [] : void 0);
+}
 const _sfc_main$1 = {
   name: "live2d",
   props: {
@@ -127,6 +130,7 @@ const _sfc_main$1 = {
     };
   },
   async mounted() {
+    await loadLive2dLib();
     await this.updateTips();
     [this.modelPath, this.modelTexturesId] = this.model;
     this.loadModel();
