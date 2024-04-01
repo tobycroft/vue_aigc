@@ -1,0 +1,1 @@
+import{T as r}from"./topheader-BNWRSBN_.js";import{c as o,o as e}from"./index-DvYWNhVS.js";import"./gobotq-3Wa2au3z.js";import"./index-CfxdSSyB.js";const n={__name:"vrm",setup(t){return(a,p)=>(e(),o(r))}};export{n as default};

@@ -84,6 +84,11 @@ export default {
       default: 'https://ai.aerofsx.com:444/static/live2d/indexes',
       type: String
     },
+    resourcePath: {
+      // 注意：这是我服务器目前部署的 api 服务，若更新服务地址会在 README.md 说明
+      default: 'https://live.ai.aerofsx.com:444/static/live2d/indexes',
+      type: String
+    },
     aigcUrl: {
       default: 'https://aigc.aerofsx.com:444',
       type: String
@@ -258,7 +263,7 @@ export default {
     },
     loadRandTextures(isAfterRandModel = false) {
       this.Get({
-        url: `${this.apiPath}/${this.modelPath}/textures.json`,
+        url: `${this.resourcePath}/${this.modelPath}/textures.json`,
         success: (data) => {
           const modelTexturesIds = data.filter(modelTexturesId => modelTexturesId !== this.modelTexturesId)
           this.modelTexturesId = modelTexturesIds[Math.floor(Math.random() * modelTexturesIds.length)]
@@ -364,37 +369,32 @@ export default {
         }
       }
     },
-    http({url, success}) {
-      const xhr = new XMLHttpRequest()
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          if ((xhr.status >= 200 || xhr.status < 300) || xhr.status === 304) {
-            success && success(JSON.parse(xhr.response))
-          } else {
-            console.error(xhr)
-          }
-        }
-      }
-      xhr.open('GET', url)
-      xhr.send(null)
-    },
-    Get(url, success) {
-      if (url.indexOf('?') !== -1) {
-        // 如果已经包含查询字符串，则在原有查询字符串的基础上添加时间戳参数
-        url = url + '&ver=' + Date.now();
-      } else {
-        // 如果没有查询字符串，则添加时间戳参数作为查询字符串
-        url = url + '?ver=' + Date.now();
-      }
+    // http({url, success}) {
+    //   const xhr = new XMLHttpRequest()
+    //   xhr.onreadystatechange = function () {
+    //     if (xhr.readyState === 4) {
+    //       if ((xhr.status >= 200 || xhr.status < 300) || xhr.status === 304) {
+    //         success && success(JSON.parse(xhr.response))
+    //       } else {
+    //         console.error(xhr)
+    //       }
+    //     }
+    //   }
+    //   xhr.open('GET', url)
+    //   xhr.send(null)
+    // },
+    Get({url, success}) {
+      // 如果已经包含查询字符串，则在原有查询字符串的基础上添加时间戳参数
+      // url = url + '?ver=' + Date.now();
       fetch(url, {
         method: 'GET',
         headers: {
           uid: this.uid,
           token: this.token,
           //no cache
-          'Cache-Control': 'no-cache',
-          'Pragma': 'no-cache',
-          'Expires': 0
+          // 'Cache-Control': 'no-cache',
+          // 'Pragma': 'no-cache',
+          // 'Expires': 0
         },
         mode: 'cors',
         credentials: 'include',
