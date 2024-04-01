@@ -35,16 +35,16 @@ export default {
     :height="300"
     :width="300"
     ></vrm>
-    <v-card-title>L2D语音+显示</v-card-title>
+    <v-card-title>VRM语音+显示</v-card-title>
     <v-form @submit.prevent="updateMessage">
-      <v-text-field v-model="message" label="你想让L2D说什么"></v-text-field>
+      <v-text-field v-model="message" label="这里输入你想让VRM说的话"></v-text-field>
       <div class="d-flex flex-column">
         <v-btn size="large" type="submit" color="primary" class="mt-4">确认</v-btn>
       </div>
     </v-form>
-    <v-card-title>L2D语音+聊天</v-card-title>
+    <v-card-title>VRM语音+聊天</v-card-title>
     <v-form @submit.prevent="chatMessage">
-      <v-text-field v-model="message" label="输入聊天内容"></v-text-field>
+      <v-text-field v-model="message" label="这里输入你想和VRM聊的内容，AI会自动回复你"></v-text-field>
       <div class="d-flex flex-column">
         <v-btn size="large" type="submit" color="primary" class="mt-4">确认</v-btn>
       </div>

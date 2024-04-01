@@ -78,12 +78,7 @@ export default {
     // await viewer.model.speak(arrayBuffer, {expression: "happy"});
   },
   methods: {
-    updateMessage() {
 
-    },
-    chatMessage() {
-
-    }
   },
 }
 </script>
