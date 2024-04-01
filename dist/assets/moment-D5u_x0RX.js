@@ -3984,4 +3984,3 @@ hooks.HTML5_FMT = {
 export {
   hooks as h
 };
-//# sourceMappingURL=moment-D5u_x0RX.js.map

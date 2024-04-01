@@ -11,7 +11,7 @@ import {fileURLToPath, URL} from 'node:url'
 export default defineConfig({
     optimizeDeps: {
         include: ['@/assets/live2d.min.js', '@/lib/index.vue'],
-        noDiscovery: true,
+        // noDiscovery: true,
     },
     plugins: [
         vue({
@@ -53,12 +53,9 @@ export default defineConfig({
         outDir: 'dist',
         emptyOutDir: true,
         minify: false,
-        sourcemap: true,
-        manifest: true,
-        rollupOptions: {
-
-
-        },
+        sourcemap: false,
+        manifest: false,
+        rollupOptions: {},
     },
     mode: 'development',
 })

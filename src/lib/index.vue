@@ -233,8 +233,7 @@ export default {
         localStorage.removeItem("doAction")
         try {
           const act = JSON.parse(action)
-          console.log(act)
-          switch (act) {
+          switch (act.type) {
             case "say":
               this.showMessage(act["text"], 2000)
               break
@@ -242,6 +241,10 @@ export default {
             case "chat":
               this.chatMessage(act["text"])
               break
+
+            default:
+              console.log(act)
+
           }
 
         } catch (e) {
@@ -334,7 +337,7 @@ export default {
       speech.pitch = 1
       if (localStorage.getItem("currentVoice") !== msg) {
         console.log("VoiceSpeak", msg)
-        await this.stopVoice()
+        this.stopVoice()
         localStorage.setItem("currentVoice", msg)
         // window.speechSynthesis.speak(speech)
         this.iflyVoice(msg)

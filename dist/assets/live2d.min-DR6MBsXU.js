@@ -4288,4 +4288,3 @@
     return this.json[this.INIT_PARTS_VISIBLE] == null || this.json[this.INIT_PARTS_VISIBLE][t2] == null ? NaN : this.json[this.INIT_PARTS_VISIBLE][t2][this.VALUE];
   };
 }]);
-//# sourceMappingURL=live2d.min-DR6MBsXU.js.map

@@ -24,4 +24,3 @@ const TokenModel$1 = TokenModel;
 export {
   TokenModel$1 as T
 };
-//# sourceMappingURL=TokenModel-fnmBdSAh.js.map
