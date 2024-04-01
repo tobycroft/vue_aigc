@@ -13,7 +13,13 @@
           :style="style"
           :direction="direction"
           :size="size"
-          :models="models"
+          :model="models"
+          :uid="uid"
+          :token="token"
+          :aigcUrl="aigcUrl"
+          :sdkUrl="sdkUrl"
+          :apiKey="apiKey"
+
   ></live2d>
 </template>
 
@@ -24,6 +30,7 @@
  */
 import Topheader from "@/components/center/header/topheader.vue";
 import live2d from '@/lib/index.vue'
+import TokenModel from "@/model/TokenModel.js";
 
 export default {
   name: 'App',

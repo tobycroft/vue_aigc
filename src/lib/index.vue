@@ -327,15 +327,16 @@ export default {
       let fm = new FormData();
       fm.set("message", msg)
       const audio = await this.PostAsync(`${this.aigcUrl}/v1/iflytek/tts/auto`, fm)
-      if (ret.code !== 0) {
-        console.log("iflyVoice-error", ret.echo)
-        return
-      }
       // play audio stream and make it play as blob as background level
-      const blob = await audio.blob()
-      // this.AudioStream = new Audio()
-      this.AudioStream.src = URL.createObjectURL(blob)
-      this.AudioStream.play()
+      try {
+        const blob = await audio.blob()
+        // this.AudioStream = new Audio()
+        this.AudioStream.src = URL.createObjectURL(blob)
+        this.AudioStream.play()
+      } catch (e) {
+        console.log("iflyVoice-error", e)
+      }
+
     },
     takePhoto() {
       this.showMessage('照好了嘛，留个纪念吖~')
