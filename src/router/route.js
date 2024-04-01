@@ -83,7 +83,7 @@ MainRouter.beforeEach((to, from, next) => {
         })
         .catch(() => {
             // 如果无法加载页面组件，则重定向到 404 页面或其他默认页面
-            next('/404');
+            next('/');
         });
 });
 

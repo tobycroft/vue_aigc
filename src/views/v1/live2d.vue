@@ -15,8 +15,6 @@
       :direction="direction"
       :size="size"
       :api-key="apiKey"
-      :aigc-url="aigcUrl"
-      :sdk-url="sdkUrl"
       :uid="uid"
       :token="token"
   ></live2d>
