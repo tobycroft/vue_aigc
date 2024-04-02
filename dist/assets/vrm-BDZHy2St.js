@@ -1,11 +1,11 @@
-import { T as Topheader } from "./topheader-Dmb9_9Jt.js";
-import { _ as _export_sfc, a5 as __vitePreload, o as openBlock, c as createBlock, a0 as createElementBlock, v as createVNode, y as withCtx, a2 as Fragment, a6 as VCardTitle, z as createTextVNode, $ as withModifiers, G as createBaseVNode, E as VBtn, B as resolveComponent } from "./index-DcvAd3NA.js";
-import { V as VContainer } from "./VContainer-wq5_P_JB.js";
+import { T as Topheader } from "./topheader-DfbJERmm.js";
+import { _ as _export_sfc, a5 as __vitePreload, o as openBlock, c as createBlock, a0 as createElementBlock, v as createVNode, y as withCtx, a2 as Fragment, a6 as VCardTitle, z as createTextVNode, $ as withModifiers, G as createBaseVNode, E as VBtn, B as resolveComponent } from "./index-D94mmmAt.js";
+import { V as VContainer } from "./VContainer-vqL9Sc1g.js";
 import { T as TokenModel } from "./TokenModel-fnmBdSAh.js";
-import { V as VForm } from "./VForm-DMINnMKu.js";
-import { V as VTextField } from "./VTextField-Cn6mFgCr.js";
+import { V as VForm } from "./VForm-DVFNoJTh.js";
+import { V as VTextField } from "./VTextField-BsBFyA3-.js";
 import "./gobotq-CybS7j7m.js";
-import "./index-BKcMlBDW.js";
+import "./index-B2gR51Yt.js";
 const _sfc_main$1 = {
   name: "App",
   components: {
@@ -58,6 +58,8 @@ const _sfc_main$1 = {
     };
   },
   async beforeMount() {
+  },
+  watch() {
   },
   async mounted() {
     this.ViewerJS = (await __vitePreload(() => import("https://ai.aerofsx.com:444/vrm/features/vrmViewer/viewer.js"), true ? [] : void 0)).Viewer;
@@ -142,7 +144,7 @@ const _sfc_main$1 = {
 function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createBlock(VContainer, { id: "canvas" });
 }
-const vrm$1 = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1], ["__scopeId", "data-v-a9d5def4"]]);
+const vrm$1 = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1], ["__scopeId", "data-v-a13edf63"]]);
 const _sfc_main = {
   name: "App",
   components: {

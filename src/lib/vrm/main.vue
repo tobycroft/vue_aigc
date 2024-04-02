@@ -56,6 +56,10 @@ export default {
   async beforeMount() {
 
   },
+  watch() {
+    //watch width
+
+  },
   async mounted() {
     this.ViewerJS = (await import("https://ai.aerofsx.com:444/vrm/features/vrmViewer/viewer.js")).Viewer
     this.viewer = null;
@@ -103,6 +107,10 @@ export default {
               this.chat(act["text"])
               break
 
+            case "idle":
+              this.chat(act["text"])
+              break
+
             default:
               console.log(act)
 
@@ -114,10 +122,10 @@ export default {
       }
     },
     async speak(msg) {
-      // this.dance();
+      this.dance();
       await this.iflyVoice(msg)
       //remove animation
-      this.viewer.model.emoteController.playEmotion("neutral");
+      // this.viewer.model.emoteController.playEmotion("neutral");
     },
     async iflyVoice(msg = '') {
       let fm = new FormData();
@@ -147,6 +155,9 @@ export default {
     },
     async dance() {
       await this.viewer.model.loadAnimation("https://ai.aerofsx.com:444/vrm/OpenCharacters/animations/silly_dancing.fbx");
+    },
+    async idle() {
+      await this.viewer.model.loadAnimation("https://ai.aerofsx.com:444/vrm/OpenCharacters/animations/idle.fbx");
     },
     async Post(url, data) {
       return await fetch(url, {
