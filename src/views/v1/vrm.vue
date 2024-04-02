@@ -29,6 +29,9 @@ export default {
     chatMessage() {
       this.doAction("chat", this.message)
     },
+    idle() {
+      this.doAction("idle", this.message)
+    },
     doAction(type, text) {
       localStorage.setItem("doAction", JSON.stringify({
         type: type,
@@ -62,6 +65,7 @@ export default {
         <v-btn size="large" type="submit" color="primary" class="mt-4">确认</v-btn>
       </div>
     </v-form>
+    <v-btn @click="idle" color="green" class="mt-4">IDLE</v-btn>
   </v-container>
 
 </template>

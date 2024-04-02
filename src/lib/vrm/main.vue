@@ -61,7 +61,7 @@ export default {
 
   },
   async mounted() {
-    this.ViewerJS = (await import("https://ai.aerofsx.com:444/vrm/features/vrmViewer/viewer.js")).Viewer
+    this.ViewerJS = (await import("https://vrm.ai.aerofsx.com:444/features/vrmViewer/viewer.js")).Viewer
     this.viewer = null;
     this.viewer = new this.ViewerJS
     setInterval(this.say, 500)
@@ -78,7 +78,7 @@ export default {
 
     this.viewer.setup(canvas);
 
-    await this.viewer.loadVrm("https://ai.aerofsx.com:444/vrm/avatars/AvatarSample_B.vrm");
+    await this.viewer.loadVrm("https://vrm.ai.aerofsx.com:444/avatars/2368129704508832941.vrm");
 
     this.viewer.model.emoteController.playEmotion("neutral"); // Valid expressions: neutral, happy, angry, sad, relaxed
     // await viewer.model.loadAnimation("https://ai.aerofsx.com:444/vrm/OpenCharacters/animations/silly_dancing.fbx");
@@ -108,7 +108,7 @@ export default {
               break
 
             case "idle":
-              this.chat(act["text"])
+              this.idle()
               break
 
             default:
@@ -154,10 +154,10 @@ export default {
       return ret.echo
     },
     async dance() {
-      await this.viewer.model.loadAnimation("https://ai.aerofsx.com:444/vrm/OpenCharacters/animations/silly_dancing.fbx");
+      await this.viewer.model.loadAnimation("https://vrm.ai.aerofsx.com:444/OpenCharacters/animations/silly_dancing.fbx");
     },
     async idle() {
-      await this.viewer.model.loadAnimation("https://ai.aerofsx.com:444/vrm/OpenCharacters/animations/idle.fbx");
+      await this.viewer.model.loadAnimation("https://vrm.ai.aerofsx.com:444/OpenCharacters/animations/idle.fbx");
     },
     async Post(url, data) {
       return await fetch(url, {
