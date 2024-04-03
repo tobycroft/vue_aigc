@@ -153,7 +153,7 @@ export default {
       return ret.echo
     },
     async dance() {
-      this.viewer.model.loadAnimation("https://vrm.ai.aerofsx.com:444/OpenCharacters/animations/Bboy.fbx");
+      this.viewer.model.loadAnimation("https://vrm.ai.aerofsx.com:444/OpenCharacters/animations/silly_dancing.fbx");
     },
     async idle() {
       this.viewer.model.loadAnimation("https://vrm.ai.aerofsx.com:444/idle_loop.vrma");
