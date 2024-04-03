@@ -87,7 +87,7 @@ export default {
       <v-text-field v-model="message" label="这里输入你想让VRM说的话"></v-text-field>
       <v-btn @click="updateMessage" size="large" color="primary" class="mt-4 ma-2">使用TTS生成语音</v-btn>
       <v-btn @click="chatMessage" size="large" type="submit" color="primary" class="mt-4 ma-2">发送到GPT聊天</v-btn>
-      <v-btn @click="speechAuto" size="large" type="submit" color="primary" class="mt-4 ma-2">使用自动聊天</v-btn>
+      <v-btn @click="startSpeechRecognition(true)" size="large" type="submit" color="primary" class="mt-4 ma-2">使用自动聊天</v-btn>
     </v-card>
     <v-card class="ma-2">
       <v-card-title>VRM动作控制</v-card-title>

@@ -1,10 +1,10 @@
-import { T as Topheader } from "./topheader-Cw-11rGr.js";
-import { _ as _export_sfc, a5 as __vitePreload, o as openBlock, c as createBlock, a0 as createElementBlock, v as createVNode, y as withCtx, a2 as Fragment, W as VCard, a6 as VCardTitle, z as createTextVNode, E as VBtn, B as resolveComponent } from "./index-DxJAMuAo.js";
-import { V as VContainer } from "./VContainer-Dr_D6nJ3.js";
+import { T as Topheader } from "./topheader-DdGwKUb5.js";
+import { _ as _export_sfc, a5 as __vitePreload, o as openBlock, c as createBlock, a0 as createElementBlock, v as createVNode, y as withCtx, a2 as Fragment, W as VCard, z as createTextVNode, aj as toDisplayString, a6 as VCardTitle, E as VBtn, B as resolveComponent } from "./index-JtQBUqMX.js";
+import { V as VContainer } from "./VContainer-Bj11VkqQ.js";
 import { T as TokenModel } from "./TokenModel-fnmBdSAh.js";
-import { V as VTextField } from "./VTextField-BRXQoujK.js";
+import { V as VTextField } from "./VTextField-DHaJGOa2.js";
 import "./gobotq-CybS7j7m.js";
-import "./index-C-_1zkyP.js";
+import "./index-CE0r8yMG.js";
 const _sfc_main$1 = {
   name: "App",
   components: {
@@ -163,7 +163,7 @@ const _sfc_main = {
       token: TokenModel.Api_find_token(),
       width: screen.width,
       height: screen.height / 3,
-      speechText: "",
+      currentState: "无状态",
       recognition: new webkitSpeechRecognition()
     };
   },
@@ -171,9 +171,11 @@ const _sfc_main = {
   },
   methods: {
     updateMessage() {
+      this.currentState = "正在发声……";
       this.doAction("say", this.message);
     },
     chatMessage() {
+      this.currentState = "正在生成答案……";
       this.doAction("chat", this.message);
     },
     idle() {
@@ -185,20 +187,26 @@ const _sfc_main = {
         text
       }));
     },
-    startSpeechRecognition() {
-      this.recognition.lang = ["zh-CN", "en-US"];
+    startSpeechRecognition(auto = false) {
+      this.recognition.lang = ["zh-CN"];
+      this.currentState = "语音识别中……";
       this.recognition.onresult = (event) => {
         this.message = event.results[0][0].transcript;
+        if (auto) {
+          this.chatMessage();
+        }
       };
       this.recognition.onerror = (event) => {
         console.error("Speech recognition error:", event.error);
       };
       this.recognition.onend = () => {
+        this.currentState = "语音识别完成";
         console.log("Speech recognition ended.");
       };
       this.recognition.start();
     },
     stopSpeechRecognition() {
+      this.currentState = "语音识别停止";
       this.recognition.stop();
     }
   }
@@ -216,6 +224,12 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
           uid: $data.uid,
           token: $data.token
         }, null, 8, ["height", "width", "uid", "token"]),
+        createVNode(VCard, null, {
+          default: withCtx(() => [
+            createTextVNode("当前状态:" + toDisplayString($data.currentState), 1)
+          ]),
+          _: 1
+        }),
         createVNode(VCard, { class: "ma-2" }, {
           default: withCtx(() => [
             createVNode(VCardTitle, null, {
@@ -249,6 +263,18 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
             }, {
               default: withCtx(() => [
                 createTextVNode("发送到GPT聊天")
+              ]),
+              _: 1
+            }, 8, ["onClick"]),
+            createVNode(VBtn, {
+              onClick: _ctx.speechAuto,
+              size: "large",
+              type: "submit",
+              color: "primary",
+              class: "mt-4 ma-2"
+            }, {
+              default: withCtx(() => [
+                createTextVNode("使用自动聊天")
               ]),
               _: 1
             }, 8, ["onClick"])
@@ -312,7 +338,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   ], 64);
 }
-const vrm = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-7e84db22"]]);
+const vrm = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-b34a9ece"]]);
 export {
   vrm as default
 };
