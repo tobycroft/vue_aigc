@@ -22,8 +22,9 @@
       <template v-slot:default="{ item }">
         <v-list-item>
           <v-list-item-title>{{ item.name }}</v-list-item-title>
-          <v-list-item-subtitle>关键字：{{ item.key }}</v-list-item-subtitle>
-          <v-list-item-subtitle>网址：{{ item.base_url }}</v-list-item-subtitle>
+          <v-list-item-subtitle>key：{{ item.key }}</v-list-item-subtitle>
+          <v-list-item-subtitle>rid：{{ item.rid }}</v-list-item-subtitle>
+          <v-list-item-subtitle>model：{{ item.model }}</v-list-item-subtitle>
           <template v-slot:prepend>
             <v-icon class="bg-primary">mdi-robot</v-icon>
           </template>
@@ -64,7 +65,7 @@ export default {
   methods: {
     async fetchInfoList() {
       // 发送获取信息列表的请求
-      const ret = await new Net("/v1/fastgpt/info/list").PostFormData();
+      const ret = await new Net("/v1/iflytek/info/list").PostFormData();
       if (ret.code === 0) {
         // 更新 infoList
         this.infoList = ret.data;
@@ -74,11 +75,11 @@ export default {
       }
     },
     async addInfo() {
-      this.$router.push('/v1/fastgpt/info/create');
+      this.$router.push('/v1/key/iflytek/add');
     },
     async deleteInfo(info) {
       // 发送删除信息的请求
-      const ret = await new Net("/v1/fastgpt/info/delete").PostFormData({id: info.id});
+      const ret = await new Net("/v1/iflytek/info/delete").PostFormData({id: info.id});
       if (ret.code === 0) {
         // 删除成功，重新获取信息列表数据
         this.fetchInfoList();
@@ -89,7 +90,7 @@ export default {
     },
     async editInfo(info) {
       // 根据信息跳转到编辑页面
-      this.$router.push({path: "/v1/fastgpt/info/edit", query: info});
+      this.$router.push({path: "/v1/key/iflytek/edit", query: info});
     },
   },
   mounted() {
