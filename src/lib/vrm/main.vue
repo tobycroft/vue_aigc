@@ -156,7 +156,7 @@ export default {
       this.viewer.model.loadAnimation("https://vrm.ai.aerofsx.com:444/OpenCharacters/animations/Bboy.fbx");
     },
     async idle() {
-      this.viewer.model.loadAnimation("https://vrm.ai.aerofsx.com:444/OpenCharacters/animations/sss.fbx");
+      this.viewer.model.loadAnimation("https://vrm.ai.aerofsx.com:444/idle_loop.vrma");
     },
     async Post(url, data) {
       return await fetch(url, {
