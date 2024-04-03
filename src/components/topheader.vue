@@ -20,7 +20,7 @@ export default {
   methods: {
     navigateTo(tab) {
       // 使用路由导航到指定的页面
-      this.$router.push(tab);
+      this.$router.go(tab);
     },
     toggleDrawer() {
       // 可选：在这里添加抽屉的显示/隐藏逻辑

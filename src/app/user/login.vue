@@ -66,7 +66,7 @@ import md5 from "md5";
 export default {
   beforeCreate() {
     if (TokenModel.Api_is_login()) {
-      this.$router.push("/center")
+      this.$router.push("/index")
     }
   },
   created() {
