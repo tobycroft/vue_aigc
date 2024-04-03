@@ -24,6 +24,7 @@
           <v-list-item-title>{{ item.name }}</v-list-item-title>
           <v-list-item-subtitle>key：{{ item.key }}</v-list-item-subtitle>
           <v-list-item-subtitle>rid：{{ item.rid }}</v-list-item-subtitle>
+          <v-list-item-subtitle>model：{{ item.model }}</v-list-item-subtitle>
           <template v-slot:prepend>
             <v-icon class="bg-primary">mdi-robot</v-icon>
           </template>

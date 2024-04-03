@@ -24,6 +24,8 @@
           <v-list-item-title>{{ item.name }}</v-list-item-title>
           <v-list-item-subtitle>远程key：{{ item.key }}</v-list-item-subtitle>
           <v-list-item-subtitle>远程服务器地址：{{ item.base_url }}</v-list-item-subtitle>
+          <v-list-item-subtitle>model：{{ item.model }}</v-list-item-subtitle>
+
           <template v-slot:prepend>
             <v-icon class="bg-primary">mdi-robot</v-icon>
           </template>

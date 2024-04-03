@@ -37,14 +37,7 @@ import Net from "@/plugins/Net.js";
 export default {
   data() {
     return {
-      formData: {
-        name: '',
-        team_id: null,
-        key: '',
-        base_url: '',
-        model: '',
-        detail: 0
-      },
+      formData: {},
       qwenId: null // 用于存储 qwen 信息的 ID
     };
   },
@@ -55,13 +48,7 @@ export default {
         const response = await new Net(`/v1/qwen/info/get`).PostFormData({'id': this.qwenId});
         if (response.code === 0) {
           // 填充 qwen 信息到表单中
-          const data = response.data;
-          this.formData.name = data.name;
-          this.formData.team_id = data.team_id;
-          this.formData.key = data.key;
-          this.formData.base_url = data.base_url;
-          this.formData.model = data.model;
-          this.formData.detail = data.detail;
+          this.formData = response.data;
         } else {
           console.error('Failed to fetch qwen info:', response.echo);
         }
@@ -71,15 +58,7 @@ export default {
     },
     async updateInfo() {
       try {
-        const payload = {
-          id: this.qwenId,
-          name: this.formData.name,
-          team_id: parseInt(this.formData.team_id),
-          key: this.formData.key,
-          base_url: this.formData.base_url,
-          model: this.formData.model,
-          detail: parseInt(this.formData.detail)
-        };
+        const payload = this.formData;
         const response = await new Net('/v1/qwen/info/update').PostFormData(payload);
         if (response.code === 0) {
           // 更新成功，可以根据需求执行一些操作，比如跳转页面或者提示成功信息
