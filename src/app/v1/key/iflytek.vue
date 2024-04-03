@@ -22,9 +22,11 @@
       <template v-slot:default="{ item }">
         <v-list-item>
           <v-list-item-title>{{ item.name }}</v-list-item-title>
-          <v-list-item-subtitle>key：{{ item.key }}</v-list-item-subtitle>
-          <v-list-item-subtitle>rid：{{ item.rid }}</v-list-item-subtitle>
-          <v-list-item-subtitle>model：{{ item.model }}</v-list-item-subtitle>
+          <v-list-item-subtitle>host：{{ item.host }}</v-list-item-subtitle>
+          <v-list-item-subtitle>api_secret：{{ item.api_secret }}</v-list-item-subtitle>
+          <v-list-item-subtitle>app_id：{{ item.app_id }}</v-list-item-subtitle>
+          <v-list-item-subtitle>api_key：{{ item.api_key }}</v-list-item-subtitle>
+          <v-list-item-subtitle>vcn：{{ item.vcn }}</v-list-item-subtitle>
           <template v-slot:prepend>
             <v-icon class="bg-primary">mdi-robot</v-icon>
           </template>

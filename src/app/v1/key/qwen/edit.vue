@@ -10,7 +10,7 @@
                 <v-text-field v-model="formData.name" label="名称"></v-text-field>
               </v-col>
               <v-col cols="12">
-                <v-text-field v-model="formData.team_id" label="团队 ID"></v-text-field>
+                <v-select v-model="formData.team_id" :items="teamList" label="选项" item-text="title" item-value="id"/>
               </v-col>
               <v-col cols="12">
                 <v-text-field v-model="formData.key" label="Key"></v-text-field>
@@ -38,10 +38,23 @@ export default {
   data() {
     return {
       formData: {},
-      qwenId: null // 用于存储 qwen 信息的 ID
+      teamList: [], // 存储团队列表数据
+      qwenId: null,// 用于存储 qwen 信息的 ID
     };
   },
   methods: {
+    async fetchTeamList() {
+      try {
+        const response = await new Net('/v1/user/team/list').PostFormData();
+        if (response.code === 0) {
+          this.teamList = response.data.map(data => ({id: data.team_info.id, title: data.team_info.name}));
+        } else {
+          console.error('Failed to fetch team list:', response.echo);
+        }
+      } catch (error) {
+        console.error('Failed to fetch team list:', error);
+      }
+    },
     async fetchInfo() {
       try {
         // 根据 qwenId 获取 qwen 信息
@@ -76,6 +89,7 @@ export default {
     }
   },
   mounted() {
+    this.fetchTeamList()
     // 在组件挂载时获取 qwen 信息
     this.qwenId = parseInt(this.$route.query.id);
     if (!isNaN(this.qwenId)) {
