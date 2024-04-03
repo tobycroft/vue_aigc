@@ -1,0 +1,15 @@
+/**
+ * src/styles/settings.scss
+ *
+ * Configures SASS variables and Vuetify overwrites
+ */
+.v-virtual-scroll {
+  display: block;
+  flex: 1 1 auto;
+  max-width: 100%;
+  overflow: auto;
+  position: relative;
+}
+.v-virtual-scroll__container {
+  display: block;
+}
