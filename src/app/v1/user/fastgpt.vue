@@ -4,20 +4,20 @@
       <v-card-title>团队列表</v-card-title>
       <v-card-text>
         <v-list>
-          <v-list-item v-for="team in teamList" :key="team.id">
+          <v-list-item v-for="team in teamList" :key="fastgpt.id">
             <v-row align="center" justify="space-around">
-              <v-col >
-                <v-list-item-title>{{ team.team_info.name }}</v-list-item-title>
-                <v-list-item-subtitle v-if="team.nickname">{{ team.nickname }}</v-list-item-subtitle>
-                <v-list-item-subtitle>{{ team.role }}</v-list-item-subtitle>
-                <v-list-item-subtitle>{{ formattedDate(team.date) }}</v-list-item-subtitle>
+              <v-col>
+                <v-list-item-title>{{ fastgpt.team_info.name }}</v-list-item-title>
+                <v-list-item-subtitle v-if="fastgpt.nickname">{{ fastgpt.nickname }}</v-list-item-subtitle>
+                <v-list-item-subtitle>{{ fastgpt.role }}</v-list-item-subtitle>
+                <v-list-item-subtitle>{{ formattedDate(fastgpt.date) }}</v-list-item-subtitle>
               </v-col>
-              <v-col >
+              <v-col>
                 <v-btn-group>
-                  <v-btn @click="subtoken(team)" color="green">团队token管理</v-btn>
-                  <v-btn @click="editTeam(team)" color="primary">修改团队信息</v-btn>
-                  <v-btn v-if="team.role === 'admin' || team.role === 'owner'" @click="deleteTeam(team)" color="error">解散团队</v-btn>
-                  <v-btn v-else @click="deleteTeam(team)" color="error">退出团队</v-btn>
+                  <v-btn @click="subtoken(fastgpt)" color="green">团队token管理</v-btn>
+                  <v-btn @click="editTeam(fastgpt)" color="primary">修改团队信息</v-btn>
+                  <v-btn v-if="fastgpt.role === 'admin' || fastgpt.role === 'owner'" @click="deleteTeam(fastgpt)" color="error">解散团队</v-btn>
+                  <v-btn v-else @click="deleteTeam(fastgpt)" color="error">退出团队</v-btn>
                 </v-btn-group>
               </v-col>
             </v-row>
@@ -58,7 +58,7 @@ export default {
     },
     async deleteTeam(team) {
       // 发送删除团队的请求
-      const ret = await new Net("/v1/user/team/delete").PostFormData(team);
+      const ret = await new Net("/v1/user/team/delete").PostFormData(fastgpt);
       if (ret.code === 0) {
         // 删除成功，重新获取团队列表数据
         this.fetchTeamList();
@@ -69,11 +69,11 @@ export default {
     },
     async editTeam(team) {
       // 根据团队信息跳转到编辑页面
-      this.$router.push({path: '/v1/user/team/edit', query: team});
+      this.$router.push({path: '/v1/user/team/edit', query: fastgpt});
     },
     async subtoken(team) {
       // 根据团队信息跳转到编辑页面
-      this.$router.push({path: `/v1/team/subtoken`, query: team});
+      this.$router.push({path: `/v1/team/subtoken`, query: fastgpt});
     },
     formattedDate(date) {
       // 格式化日期

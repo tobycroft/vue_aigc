@@ -6,12 +6,12 @@
           bg-color="indigo-darken-2"
   >
     <v-tab>我的信息</v-tab>
-    <v-tab>我的密钥</v-tab>
+    <v-tab>我的团队</v-tab>
 
   </v-tabs>
 
-  <info v-if="tab===0"></info>
-  <team v-if="tab===1"></team>
+  <team v-if="tab===0"></team>
+  <subtoken v-if="tab===1"></subtoken>
 
 
 </template>
