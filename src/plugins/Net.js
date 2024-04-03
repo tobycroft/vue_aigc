@@ -102,7 +102,7 @@ class Ret {
         }
     }
 
-    GetVutifyMap() {
+    GetVutifySelectMap() {
         if (!this.isSuccess) {
             return this.data.map(data => ({id: data.team_info.id, title: data.team_info.name}))
         } else {

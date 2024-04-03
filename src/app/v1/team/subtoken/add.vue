@@ -12,9 +12,9 @@
               <v-col cols="12">
                 <v-text-field v-model="formData.name" label="key名称"></v-text-field>
               </v-col>
-              <v-col cols="12">
-                <v-text-field v-model="formData.prefix" label="prefix标签"></v-text-field>
-              </v-col>
+              <!--              <v-col cols="12">-->
+              <!--                <v-text-field v-model="formData.prefix" label="prefix标签"></v-text-field>-->
+              <!--              </v-col>-->
               <v-col cols="12">
                 <v-text-field v-model="formData.amount" label="可以使用的余额,如果是-1就是无线，大于0就按正常的扣"></v-text-field>
               </v-col>
@@ -94,7 +94,7 @@ export default {
     },
     goBack() {
       // 返回到团队 Token 列表页面
-      this.$router.push({path: `/v1/team?tab=subtoken`, query: this.team});
+      this.$router.push({path: "/v1/team?tab=subtoken"});
     }
   },
   mounted() {

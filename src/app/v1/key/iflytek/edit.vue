@@ -53,7 +53,7 @@ export default {
       try {
         const response = await new Net('/v1/user/team/list').PostFormData();
         if (response.code === 0) {
-          this.teamList = response.data.map(data => ({id: data.team_info.id, title: data.team_info.name}));
+          this.teamList = response.GetVutifySelectMap();
         } else {
           console.error('Failed to fetch team list:', response.echo);
         }
@@ -63,7 +63,7 @@ export default {
     },
     async fetchInfo() {
       try {
-        // 根据 iflytekId 获取 iflytek 信息
+        // 根据 team_id 获取 iflytek 信息
         const response = await new Net(`/v1/iflytek/info/get`).PostFormData({'id': this.iflytekId});
         if (response.code === 0) {
           // 填充 iflytek 信息到表单中

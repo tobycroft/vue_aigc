@@ -21,7 +21,7 @@
     >
       <template v-slot:default="{ item }">
         <v-list-item>
-          <v-list-item-title>prefix：{{ item.name }}</v-list-item-title>
+          <v-list-item-title>{{ item.name }}</v-list-item-title>
           <v-list-item-subtitle>key:{{ item.prefix }}-{{ item.key }}</v-list-item-subtitle>
           <v-list-item-subtitle>按量扣费：{{ item.is_limit ? '是' : '否' }}</v-list-item-subtitle>
           <v-list-item-subtitle>剩余量：{{ item.amount }}</v-list-item-subtitle>
