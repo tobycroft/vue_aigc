@@ -17,7 +17,7 @@ export default {
       token: TokenModel.Api_find_token(),
       width: screen.width,
       height: screen.height / 3,
-      speechText: "",
+      currentState: "无状态",
       recognition: new webkitSpeechRecognition(),
     }
   },
@@ -26,9 +26,11 @@ export default {
   },
   methods: {
     updateMessage() {
+      this.currentState = "正在发声……"
       this.doAction("say", this.message)
     },
     chatMessage() {
+      this.currentState = "正在生成答案……"
       this.doAction("chat", this.message)
     },
     idle() {
@@ -44,11 +46,11 @@ export default {
       this.recognition.lang = ['zh-CN'];
 
       // this.recognition.lang = 'en-US'; // 设置识别语言为英语，可以根据需要修改
-
+      this.currentState = "语音识别中……"
       this.recognition.onresult = (event) => {
         this.message = event.results[0][0].transcript;
         if (auto) {
-          this.doAction("chat", this.message)
+          this.chatMessage()
         }
       };
 
@@ -56,11 +58,13 @@ export default {
         console.error('Speech recognition error:', event.error);
       };
       this.recognition.onend = () => {
+        this.currentState = "语音识别完成"
         console.log('Speech recognition ended.');
       };
       this.recognition.start();
     },
     stopSpeechRecognition() {
+      this.currentState = "语音识别停止"
       this.recognition.stop(); // 停止语音识别
     },
   },
@@ -76,8 +80,8 @@ export default {
         :uid="uid"
         :token="token"
     ></vrm>
-
-
+    <v-card>当前状态:{{ currentState }}
+    </v-card>
     <v-card class="ma-2">
       <v-card-title>VRM智能展示</v-card-title>
       <v-text-field v-model="message" label="这里输入你想让VRM说的话"></v-text-field>
