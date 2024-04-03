@@ -10,7 +10,7 @@
                 <v-text-field v-model="formData.name" label="名称"></v-text-field>
               </v-col>
               <v-col cols="12">
-                <v-select v-model="formData.team_id" :items="teamList" label="选项"/>
+                <v-select v-model="formData.team_id" :items="teamList" label="选项" item-text="title" item-value="id"/>
               </v-col>
               <v-col cols="12">
                 <v-text-field v-model="formData.key" label="Key"></v-text-field>
@@ -56,7 +56,7 @@ export default {
       try {
         const response = await new Net('/v1/user/team/list').PostFormData();
         if (response.code === 0) {
-          this.teamList = response.data.map(coin => ({id: coin.team_info.id, title: coin.team_info.name}));
+          this.teamList = response.data.map(data => ({id: data.team_info.id, title: data.team_info.name}));
         } else {
           console.error('Failed to fetch team list:', response.echo);
         }
@@ -77,7 +77,7 @@ export default {
         const response = await new Net('/v1/fastgpt/info/add').PostFormData(payload);
         if (response.code === 0) {
           // 添加成功，可以根据需求执行一些操作，比如跳转页面或者提示成功信息
-          this.$router.push('/v1/fastgpt/info/list');
+          this.$router.push('/v1/key?tab=fastgpt');
         } else {
           console.error('Failed to add FastGPT info:', response.echo);
         }
@@ -87,7 +87,7 @@ export default {
     },
     goBack() {
       // 返回到 FastGPT 信息列表页面
-      this.$router.push('/v1/key/fastgpt');
+      this.$router.push('/v1/key?tab=fastgpt');
     }
   },
   async mounted() {
