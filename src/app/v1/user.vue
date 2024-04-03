@@ -6,12 +6,10 @@
           bg-color="indigo-darken-2"
   >
     <v-tab>我的信息</v-tab>
-    <v-tab>Fast</v-tab>
 
   </v-tabs>
 
   <info v-if="tab===0"></info>
-  <fastgpt v-if="tab===1"></fastgpt>
 
 
 </template>
@@ -19,10 +17,9 @@
 <script>
 import Topheader from "@/components/topheader.vue";
 import info from "@/app/v1/user/info.vue";
-import Fastgpt from "@/app/v1/user/fastgpt.vue"; // 引入 Net 方法
 
 export default {
-  components: {Fastgpt, info, Topheader},
+  components: {info, Topheader},
   data() {
     return {
       tab: 0
