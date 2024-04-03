@@ -17,7 +17,7 @@ export default {
       token: TokenModel.Api_find_token(),
       width: screen.width,
       height: screen.height / 3,
-      speechText:"",
+      speechText: "",
       recognition: new webkitSpeechRecognition(),
     }
   },
@@ -41,7 +41,8 @@ export default {
       }))
     },
     startSpeechRecognition() {
-      this.recognition.lang = 'en-US'; // 设置识别语言为英语，可以根据需要修改
+      this.recognition.lang = 'zh-CN';
+      // this.recognition.lang = 'en-US'; // 设置识别语言为英语，可以根据需要修改
 
       this.recognition.onresult = (event) => {
         this.message = event.results[0][0].transcript;
@@ -50,7 +51,9 @@ export default {
       this.recognition.onerror = (event) => {
         console.error('Speech recognition error:', event.error);
       };
-
+      this.recognition.onend = () => {
+        console.log('Speech recognition ended.');
+      };
       this.recognition.start();
     },
     stopSpeechRecognition() {

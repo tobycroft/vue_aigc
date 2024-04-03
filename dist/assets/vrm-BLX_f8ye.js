@@ -1,11 +1,10 @@
-import { T as Topheader } from "./topheader-tsRBQJOy.js";
-import { _ as _export_sfc, a5 as __vitePreload, o as openBlock, c as createBlock, a0 as createElementBlock, v as createVNode, y as withCtx, a2 as Fragment, a6 as VCardTitle, z as createTextVNode, $ as withModifiers, G as createBaseVNode, E as VBtn, B as resolveComponent } from "./index-g6RCWvBw.js";
-import { V as VContainer } from "./VContainer-WMbP03BJ.js";
+import { T as Topheader } from "./topheader-BYzeFyLp.js";
+import { _ as _export_sfc, a5 as __vitePreload, o as openBlock, c as createBlock, a0 as createElementBlock, v as createVNode, y as withCtx, a2 as Fragment, W as VCard, a6 as VCardTitle, z as createTextVNode, E as VBtn, B as resolveComponent } from "./index-BmZsnFJT.js";
+import { V as VContainer } from "./VContainer-BBX-5yLs.js";
 import { T as TokenModel } from "./TokenModel-fnmBdSAh.js";
-import { V as VForm } from "./VForm-D-VR7ToO.js";
-import { V as VTextField } from "./VTextField-BLd5DeHs.js";
+import { V as VTextField } from "./VTextField-C_BLe-pO.js";
 import "./gobotq-CybS7j7m.js";
-import "./index-pryuJT9q.js";
+import "./index-DNWOVar3.js";
 const _sfc_main$1 = {
   name: "App",
   components: {
@@ -130,8 +129,7 @@ const _sfc_main$1 = {
       this.viewer.model.loadAnimation("https://vrm.ai.aerofsx.com:444/OpenCharacters/animations/silly_dancing.fbx");
     },
     async idle() {
-      const vrma = await loadVRMAnimation("https://raw.githubusercontent.com/josephrocca/ChatVRM-js/main/idle_loop.vrma");
-      this.viewer.model.loadAnimation(vrma);
+      this.viewer.model.loadAnimation("https://vrm.ai.aerofsx.com:444/idle_loop.vrma");
     },
     async Post(url, data) {
       return await fetch(url, {
@@ -151,7 +149,7 @@ const _sfc_main$1 = {
 function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createBlock(VContainer, { id: "canvas" });
 }
-const vrm$1 = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1], ["__scopeId", "data-v-8ef2c87a"]]);
+const vrm$1 = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1], ["__scopeId", "data-v-b12282ca"]]);
 const _sfc_main = {
   name: "App",
   components: {
@@ -164,7 +162,9 @@ const _sfc_main = {
       uid: TokenModel.Api_find_uid(),
       token: TokenModel.Api_find_token(),
       width: screen.width,
-      height: screen.height / 3
+      height: screen.height / 3,
+      speechText: "",
+      recognition: new webkitSpeechRecognition()
     };
   },
   async mounted() {
@@ -184,11 +184,22 @@ const _sfc_main = {
         type,
         text
       }));
+    },
+    startSpeechRecognition() {
+      this.recognition.lang = "en-US";
+      this.recognition.onresult = (event) => {
+        this.message = event.results[0][0].transcript;
+      };
+      this.recognition.onerror = (event) => {
+        console.error("Speech recognition error:", event.error);
+      };
+      this.recognition.start();
+    },
+    stopSpeechRecognition() {
+      this.recognition.stop();
     }
   }
 };
-const _hoisted_1 = { class: "d-flex flex-column" };
-const _hoisted_2 = { class: "d-flex flex-column" };
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_Topheader = resolveComponent("Topheader");
   const _component_vrm = resolveComponent("vrm", true);
@@ -202,84 +213,103 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
           uid: $data.uid,
           token: $data.token
         }, null, 8, ["height", "width", "uid", "token"]),
-        createVNode(VCardTitle, null, {
+        createVNode(VCard, { class: "ma-2" }, {
           default: withCtx(() => [
-            createTextVNode("VRM语音+显示")
-          ]),
-          _: 1
-        }),
-        createVNode(VForm, {
-          onSubmit: withModifiers($options.updateMessage, ["prevent"])
-        }, {
-          default: withCtx(() => [
+            createVNode(VCardTitle, null, {
+              default: withCtx(() => [
+                createTextVNode("VRM智能展示")
+              ]),
+              _: 1
+            }),
             createVNode(VTextField, {
               modelValue: $data.message,
               "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $data.message = $event),
               label: "这里输入你想让VRM说的话"
             }, null, 8, ["modelValue"]),
-            createBaseVNode("div", _hoisted_1, [
-              createVNode(VBtn, {
-                size: "large",
-                type: "submit",
-                color: "primary",
-                class: "mt-4"
-              }, {
-                default: withCtx(() => [
-                  createTextVNode("确认")
-                ]),
-                _: 1
-              })
-            ])
-          ]),
-          _: 1
-        }, 8, ["onSubmit"]),
-        createVNode(VCardTitle, null, {
-          default: withCtx(() => [
-            createTextVNode("VRM语音+聊天")
+            createVNode(VBtn, {
+              onClick: $options.updateMessage,
+              size: "large",
+              color: "primary",
+              class: "mt-4 ma-2"
+            }, {
+              default: withCtx(() => [
+                createTextVNode("使用TTS生成语音")
+              ]),
+              _: 1
+            }, 8, ["onClick"]),
+            createVNode(VBtn, {
+              onClick: $options.chatMessage,
+              size: "large",
+              type: "submit",
+              color: "primary",
+              class: "mt-4 ma-2"
+            }, {
+              default: withCtx(() => [
+                createTextVNode("发送到GPT聊天")
+              ]),
+              _: 1
+            }, 8, ["onClick"])
           ]),
           _: 1
         }),
-        createVNode(VForm, {
-          onSubmit: withModifiers($options.chatMessage, ["prevent"])
-        }, {
+        createVNode(VCard, { class: "ma-2" }, {
           default: withCtx(() => [
-            createVNode(VTextField, {
-              modelValue: $data.message,
-              "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => $data.message = $event),
-              label: "这里输入你想和VRM聊的内容，AI会自动回复你"
-            }, null, 8, ["modelValue"]),
-            createBaseVNode("div", _hoisted_2, [
-              createVNode(VBtn, {
-                size: "large",
-                type: "submit",
-                color: "primary",
-                class: "mt-4"
-              }, {
-                default: withCtx(() => [
-                  createTextVNode("确认")
-                ]),
-                _: 1
-              })
-            ])
+            createVNode(VCardTitle, null, {
+              default: withCtx(() => [
+                createTextVNode("VRM动作控制")
+              ]),
+              _: 1
+            }),
+            createVNode(VBtn, {
+              onClick: $options.idle,
+              color: "green",
+              class: "mt-4 ma-2"
+            }, {
+              default: withCtx(() => [
+                createTextVNode("IDLE")
+              ]),
+              _: 1
+            }, 8, ["onClick"])
           ]),
           _: 1
-        }, 8, ["onSubmit"]),
-        createVNode(VBtn, {
-          onClick: $options.idle,
-          color: "green",
-          class: "mt-4"
-        }, {
+        }),
+        createVNode(VCard, { class: "ma-2" }, {
           default: withCtx(() => [
-            createTextVNode("IDLE")
+            createVNode(VCardTitle, null, {
+              default: withCtx(() => [
+                createTextVNode("语音识别")
+              ]),
+              _: 1
+            }),
+            createVNode(VBtn, {
+              color: "red",
+              onClick: $options.startSpeechRecognition,
+              class: "ma-2"
+            }, {
+              default: withCtx(() => [
+                createTextVNode("Start Recognition")
+              ]),
+              _: 1
+            }, 8, ["onClick"]),
+            createVNode(VBtn, {
+              color: "grey",
+              onClick: $options.stopSpeechRecognition,
+              class: "ma-2"
+            }, {
+              default: withCtx(() => [
+                createTextVNode("Stop Recognition")
+              ]),
+              _: 1
+            }, 8, ["onClick"])
           ]),
           _: 1
-        }, 8, ["onClick"])
+        })
       ]),
       _: 1
     })
   ], 64);
 }
-const vrm = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-95ae3cea"]]);
+const vrm = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-a88b91c9"]]);
 export {
   vrm as default
 };
