@@ -1,10 +1,10 @@
-import { T as Topheader } from "./topheader-0Zw6mOFm.js";
-import { _ as _export_sfc, a5 as __vitePreload, o as openBlock, c as createBlock, a0 as createElementBlock, v as createVNode, y as withCtx, a2 as Fragment, W as VCard, a6 as VCardTitle, z as createTextVNode, E as VBtn, B as resolveComponent } from "./index-O5WCX3n9.js";
-import { V as VContainer } from "./VContainer-tJVPvW6A.js";
+import { T as Topheader } from "./topheader-CF5YEJ21.js";
+import { _ as _export_sfc, a5 as __vitePreload, o as openBlock, c as createBlock, a0 as createElementBlock, v as createVNode, y as withCtx, a2 as Fragment, W as VCard, a6 as VCardTitle, z as createTextVNode, E as VBtn, B as resolveComponent } from "./index-Dpn00N-P.js";
+import { V as VContainer } from "./VContainer-B8V9Vxg8.js";
 import { T as TokenModel } from "./TokenModel-fnmBdSAh.js";
-import { V as VTextField } from "./VTextField-CkOYEP3H.js";
+import { V as VTextField } from "./VTextField-Dg-nnyAY.js";
 import "./gobotq-CybS7j7m.js";
-import "./index-yC2heLKB.js";
+import "./index-CwinOdgq.js";
 const _sfc_main$1 = {
   name: "App",
   components: {
@@ -99,8 +99,8 @@ const _sfc_main$1 = {
       }
     },
     async speak(msg) {
-      this.dance();
       await this.iflyVoice(msg);
+      this.viewer.model.emoteController.playEmotion("neutral");
     },
     async iflyVoice(msg = "") {
       let fm = new FormData();
@@ -149,7 +149,7 @@ const _sfc_main$1 = {
 function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createBlock(VContainer, { id: "canvas" });
 }
-const vrm$1 = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1], ["__scopeId", "data-v-b12282ca"]]);
+const vrm$1 = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1], ["__scopeId", "data-v-d2d9b5f6"]]);
 const _sfc_main = {
   name: "App",
   components: {

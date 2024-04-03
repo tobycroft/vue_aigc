@@ -41,7 +41,8 @@ export default {
       }))
     },
     startSpeechRecognition() {
-      this.recognition.lang = 'zh-CN';
+      this.recognition.lang = ['zh-CN', 'en-US'];
+
       // this.recognition.lang = 'en-US'; // 设置识别语言为英语，可以根据需要修改
 
       this.recognition.onresult = (event) => {
