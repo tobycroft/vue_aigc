@@ -1,11 +1,11 @@
-import { T as Topheader } from "./topheader-DfbJERmm.js";
-import { _ as _export_sfc, a5 as __vitePreload, o as openBlock, c as createBlock, a0 as createElementBlock, v as createVNode, y as withCtx, a2 as Fragment, a6 as VCardTitle, z as createTextVNode, $ as withModifiers, G as createBaseVNode, E as VBtn, B as resolveComponent } from "./index-D94mmmAt.js";
-import { V as VContainer } from "./VContainer-vqL9Sc1g.js";
+import { T as Topheader } from "./topheader-DpA3fAVl.js";
+import { _ as _export_sfc, a5 as __vitePreload, o as openBlock, c as createBlock, a0 as createElementBlock, v as createVNode, y as withCtx, a2 as Fragment, a6 as VCardTitle, z as createTextVNode, $ as withModifiers, G as createBaseVNode, E as VBtn, B as resolveComponent } from "./index-Dle2vv7E.js";
+import { V as VContainer } from "./VContainer-CHZ8PPvP.js";
 import { T as TokenModel } from "./TokenModel-fnmBdSAh.js";
-import { V as VForm } from "./VForm-DVFNoJTh.js";
-import { V as VTextField } from "./VTextField-BsBFyA3-.js";
+import { V as VForm } from "./VForm-DmQkO4Pe.js";
+import { V as VTextField } from "./VTextField-DOoaYPL0.js";
 import "./gobotq-CybS7j7m.js";
-import "./index-B2gR51Yt.js";
+import "./index-DAgmaiyx.js";
 const _sfc_main$1 = {
   name: "App",
   components: {
@@ -62,7 +62,7 @@ const _sfc_main$1 = {
   watch() {
   },
   async mounted() {
-    this.ViewerJS = (await __vitePreload(() => import("https://ai.aerofsx.com:444/vrm/features/vrmViewer/viewer.js"), true ? [] : void 0)).Viewer;
+    this.ViewerJS = (await __vitePreload(() => import("https://vrm.ai.aerofsx.com:444/features/vrmViewer/viewer.js"), true ? [] : void 0)).Viewer;
     this.viewer = null;
     this.viewer = new this.ViewerJS();
     setInterval(this.say, 500);
@@ -71,7 +71,7 @@ const _sfc_main$1 = {
     canvas.width = this.width ? this.width : 300;
     document.getElementById("canvas").appendChild(canvas);
     this.viewer.setup(canvas);
-    await this.viewer.loadVrm("https://ai.aerofsx.com:444/vrm/avatars/AvatarSample_B.vrm");
+    await this.viewer.loadVrm("https://vrm.ai.aerofsx.com:444/avatars/2368129704508832941.vrm");
     this.viewer.model.emoteController.playEmotion("neutral");
   },
   methods: {
@@ -88,6 +88,9 @@ const _sfc_main$1 = {
             case "chat":
               this.chat(act["text"]);
               break;
+            case "idle":
+              this.idle();
+              break;
             default:
               console.log(act);
           }
@@ -97,8 +100,8 @@ const _sfc_main$1 = {
       }
     },
     async speak(msg) {
+      this.dance();
       await this.iflyVoice(msg);
-      this.viewer.model.emoteController.playEmotion("neutral");
     },
     async iflyVoice(msg = "") {
       let fm = new FormData();
@@ -124,7 +127,10 @@ const _sfc_main$1 = {
       return ret.echo;
     },
     async dance() {
-      await this.viewer.model.loadAnimation("https://ai.aerofsx.com:444/vrm/OpenCharacters/animations/silly_dancing.fbx");
+      this.viewer.model.loadAnimation("https://vrm.ai.aerofsx.com:444/OpenCharacters/animations/Bboy.fbx");
+    },
+    async idle() {
+      this.viewer.model.loadAnimation("https://vrm.ai.aerofsx.com:444/OpenCharacters/animations/sss.fbx");
     },
     async Post(url, data) {
       return await fetch(url, {
@@ -144,7 +150,7 @@ const _sfc_main$1 = {
 function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createBlock(VContainer, { id: "canvas" });
 }
-const vrm$1 = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1], ["__scopeId", "data-v-a13edf63"]]);
+const vrm$1 = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1], ["__scopeId", "data-v-631c15b2"]]);
 const _sfc_main = {
   name: "App",
   components: {
@@ -168,6 +174,9 @@ const _sfc_main = {
     },
     chatMessage() {
       this.doAction("chat", this.message);
+    },
+    idle() {
+      this.doAction("idle", this.message);
     },
     doAction(type, text) {
       localStorage.setItem("doAction", JSON.stringify({
@@ -253,13 +262,23 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
             ])
           ]),
           _: 1
-        }, 8, ["onSubmit"])
+        }, 8, ["onSubmit"]),
+        createVNode(VBtn, {
+          onClick: $options.idle,
+          color: "green",
+          class: "mt-4"
+        }, {
+          default: withCtx(() => [
+            createTextVNode("IDLE")
+          ]),
+          _: 1
+        }, 8, ["onClick"])
       ]),
       _: 1
     })
   ], 64);
 }
-const vrm = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-961e8298"]]);
+const vrm = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-95ae3cea"]]);
 export {
   vrm as default
 };

@@ -77,7 +77,6 @@ export default {
     // document.body.style.cssText = "margin:0; padding:0;";
 
     this.viewer.setup(canvas);
-
     await this.viewer.loadVrm("https://vrm.ai.aerofsx.com:444/avatars/2368129704508832941.vrm");
 
     this.viewer.model.emoteController.playEmotion("neutral"); // Valid expressions: neutral, happy, angry, sad, relaxed
