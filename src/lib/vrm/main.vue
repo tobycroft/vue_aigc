@@ -61,9 +61,7 @@ export default {
 
   },
   async mounted() {
-    this.ViewerJS =
-  .
-    Viewer
+    this.ViewerJS = (await import("https://vrm.ai.aerofsx.com:444/features/vrmViewer/viewer.js")).Viewer
     this.viewer = null;
     this.viewer = new this.ViewerJS
     setInterval(this.say, 500)
@@ -158,8 +156,7 @@ export default {
       this.viewer.model.loadAnimation("https://vrm.ai.aerofsx.com:444/OpenCharacters/animations/silly_dancing.fbx");
     },
     async idle() {
-      const vrma = await this.viewer.cont.loadVRMAnimation("https://raw.githubusercontent.com/josephrocca/ChatVRM-js/main/idle_loop.vrma");
-      this.viewer.model.loadAnimation(vrma);
+      this.viewer.model.loadAnimation("https://vrm.ai.aerofsx.com:444/idle_loop.vrma");
     },
     async Post(url, data) {
       return await fetch(url, {

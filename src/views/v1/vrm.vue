@@ -17,6 +17,8 @@ export default {
       token: TokenModel.Api_find_token(),
       width: screen.width,
       height: screen.height / 3,
+      speechText:"",
+      recognition: new webkitSpeechRecognition(),
     }
   },
   async mounted() {
@@ -37,7 +39,23 @@ export default {
         type: type,
         text: text
       }))
-    }
+    },
+    startSpeechRecognition() {
+      this.recognition.lang = 'en-US'; // 设置识别语言为英语，可以根据需要修改
+
+      this.recognition.onresult = (event) => {
+        this.message = event.results[0][0].transcript;
+      };
+
+      this.recognition.onerror = (event) => {
+        console.error('Speech recognition error:', event.error);
+      };
+
+      this.recognition.start();
+    },
+    stopSpeechRecognition() {
+      this.recognition.stop(); // 停止语音识别
+    },
   },
 }
 </script>
@@ -51,21 +69,23 @@ export default {
         :uid="uid"
         :token="token"
     ></vrm>
-    <v-card-title>VRM语音+显示</v-card-title>
-    <v-form @submit.prevent="updateMessage">
+
+
+    <v-card class="ma-2">
+      <v-card-title>VRM智能展示</v-card-title>
       <v-text-field v-model="message" label="这里输入你想让VRM说的话"></v-text-field>
-      <div class="d-flex flex-column">
-        <v-btn size="large" type="submit" color="primary" class="mt-4">确认</v-btn>
-      </div>
-    </v-form>
-    <v-card-title>VRM语音+聊天</v-card-title>
-    <v-form @submit.prevent="chatMessage">
-      <v-text-field v-model="message" label="这里输入你想和VRM聊的内容，AI会自动回复你"></v-text-field>
-      <div class="d-flex flex-column">
-        <v-btn size="large" type="submit" color="primary" class="mt-4">确认</v-btn>
-      </div>
-    </v-form>
-    <v-btn @click="idle" color="green" class="mt-4">IDLE</v-btn>
+      <v-btn @click="updateMessage" size="large" color="primary" class="mt-4 ma-2">使用TTS生成语音</v-btn>
+      <v-btn @click="chatMessage" size="large" type="submit" color="primary" class="mt-4 ma-2">发送到GPT聊天</v-btn>
+    </v-card>
+    <v-card class="ma-2">
+      <v-card-title>VRM动作控制</v-card-title>
+      <v-btn @click="idle" color="green" class="mt-4 ma-2">IDLE</v-btn>
+    </v-card>
+    <v-card class="ma-2">
+      <v-card-title>语音识别</v-card-title>
+      <v-btn color="red" @click="startSpeechRecognition" class="ma-2">Start Recognition</v-btn>
+      <v-btn color="grey" @click="stopSpeechRecognition" class="ma-2">Stop Recognition</v-btn>
+    </v-card>
   </v-container>
 
 </template>
