@@ -30,7 +30,7 @@
 
 
 <script>
-import Net from "@/plugins/Net";
+import Net from "@/plugins/Net.js";
 import moment from "moment";
 import top_header from "@/components/topheader.vue";
 

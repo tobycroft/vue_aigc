@@ -19,7 +19,7 @@
 <script>
 import Topheader from "@/components/topheader.vue";
 import info from "@/app/v1/user/info.vue";
-import Fastgpt from "@/app/v1/user/fastgpt.vue"; // 引入 Net 方法
+import Fastgpt from "@/app/v1/key/fastgpt.vue"; // 引入 Net 方法
 
 export default {
   components: {Fastgpt, info, Topheader},
