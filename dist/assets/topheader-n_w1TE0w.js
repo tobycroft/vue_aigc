@@ -1,6 +1,6 @@
 import { _ as _imports_0 } from "./gobotq-CybS7j7m.js";
-import { p as propsFactory, m as makeComponentProps, w as makeTagProps, l as genericComponent, t as useRender, v as createVNode, H as makeBorderProps, J as makeElevationProps, M as makeRoundedProps, k as makeThemeProps, N as useBackgroundColor, O as toRef, P as useBorder, R as useElevation, U as useRounded, n as provideTheme, q as useRtl, s as shallowRef, a as computed, ai as provideDefaults, D as VImg, aM as VDefaultsProvider, h as convertToUnit, _ as _export_sfc, o as openBlock, c as createBlock, y as withCtx, F as VIcon, z as createTextVNode, aN as VSpacer, E as VBtn } from "./index-DCCa22eB.js";
-import { a as VExpandTransition } from "./index-CGrv5RBN.js";
+import { p as propsFactory, m as makeComponentProps, w as makeTagProps, l as genericComponent, t as useRender, v as createVNode, C as makeBorderProps, E as makeElevationProps, H as makeRoundedProps, k as makeThemeProps, I as useBackgroundColor, J as toRef, K as useBorder, M as useElevation, P as useRounded, n as provideTheme, q as useRtl, s as shallowRef, a as computed, af as provideDefaults, aK as VImg, aL as VDefaultsProvider, h as convertToUnit, _ as _export_sfc, o as openBlock, c as createBlock, y as withCtx, aE as VIcon, z as createTextVNode, aM as VSpacer, W as VBtn } from "./index-CwHd84mN.js";
+import { a as VExpandTransition } from "./index-De0p4c-e.js";
 const makeVToolbarTitleProps = propsFactory({
   text: String,
   ...makeComponentProps(),
@@ -181,7 +181,7 @@ const VToolbar = genericComponent()({
 const _sfc_main = {
   methods: {
     navigateTo(tab) {
-      this.$router.push(tab);
+      this.$router.go(tab);
     },
     toggleDrawer() {
     }

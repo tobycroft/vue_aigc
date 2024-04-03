@@ -1,10 +1,9 @@
-import { T as Topheader } from "./topheader-B_eny8c7.js";
-import { T as TokenModel } from "./TokenModel-fnmBdSAh.js";
-import { p as propsFactory, i as inject, a as computed, b as ref, d as reactive, u as useResizeObserver, g as getCurrentInstance, s as shallowRef, e as onMounted, f as provide, h as convertToUnit, j as findChildrenWithProvide, m as makeComponentProps, k as makeThemeProps, l as genericComponent, n as provideTheme, q as useRtl, t as useRender, v as createVNode, w as makeTagProps, x as createSimpleFunctional, _ as _export_sfc, A as Alert, c as createBlock, y as withCtx, o as openBlock, z as createTextVNode, V as VCardText, B as resolveComponent } from "./index-DCCa22eB.js";
-import { V as VContainer } from "./VContainer-BG29V_Zb.js";
-import { u as useSsrBoot } from "./ssrBoot-vOdfJYAl.js";
+import { T as Topheader } from "./topheader-n_w1TE0w.js";
+import { T as TokenModel, V as VContainer } from "./TokenModel-DXwiTDBf.js";
+import { p as propsFactory, i as inject, a as computed, b as ref, d as reactive, u as useResizeObserver, g as getCurrentInstance, s as shallowRef, e as onMounted, f as provide, h as convertToUnit, j as findChildrenWithProvide, m as makeComponentProps, k as makeThemeProps, l as genericComponent, n as provideTheme, q as useRtl, t as useRender, v as createVNode, w as makeTagProps, x as createSimpleFunctional, _ as _export_sfc, A as Alert, c as createBlock, y as withCtx, o as openBlock, z as createTextVNode, V as VCardText, B as resolveComponent } from "./index-CwHd84mN.js";
+import { u as useSsrBoot } from "./ssrBoot-ziKgp8-2.js";
 import "./gobotq-CybS7j7m.js";
-import "./index-CGrv5RBN.js";
+import "./index-De0p4c-e.js";
 const VuetifyLayoutKey = Symbol.for("vuetify:layout");
 const VuetifyLayoutItemKey = Symbol.for("vuetify:layout-item");
 const ROOT_ZINDEX = 1e3;
@@ -123,13 +122,13 @@ function createLayout(props) {
     };
   });
   const items = computed(() => {
-    return layers.value.slice(1).map((_ref, index) => {
+    return layers.value.slice(1).map((_ref, index2) => {
       let {
         id
       } = _ref;
       const {
         layer
-      } = layers.value[index];
+      } = layers.value[index2];
       const size = layoutSizes.get(id);
       const position = positions.get(id);
       return {
@@ -171,8 +170,8 @@ function createLayout(props) {
         registered.value.splice(instanceIndex, 0, id);
       else
         registered.value.push(id);
-      const index = computed(() => items.value.findIndex((i) => i.id === id));
-      const zIndex = computed(() => rootZIndex.value + layers.value.length * 2 - index.value * 2);
+      const index2 = computed(() => items.value.findIndex((i) => i.id === id));
+      const zIndex = computed(() => rootZIndex.value + layers.value.length * 2 - index2.value * 2);
       const layoutItemStyles = computed(() => {
         const isHorizontal = position.value === "left" || position.value === "right";
         const isOppositeHorizontal = position.value === "right";
@@ -188,7 +187,7 @@ function createLayout(props) {
         };
         if (!isMounted.value)
           return styles;
-        const item = items.value[index.value];
+        const item = items.value[index2.value];
         if (!item)
           throw new Error(`[Vuetify] Could not find layout item "${id}"`);
         const overlap = computedOverlaps.value.get(id);
@@ -379,7 +378,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
   });
 }
-const center = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
+const index = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
 export {
-  center as default
+  index as default
 };

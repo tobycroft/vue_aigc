@@ -1,11 +1,10 @@
-import { N as Net } from "./Net-C_FtQt6t.js";
-import { T as TokenModel } from "./TokenModel-fnmBdSAh.js";
-import { p as propsFactory, H as makeBorderProps, m as makeComponentProps, I as makeDimensionProps, J as makeElevationProps, K as makeLocationProps, L as makePositionProps, M as makeRoundedProps, w as makeTagProps, k as makeThemeProps, l as genericComponent, n as provideTheme, N as useBackgroundColor, O as toRef, P as useBorder, Q as useDimension, R as useElevation, S as useLocation, T as usePosition, U as useRounded, t as useRender, v as createVNode, _ as _export_sfc, c as createBlock, y as withCtx, o as openBlock, W as VCard, X as createCommentVNode, Y as withDirectives, Z as vShow, $ as withModifiers, E as VBtn, z as createTextVNode, G as createBaseVNode } from "./index-DCCa22eB.js";
+import { N as Net } from "./Net-DdldaH66.js";
+import { T as TokenModel, V as VContainer } from "./TokenModel-DXwiTDBf.js";
+import { p as propsFactory, C as makeBorderProps, m as makeComponentProps, D as makeDimensionProps, E as makeElevationProps, F as makeLocationProps, G as makePositionProps, H as makeRoundedProps, w as makeTagProps, k as makeThemeProps, l as genericComponent, n as provideTheme, I as useBackgroundColor, J as toRef, K as useBorder, L as useDimension, M as useElevation, N as useLocation, O as usePosition, P as useRounded, t as useRender, v as createVNode, _ as _export_sfc, c as createBlock, y as withCtx, o as openBlock, Q as VCard, R as createCommentVNode, S as withDirectives, T as vShow, U as withModifiers, W as VBtn, z as createTextVNode, X as createBaseVNode } from "./index-CwHd84mN.js";
 import { _ as _imports_0 } from "./gobotq-CybS7j7m.js";
-import { V as VSlideYTransition } from "./index-CGrv5RBN.js";
-import { V as VContainer } from "./VContainer-BG29V_Zb.js";
-import { V as VForm } from "./VForm-BPIFOJvq.js";
-import { V as VTextField } from "./VTextField-CsNpeqDh.js";
+import { V as VSlideYTransition } from "./index-De0p4c-e.js";
+import { V as VForm } from "./VForm-CxtTQiJC.js";
+import { V as VTextField } from "./VTextField-BJpY23g3.js";
 const makeVSheetProps = propsFactory({
   color: String,
   ...makeBorderProps(),
@@ -304,7 +303,7 @@ const md5 = /* @__PURE__ */ getDefaultExportFromCjs(md5Exports);
 const _sfc_main = {
   beforeCreate() {
     if (TokenModel.Api_is_login()) {
-      this.$router.push("/center");
+      this.$router.push("/index");
     }
   },
   created() {
