@@ -35,7 +35,12 @@ export default {
   },
   mounted() {
     if (this.$route.query.tab) {
-      this.tab = parseInt(this.$route.query.tab);
+      let tab = parseInt(this.$route.query.tab)
+      if (tab || tab === 0) {
+        this.tab = parseInt(this.$route.query.tab);
+      } else {
+        this.tab = this.$route.query.tab;
+      }
     }
   },
 };
