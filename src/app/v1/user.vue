@@ -18,8 +18,8 @@
 
 <script>
 import Topheader from "@/components/center/header/topheader.vue";
-import info from "@/views/v1/user/info.vue"; // 引入 Net 方法
-import team from "@/views/v1/user/team.vue";
+import info from "@/app/v1/user/info.vue"; // 引入 Net 方法
+import team from "@/app/v1/user/team.vue";
 
 export default {
   components: {info, team, Topheader},

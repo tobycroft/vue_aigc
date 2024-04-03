@@ -90,18 +90,18 @@ MainRouter.beforeEach((to, from, next) => {
 function importer(pagePath) {
     switch (pagePath.length) {
         case 1:
-            return import(`@/views/${pagePath[0].toLowerCase()}.vue`);
+            return import(`@/app/${pagePath[0].toLowerCase()}.vue`);
         case 2:
-            return import(`@/views/${pagePath[0].toLowerCase()}/${pagePath[1].toLowerCase()}.vue`);
+            return import(`@/app/${pagePath[0].toLowerCase()}/${pagePath[1].toLowerCase()}.vue`);
         case 3:
-            return import(`@/views/${pagePath[0].toLowerCase()}/${pagePath[1].toLowerCase()}/${pagePath[2].toLowerCase()}.vue`);
+            return import(`@/app/${pagePath[0].toLowerCase()}/${pagePath[1].toLowerCase()}/${pagePath[2].toLowerCase()}.vue`);
         case 4:
-            return import(`@/views/${pagePath[0].toLowerCase()}/${pagePath[1].toLowerCase()}/${pagePath[2].toLowerCase()}/${pagePath[3].toLowerCase()}.vue`);
+            return import(`@/app/${pagePath[0].toLowerCase()}/${pagePath[1].toLowerCase()}/${pagePath[2].toLowerCase()}/${pagePath[3].toLowerCase()}.vue`);
         case 5:
-            return import(`@/views/${pagePath[0].toLowerCase()}/${pagePath[1].toLowerCase()}/${pagePath[2].toLowerCase()}/${pagePath[3].toLowerCase()}/${pagePath[4].toLowerCase()}.vue`);
+            return import(`@/app/${pagePath[0].toLowerCase()}/${pagePath[1].toLowerCase()}/${pagePath[2].toLowerCase()}/${pagePath[3].toLowerCase()}/${pagePath[4].toLowerCase()}.vue`);
 
         default:
-            return import(`@/views/user/login.vue`);
+            return import(`@/app/user/login.vue`);
     }
 
 }
