@@ -5,7 +5,7 @@
         添加团队 Token
       </v-card-title>
       <v-card-text>
-        <v-form @submit.prevent="createToken">
+        <v-form @submit.prevent="updateToken">
           <v-container>
             <v-row>
               <v-col cols="12">
@@ -87,7 +87,7 @@ export default {
         console.error('Failed to fetch coin list:', error);
       }
     },
-    async createToken() {
+    async updateToken() {
       try {
         const payload = {
           name: this.formData.name,
