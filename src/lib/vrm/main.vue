@@ -121,10 +121,10 @@ export default {
       }
     },
     async speak(msg) {
-      this.dance();
+      // this.dance();
       await this.iflyVoice(msg)
       //remove animation
-      // this.viewer.model.emoteController.playEmotion("neutral");
+      this.viewer.model.emoteController.playEmotion("neutral");
     },
     async iflyVoice(msg = '') {
       let fm = new FormData();

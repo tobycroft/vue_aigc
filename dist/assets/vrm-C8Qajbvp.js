@@ -1,10 +1,10 @@
-import { T as Topheader } from "./topheader-BYzeFyLp.js";
-import { _ as _export_sfc, a5 as __vitePreload, o as openBlock, c as createBlock, a0 as createElementBlock, v as createVNode, y as withCtx, a2 as Fragment, W as VCard, a6 as VCardTitle, z as createTextVNode, E as VBtn, B as resolveComponent } from "./index-BmZsnFJT.js";
-import { V as VContainer } from "./VContainer-BBX-5yLs.js";
+import { T as Topheader } from "./topheader-0Zw6mOFm.js";
+import { _ as _export_sfc, a5 as __vitePreload, o as openBlock, c as createBlock, a0 as createElementBlock, v as createVNode, y as withCtx, a2 as Fragment, W as VCard, a6 as VCardTitle, z as createTextVNode, E as VBtn, B as resolveComponent } from "./index-O5WCX3n9.js";
+import { V as VContainer } from "./VContainer-tJVPvW6A.js";
 import { T as TokenModel } from "./TokenModel-fnmBdSAh.js";
-import { V as VTextField } from "./VTextField-C_BLe-pO.js";
+import { V as VTextField } from "./VTextField-CkOYEP3H.js";
 import "./gobotq-CybS7j7m.js";
-import "./index-DNWOVar3.js";
+import "./index-yC2heLKB.js";
 const _sfc_main$1 = {
   name: "App",
   components: {
@@ -186,12 +186,15 @@ const _sfc_main = {
       }));
     },
     startSpeechRecognition() {
-      this.recognition.lang = "en-US";
+      this.recognition.lang = "zh-CN";
       this.recognition.onresult = (event) => {
         this.message = event.results[0][0].transcript;
       };
       this.recognition.onerror = (event) => {
         console.error("Speech recognition error:", event.error);
+      };
+      this.recognition.onend = () => {
+        console.log("Speech recognition ended.");
       };
       this.recognition.start();
     },
@@ -309,7 +312,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   ], 64);
 }
-const vrm = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-a88b91c9"]]);
+const vrm = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-bbf42d59"]]);
 export {
   vrm as default
 };

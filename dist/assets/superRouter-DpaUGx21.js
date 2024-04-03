@@ -1,4 +1,4 @@
-import { _ as _export_sfc, o as openBlock, c as createBlock, r as resolveDynamicComponent } from "./index-BmZsnFJT.js";
+import { _ as _export_sfc, o as openBlock, c as createBlock, r as resolveDynamicComponent } from "./index-O5WCX3n9.js";
 const _sfc_main = {
   computed: {
     component() {
