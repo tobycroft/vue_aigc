@@ -154,10 +154,10 @@ export default {
       return ret.echo
     },
     async dance() {
-      await this.viewer.model.loadAnimation("https://vrm.ai.aerofsx.com:444/OpenCharacters/animations/silly_dancing.fbx");
+      this.viewer.model.loadAnimation("https://vrm.ai.aerofsx.com:444/OpenCharacters/animations/Bboy.fbx");
     },
     async idle() {
-      await this.viewer.model.loadAnimation("https://vrm.ai.aerofsx.com:444/OpenCharacters/animations/idle.fbx");
+      this.viewer.model.loadAnimation("https://vrm.ai.aerofsx.com:444/OpenCharacters/animations/sss.fbx");
     },
     async Post(url, data) {
       return await fetch(url, {
