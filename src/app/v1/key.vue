@@ -5,8 +5,8 @@
           fixed-tabs
           bg-color="indigo-darken-2"
   >
-    <v-tab>我的信息</v-tab>
-    <v-tab>Fast</v-tab>
+    <v-tab>FastGPT</v-tab>
+    <v-tab>QWen</v-tab>
 
   </v-tabs>
 
