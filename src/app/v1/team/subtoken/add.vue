@@ -7,13 +7,10 @@
           <v-container>
             <v-row>
               <v-col cols="12">
-                <v-select v-model="selectedCoinId" :items="coinList" label="选择GPT类型" item-text="name" item-value="id"></v-select>
+                <v-select v-model="formData.team_id" :items="teamList" label="团队id" item-text="title" item-value="id"></v-select>
               </v-col>
               <v-col cols="12">
                 <v-text-field v-model="formData.name" label="key名称"></v-text-field>
-              </v-col>
-              <v-col cols="12">
-                <v-text-field v-model="formData.team_id" label="团队id"></v-text-field>
               </v-col>
               <v-col cols="12">
                 <v-text-field v-model="formData.prefix" label="prefix标签"></v-text-field>
@@ -37,7 +34,7 @@ import Net from "@/plugins/Net";
 export default {
   data() {
     return {
-      team_info: {},
+      teamList: [],
       team: this.$route.query,
       coinList: [],
       selectedCoinId: null,
@@ -53,15 +50,13 @@ export default {
   methods: {
     async fetchTeamInfo() {
       // 获取团队信息
-      const ret = await new Net(`/v1/user/team/get`).PostFormData(this.team);
-      if (ret.code === 0) {
+      const response = await new Net(`/v1/user/team/list`).PostFormData();
+      if (response.code === 0) {
         // 填充团队信息到表单中
-        this.team_info = ret.data.team_info
-        this.formData.prefix = ret.data.team_info.prefix
-        this.formData.team_id = ret.data.team_info.id
+        this.teamList = response.data.map(data => ({id: data.team_info.id, title: data.team_info.name}));
         // 如果还有其他字段，也可以在这里填充
       } else {
-        console.error(ret.echo);
+        console.error(response.echo);
       }
     },
     async fetchCoinList() {
