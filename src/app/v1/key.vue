@@ -13,7 +13,7 @@
 
   <fastgpt v-if="tab===0 || tab==='fastgpt'"></fastgpt>
   <qwen v-if="tab===1 || tab==='qwen'"></qwen>
-  <ifly v-if="tab===2 || tab==='ifly'"></ifly>
+  <ifly v-if="tab===2 || tab==='iflytek'"></ifly>
 
 
 </template>
@@ -45,7 +45,7 @@ export default {
     },
   },
   mounted() {
-    if(this.$route.query.tab){
+    if (this.$route.query.tab) {
       let tab = parseInt(this.$route.query.tab)
       if (tab || tab === 0) {
         this.tab = parseInt(this.$route.query.tab);

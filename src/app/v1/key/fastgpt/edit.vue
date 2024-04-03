@@ -47,8 +47,8 @@ export default {
         base_url: '',
         model: '',
         detail: 0,
-        teamList: [], // 存储团队列表数据
       },
+      teamList: [], // 存储团队列表数据
       fastGPTId: null // 用于存储 FastGPT 信息的 ID
     };
   },

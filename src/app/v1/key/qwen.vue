@@ -3,7 +3,7 @@
       class="mx-auto"
   >
     <v-card-title>
-      FastGPT 信息列表
+      阿里千问 信息列表
       <v-spacer></v-spacer>
       <v-btn
           color="primary"

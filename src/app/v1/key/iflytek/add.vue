@@ -13,13 +13,19 @@
                 <v-select v-model="formData.team_id" :items="teamList" label="选项" item-text="title" item-value="id"/>
               </v-col>
               <v-col cols="12">
-                <v-text-field v-model="formData.key" label="Key"></v-text-field>
+                <v-text-field v-model="formData.host" label="host"></v-text-field>
               </v-col>
               <v-col cols="12">
-                <v-text-field v-model="formData.rid" label="rid"></v-text-field>
+                <v-text-field v-model="formData.api_secret" label="api_secret"></v-text-field>
               </v-col>
               <v-col cols="12">
-                <v-text-field v-model="formData.model" label="Model"></v-text-field>
+                <v-text-field v-model="formData.app_id" label="app_id"></v-text-field>
+              </v-col>
+              <v-col cols="12">
+                <v-text-field v-model="formData.api_key" label="api_key"></v-text-field>
+              </v-col>
+              <v-col cols="12">
+                <v-text-field v-model="formData.vcn" label="vcn"></v-text-field>
               </v-col>
             </v-row>
           </v-container>
