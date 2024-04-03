@@ -6,6 +6,7 @@
           bg-color="indigo-darken-2"
   >
     <v-tab>我的团队</v-tab>
+    <v-tab>子密钥管理</v-tab>
 
   </v-tabs>
 
