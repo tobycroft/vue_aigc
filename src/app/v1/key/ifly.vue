@@ -22,8 +22,8 @@
       <template v-slot:default="{ item }">
         <v-list-item>
           <v-list-item-title>{{ item.name }}</v-list-item-title>
-          <v-list-item-subtitle>远程key：{{ item.key }}</v-list-item-subtitle>
-          <v-list-item-subtitle>远程服务器地址：{{ item.base_url }}</v-list-item-subtitle>
+          <v-list-item-subtitle>关键字：{{ item.key }}</v-list-item-subtitle>
+          <v-list-item-subtitle>网址：{{ item.base_url }}</v-list-item-subtitle>
           <template v-slot:prepend>
             <v-icon class="bg-primary">mdi-robot</v-icon>
           </template>
@@ -74,7 +74,7 @@ export default {
       }
     },
     async addInfo() {
-      this.$router.push('/v1/key/fastgpt/add');
+      this.$router.push('/v1/fastgpt/info/create');
     },
     async deleteInfo(info) {
       // 发送删除信息的请求
@@ -89,7 +89,7 @@ export default {
     },
     async editInfo(info) {
       // 根据信息跳转到编辑页面
-      this.$router.push({path: "/v1/key/fastgpt/edit", query: info});
+      this.$router.push({path: "/v1/fastgpt/info/edit", query: info});
     },
   },
   mounted() {

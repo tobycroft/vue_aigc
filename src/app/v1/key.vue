@@ -7,11 +7,13 @@
   >
     <v-tab>FastGPT</v-tab>
     <v-tab>QWen</v-tab>
+    <v-tab>IFLY</v-tab>
 
   </v-tabs>
 
-  <info v-if="tab===0"></info>
-  <fastgpt v-if="tab===1"></fastgpt>
+  <fastgpt v-if="tab===0"></fastgpt>
+  <qwen v-if="tab===1"></qwen>
+  <ifly v-if="tab===2"></ifly>
 
 
 </template>
@@ -19,10 +21,12 @@
 <script>
 import Topheader from "@/components/topheader.vue";
 import info from "@/app/v1/user/info.vue";
-import Fastgpt from "@/app/v1/key/fastgpt.vue"; // 引入 Net 方法
+import Fastgpt from "@/app/v1/key/fastgpt.vue";
+import Qwen from "@/app/v1/key/qwen.vue";
+import Ifly from "@/app/v1/key/ifly.vue"; // 引入 Net 方法
 
 export default {
-  components: {Fastgpt, info, Topheader},
+  components: {Ifly, Qwen, Fastgpt, info, Topheader},
   data() {
     return {
       tab: 0

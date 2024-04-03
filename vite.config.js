@@ -10,7 +10,6 @@ import {fileURLToPath, URL} from 'node:url'
 // https://vitejs.dev/config/
 export default defineConfig({
     optimizeDeps: {
-        include: ['@/assets/live2d.min.js', '@/lib/index.vue'],
         // noDiscovery: true,
     },
     plugins: [
@@ -49,13 +48,4 @@ export default defineConfig({
     server: {
         port: 3000,
     },
-    build: {
-        outDir: 'dist',
-        emptyOutDir: true,
-        minify: false,
-        sourcemap: false,
-        manifest: false,
-        rollupOptions: {},
-    },
-    mode: 'development',
 })
