@@ -1,11 +1,11 @@
-import { T as Topheader } from "./topheader-BLkEObyq.js";
-import { _ as _export_sfc, a5 as __vitePreload, o as openBlock, c as createBlock, a0 as createElementBlock, v as createVNode, y as withCtx, a2 as Fragment, a6 as VCardTitle, z as createTextVNode, $ as withModifiers, G as createBaseVNode, E as VBtn, B as resolveComponent } from "./index--rWyv6sy.js";
-import { V as VContainer } from "./VContainer-CZBboQxr.js";
+import { T as Topheader } from "./topheader-CCgVg4GT.js";
+import { _ as _export_sfc, a5 as __vitePreload, o as openBlock, c as createBlock, a0 as createElementBlock, v as createVNode, y as withCtx, a2 as Fragment, a6 as VCardTitle, z as createTextVNode, $ as withModifiers, G as createBaseVNode, E as VBtn, B as resolveComponent } from "./index-LlmcXNt1.js";
+import { V as VContainer } from "./VContainer-dnVCBygm.js";
 import { T as TokenModel } from "./TokenModel-fnmBdSAh.js";
-import { V as VForm } from "./VForm-wBfx81f3.js";
-import { V as VTextField } from "./VTextField-BLPwl5UY.js";
+import { V as VForm } from "./VForm-kg5Ei1kx.js";
+import { V as VTextField } from "./VTextField-DNOalQux.js";
 import "./gobotq-CybS7j7m.js";
-import "./index-Bk8YsJ-F.js";
+import "./index-CyQKCnVd.js";
 const _sfc_main$1 = {
   name: "App",
   components: {
@@ -127,7 +127,7 @@ const _sfc_main$1 = {
       return ret.echo;
     },
     async dance() {
-      this.viewer.model.loadAnimation("https://vrm.ai.aerofsx.com:444/OpenCharacters/animations/Bboy.fbx");
+      this.viewer.model.loadAnimation("https://vrm.ai.aerofsx.com:444/OpenCharacters/animations/silly_dancing.fbx");
     },
     async idle() {
       this.viewer.model.loadAnimation("https://vrm.ai.aerofsx.com:444/idle_loop.vrma");
@@ -150,7 +150,7 @@ const _sfc_main$1 = {
 function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createBlock(VContainer, { id: "canvas" });
 }
-const vrm$1 = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1], ["__scopeId", "data-v-c2f09ff0"]]);
+const vrm$1 = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1], ["__scopeId", "data-v-b12282ca"]]);
 const _sfc_main = {
   name: "App",
   components: {

@@ -156,7 +156,8 @@ export default {
       this.viewer.model.loadAnimation("https://vrm.ai.aerofsx.com:444/OpenCharacters/animations/silly_dancing.fbx");
     },
     async idle() {
-      this.viewer.model.loadAnimation("https://vrm.ai.aerofsx.com:444/idle_loop.vrma");
+      const vrma = await loadVRMAnimation("https://raw.githubusercontent.com/josephrocca/ChatVRM-js/main/idle_loop.vrma");
+      this.viewer.model.loadAnimation(vrma);
     },
     async Post(url, data) {
       return await fetch(url, {
