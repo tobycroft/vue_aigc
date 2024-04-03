@@ -1,6 +1,6 @@
 function __vite__mapDeps(indexes) {
   if (!__vite__mapDeps.viteFileDeps) {
-    __vite__mapDeps.viteFileDeps = ["assets/login-DzqR0r1C.js","assets/login-BuAuZhcW.css"]
+    __vite__mapDeps.viteFileDeps = ["assets/center-Cg1KP1fh.js","assets/topheader-B_eny8c7.js","assets/gobotq-CybS7j7m.js","assets/index-CGrv5RBN.js","assets/topheader-1sIHJ2mT.css","assets/TokenModel-fnmBdSAh.js","assets/VContainer-BG29V_Zb.js","assets/ssrBoot-vOdfJYAl.js","assets/center-cRp043es.css","assets/home-BBLeVDGA.js","assets/VRow-D4RnUuNg.js","assets/login-wW00opp4.js","assets/Net-C_FtQt6t.js","assets/VForm-BPIFOJvq.js","assets/VTextField-CsNpeqDh.js","assets/VTextField-BHw_gr_H.css","assets/login-COYMm_r_.css","assets/live2d-01vkABg7.js","assets/main-DL-tROmh.js","assets/vrm-BDBcnmXB.css","assets/live2d-DzPAiFvU.css","assets/user-kY2zhnyw.js","assets/info-Byn6uP5i.js","assets/moment-D5u_x0RX.js","assets/team-DmZrR7KU.js","assets/VList-eBGjoxJ3.js","assets/VList-DuB24XFb.css","assets/VSlideGroup-BoSWFO7m.js","assets/VSlideGroup-Ch6w-Ga8.css","assets/user--rgiivAS.css","assets/vrm-BN062h4w.js","assets/subtoken-Bxyk_RZ8.js","assets/VSelect-CF-bL1av.js","assets/VSelect-C6sTOpwI.css","assets/subtoken-BemhnZV_.css","assets/add-zC9gDyEh.js","assets/edit-DjdbH74C.js","assets/create-Dd_vmFbt.js","assets/edit-y4DLHX8E.js"]
   }
   return indexes.map((i) => __vite__mapDeps.viteFileDeps[i])
 }
@@ -2603,6 +2603,41 @@ const onRenderTracked = createHook(
 );
 function onErrorCaptured(hook, target = currentInstance) {
   injectHook("ec", hook, target);
+}
+function renderList(source, renderItem, cache, index) {
+  let ret;
+  const cached = cache && cache[index];
+  if (isArray$1(source) || isString(source)) {
+    ret = new Array(source.length);
+    for (let i = 0, l = source.length; i < l; i++) {
+      ret[i] = renderItem(source[i], i, void 0, cached && cached[i]);
+    }
+  } else if (typeof source === "number") {
+    ret = new Array(source);
+    for (let i = 0; i < source; i++) {
+      ret[i] = renderItem(i + 1, i, void 0, cached && cached[i]);
+    }
+  } else if (isObject$1(source)) {
+    if (source[Symbol.iterator]) {
+      ret = Array.from(
+        source,
+        (item, i) => renderItem(item, i, void 0, cached && cached[i])
+      );
+    } else {
+      const keys = Object.keys(source);
+      ret = new Array(keys.length);
+      for (let i = 0, l = keys.length; i < l; i++) {
+        const key = keys[i];
+        ret[i] = renderItem(source[key], key, i, cached && cached[i]);
+      }
+    }
+  } else {
+    ret = [];
+  }
+  if (cache) {
+    cache[index] = ret;
+  }
+  return ret;
 }
 const getPublicInstance = (i) => {
   if (!i)
@@ -6885,6 +6920,26 @@ function getObjectValueByPath(obj, path, fallback) {
   path = path.replace(/^\./, "");
   return getNestedValue(obj, path.split("."), fallback);
 }
+function getPropertyFromItem(item, property, fallback) {
+  if (property === true)
+    return item === void 0 ? fallback : item;
+  if (property == null || typeof property === "boolean")
+    return fallback;
+  if (item !== Object(item)) {
+    if (typeof property !== "function")
+      return fallback;
+    const value2 = property(item, fallback);
+    return typeof value2 === "undefined" ? fallback : value2;
+  }
+  if (typeof property === "string")
+    return getObjectValueByPath(item, property, fallback);
+  if (Array.isArray(property))
+    return getNestedValue(item, property, fallback);
+  if (typeof property !== "function")
+    return fallback;
+  const value = property(item, fallback);
+  return typeof value === "undefined" ? fallback : value;
+}
 function createRange(length) {
   let start = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : 0;
   return Array.from({
@@ -6935,6 +6990,25 @@ const keyCodes = Object.freeze({
   pagedown: 34,
   shift: 16
 });
+const keyValues = Object.freeze({
+  enter: "Enter",
+  tab: "Tab",
+  delete: "Delete",
+  esc: "Escape",
+  space: "Space",
+  up: "ArrowUp",
+  down: "ArrowDown",
+  left: "ArrowLeft",
+  right: "ArrowRight",
+  end: "End",
+  home: "Home",
+  del: "Delete",
+  backspace: "Backspace",
+  insert: "Insert",
+  pageup: "PageUp",
+  pagedown: "PageDown",
+  shift: "Shift"
+});
 function has(obj, key) {
   return key.every((k) => obj.hasOwnProperty(k));
 }
@@ -6980,6 +7054,21 @@ function filterInputAttrs(attrs) {
 }
 function wrapInArray(v) {
   return v == null ? [] : Array.isArray(v) ? v : [v];
+}
+function debounce(fn, delay) {
+  let timeoutId = 0;
+  const wrap = function() {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => fn(...args), unref(delay));
+  };
+  wrap.clear = () => {
+    clearTimeout(timeoutId);
+  };
+  wrap.immediate = fn;
+  return wrap;
 }
 function clamp(value) {
   let min = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : 0;
@@ -7101,6 +7190,40 @@ function focusableChildren(el) {
   const targets = ["button", "[href]", 'input:not([type="hidden"])', "select", "textarea", "[tabindex]"].map((s) => `${s}${filterByTabIndex ? ':not([tabindex="-1"])' : ""}:not([disabled])`).join(", ");
   return [...el.querySelectorAll(targets)];
 }
+function getNextElement(elements, location2, condition) {
+  let _el;
+  let idx = elements.indexOf(document.activeElement);
+  const inc = location2 === "next" ? 1 : -1;
+  do {
+    idx += inc;
+    _el = elements[idx];
+  } while ((!_el || _el.offsetParent == null || !((condition == null ? void 0 : condition(_el)) ?? true)) && idx < elements.length && idx >= 0);
+  return _el;
+}
+function focusChild(el, location2) {
+  var _a, _b, _c, _d;
+  const focusable = focusableChildren(el);
+  if (!location2) {
+    if (el === document.activeElement || !el.contains(document.activeElement)) {
+      (_a = focusable[0]) == null ? void 0 : _a.focus();
+    }
+  } else if (location2 === "first") {
+    (_b = focusable[0]) == null ? void 0 : _b.focus();
+  } else if (location2 === "last") {
+    (_c = focusable.at(-1)) == null ? void 0 : _c.focus();
+  } else if (typeof location2 === "number") {
+    (_d = focusable[location2]) == null ? void 0 : _d.focus();
+  } else {
+    const _el = getNextElement(focusable, location2);
+    if (_el)
+      _el.focus();
+    else
+      focusChild(el, location2 === "next" ? "first" : "last");
+  }
+}
+function isEmpty(val) {
+  return val === null || val === void 0 || typeof val === "string" && val.trim() === "";
+}
 function matchesSelector(el, selector) {
   const supportsSelector = IN_BROWSER && typeof CSS !== "undefined" && typeof CSS.supports !== "undefined" && CSS.supports(`selector(${selector})`);
   if (!supportsSelector)
@@ -7111,6 +7234,15 @@ function matchesSelector(el, selector) {
     return null;
   }
 }
+function ensureValidVNode(vnodes) {
+  return vnodes.some((child) => {
+    if (!isVNode(child))
+      return true;
+    if (child.type === Comment)
+      return false;
+    return child.type !== Fragment || ensureValidVNode(child.children);
+  }) ? vnodes : null;
+}
 function defer(timeout, cb) {
   if (!IN_BROWSER || timeout === 0) {
     cb();
@@ -7119,6 +7251,16 @@ function defer(timeout, cb) {
   }
   const timeoutId = window.setTimeout(cb, timeout);
   return () => window.clearTimeout(timeoutId);
+}
+function isClickInsideElement(event, targetDiv) {
+  const mouseX = event.clientX;
+  const mouseY = event.clientY;
+  const divRect = targetDiv.getBoundingClientRect();
+  const divLeft = divRect.left;
+  const divTop = divRect.top;
+  const divRight = divRect.right;
+  const divBottom = divRect.bottom;
+  return mouseX >= divLeft && mouseX <= divRight && mouseY >= divTop && mouseY <= divBottom;
 }
 const block = ["top", "bottom"];
 const inline = ["start", "end", "left", "right"];
@@ -7371,6 +7513,11 @@ function APCAcontrast(text, background) {
   return outputContrast * 100;
 }
 function consoleWarn(message) {
+}
+function consoleError(message) {
+}
+function deprecate(original, replacement) {
+  replacement = Array.isArray(replacement) ? replacement.slice(0, -1).map((s) => `'${s}'`).join(", ") + ` or '${replacement.at(-1)}'` : `'${replacement}'`;
 }
 const delta = 0.20689655172413793;
 const cielabForwardTransform = (t) => t > delta ** 3 ? Math.cbrt(t) : t / (3 * delta ** 2) + 4 / 29;
@@ -7758,6 +7905,10 @@ function defineComponent(options) {
 function genericComponent() {
   let exposeDefaults = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : true;
   return (options) => (exposeDefaults ? defineComponent : defineComponent$1)(options);
+}
+function defineFunctionalComponent(props, render) {
+  render.props = props;
+  return render;
 }
 function createSimpleFunctional(klass) {
   let tag = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : "div";
@@ -8832,6 +8983,7 @@ function createInstance(options, locale) {
   });
   return instance;
 }
+const breakpoints = ["sm", "md", "lg", "xl", "xxl"];
 const DisplaySymbol = Symbol.for("vuetify:display");
 const defaultDisplayOptions = {
   mobileBreakpoint: "lg",
@@ -8946,6 +9098,9 @@ function createDisplay(options, ssr) {
     ssr: !!ssr
   };
 }
+const makeDisplayProps = propsFactory({
+  mobileBreakpoint: [Number, String]
+}, "display");
 function useDisplay() {
   let props = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
   let name = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : getCurrentInstanceName();
@@ -11496,7 +11651,7 @@ function extractChangingRecords(to, from) {
 const routes = [
   {
     path: "/:pathMatch(.*)*",
-    component: () => __vitePreload(() => import("./superRouter-CqS5XIHt.js"), true ? [] : void 0)
+    component: () => __vitePreload(() => import("./superRouter-Bjk1GCgR.js"), true ? [] : void 0)
     // 假设您有一个布局组件用于渲染页面
   }
 ];
@@ -11515,17 +11670,17 @@ MainRouter.beforeEach((to, from, next) => {
 function importer(pagePath) {
   switch (pagePath.length) {
     case 1:
-      return __variableDynamicImportRuntimeHelper(/* @__PURE__ */ Object.assign({}), `../views/${pagePath[0].toLowerCase()}.vue`);
+      return __variableDynamicImportRuntimeHelper(/* @__PURE__ */ Object.assign({ "../app/center.vue": () => __vitePreload(() => import("./center-Cg1KP1fh.js"), true ? __vite__mapDeps([0,1,2,3,4,5,6,7,8]) : void 0), "../app/home.vue": () => __vitePreload(() => import("./home-BBLeVDGA.js"), true ? __vite__mapDeps([9,10,6]) : void 0) }), `../app/${pagePath[0].toLowerCase()}.vue`);
     case 2:
-      return __variableDynamicImportRuntimeHelper(/* @__PURE__ */ Object.assign({}), `../views/${pagePath[0].toLowerCase()}/${pagePath[1].toLowerCase()}.vue`);
+      return __variableDynamicImportRuntimeHelper(/* @__PURE__ */ Object.assign({ "../app/user/login.vue": () => __vitePreload(() => import("./login-wW00opp4.js"), true ? __vite__mapDeps([11,12,5,2,3,6,13,14,15,16]) : void 0), "../app/v1/live2d.vue": () => __vitePreload(() => import("./live2d-01vkABg7.js"), true ? __vite__mapDeps([17,1,2,3,4,5,18,6,19,14,15,20]) : void 0), "../app/v1/user.vue": () => __vitePreload(() => import("./user-kY2zhnyw.js"), true ? __vite__mapDeps([21,1,2,3,4,22,12,5,23,6,10,24,25,7,26,27,28,29]) : void 0), "../app/v1/vrm.vue": () => __vitePreload(() => import("./vrm-BN062h4w.js"), true ? __vite__mapDeps([30,1,2,3,4,18,6,19,5,14,15]) : void 0) }), `../app/${pagePath[0].toLowerCase()}/${pagePath[1].toLowerCase()}.vue`);
     case 3:
-      return __variableDynamicImportRuntimeHelper(/* @__PURE__ */ Object.assign({}), `../views/${pagePath[0].toLowerCase()}/${pagePath[1].toLowerCase()}/${pagePath[2].toLowerCase()}.vue`);
+      return __variableDynamicImportRuntimeHelper(/* @__PURE__ */ Object.assign({ "../app/v1/team/subtoken.vue": () => __vitePreload(() => import("./subtoken-Bxyk_RZ8.js"), true ? __vite__mapDeps([31,12,5,6,32,14,3,15,25,7,26,27,28,33,34]) : void 0), "../app/v1/user/info.vue": () => __vitePreload(() => import("./info-Byn6uP5i.js"), true ? __vite__mapDeps([22,12,5,23,6,10]) : void 0), "../app/v1/user/team.vue": () => __vitePreload(() => import("./team-DmZrR7KU.js"), true ? __vite__mapDeps([24,12,5,23,1,2,3,4,6,25,7,26,10]) : void 0) }), `../app/${pagePath[0].toLowerCase()}/${pagePath[1].toLowerCase()}/${pagePath[2].toLowerCase()}.vue`);
     case 4:
-      return __variableDynamicImportRuntimeHelper(/* @__PURE__ */ Object.assign({}), `../views/${pagePath[0].toLowerCase()}/${pagePath[1].toLowerCase()}/${pagePath[2].toLowerCase()}/${pagePath[3].toLowerCase()}.vue`);
+      return __variableDynamicImportRuntimeHelper(/* @__PURE__ */ Object.assign({ "../app/v1/team/subtoken/add.vue": () => __vitePreload(() => import("./add-zC9gDyEh.js"), true ? __vite__mapDeps([35,12,5,6,13,14,3,15,10,32,25,7,26,27,28,33]) : void 0), "../app/v1/team/subtoken/edit.vue": () => __vitePreload(() => import("./edit-DjdbH74C.js"), true ? __vite__mapDeps([36,12,5,6,13,14,3,15,10,32,25,7,26,27,28,33]) : void 0), "../app/v1/user/team/create.vue": () => __vitePreload(() => import("./create-Dd_vmFbt.js"), true ? __vite__mapDeps([37,12,5,6,14,3,15,13]) : void 0), "../app/v1/user/team/edit.vue": () => __vitePreload(() => import("./edit-y4DLHX8E.js"), true ? __vite__mapDeps([38,12,5,6,14,3,15,13]) : void 0) }), `../app/${pagePath[0].toLowerCase()}/${pagePath[1].toLowerCase()}/${pagePath[2].toLowerCase()}/${pagePath[3].toLowerCase()}.vue`);
     case 5:
-      return __variableDynamicImportRuntimeHelper(/* @__PURE__ */ Object.assign({}), `../views/${pagePath[0].toLowerCase()}/${pagePath[1].toLowerCase()}/${pagePath[2].toLowerCase()}/${pagePath[3].toLowerCase()}/${pagePath[4].toLowerCase()}.vue`);
+      return __variableDynamicImportRuntimeHelper(/* @__PURE__ */ Object.assign({}), `../app/${pagePath[0].toLowerCase()}/${pagePath[1].toLowerCase()}/${pagePath[2].toLowerCase()}/${pagePath[3].toLowerCase()}/${pagePath[4].toLowerCase()}.vue`);
     default:
-      return __vitePreload(() => import("./login-DzqR0r1C.js"), true ? __vite__mapDeps([0,1]) : void 0);
+      return __vitePreload(() => import("./login-wW00opp4.js"), true ? __vite__mapDeps([11,12,5,2,3,6,13,14,15,16]) : void 0);
   }
 }
 function registerPlugins(app2) {
@@ -15733,87 +15888,158 @@ const app = createApp(App);
 registerPlugins(app);
 app.mount("#app");
 export {
-  LoaderSlot as $,
+  withModifiers as $,
   Alert as A,
-  makePositionProps as B,
-  makeRoundedProps as C,
-  makeThemeProps as D,
-  provideTheme as E,
-  useBackgroundColor as F,
-  useBorder as G,
-  useDimension as H,
-  useElevation as I,
-  useLocation as J,
-  usePosition as K,
-  useRounded as L,
-  makeTransitionProps as M,
-  withDirectives as N,
-  vShow as O,
-  MaybeTransition as P,
-  EventProp as Q,
-  useLocale as R,
-  getCurrentInstanceName as S,
-  TransitionGroup as T,
-  IconValue as U,
-  VIcon as V,
-  makeLoaderProps as W,
-  useLoader as X,
-  getUid as Y,
-  useTextColor as Z,
+  resolveComponent as B,
+  VResponsive as C,
+  VImg as D,
+  VBtn as E,
+  VIcon as F,
+  createBaseVNode as G,
+  makeBorderProps as H,
+  makeDimensionProps as I,
+  makeElevationProps as J,
+  makeLocationProps as K,
+  makePositionProps as L,
+  makeRoundedProps as M,
+  useBackgroundColor as N,
+  toRef as O,
+  useBorder as P,
+  useDimension as Q,
+  useElevation as R,
+  useLocation as S,
+  usePosition as T,
+  useRounded as U,
+  VCardText as V,
+  VCard as W,
+  createCommentVNode as X,
+  withDirectives as Y,
+  vShow as Z,
   _export_sfc as _,
-  Transition as a,
-  Fragment as a0,
-  mergeProps as a1,
-  isOn as a2,
-  pick as a3,
-  nullifyTransforms as a4,
-  convertToUnit as a5,
-  animate as a6,
-  standardEasing as a7,
-  wrapInArray as a8,
-  unref as a9,
-  onBeforeMount as aa,
-  onBeforeUnmount as ab,
-  onMounted as ac,
-  useToggleScope as ad,
-  nextTick as ae,
+  computed as a,
+  useLink as a$,
+  createElementBlock as a0,
+  normalizeClass as a1,
+  Fragment as a2,
+  renderList as a3,
+  normalizeStyle as a4,
+  __vitePreload as a5,
+  toDisplayString as a6,
+  VCardTitle as a7,
+  omit as a8,
+  makeVBtnProps as a9,
+  deepEqual as aA,
+  wrapInArray as aB,
+  getObjectValueByPath as aC,
+  isEmpty as aD,
+  makeLoaderProps as aE,
+  useLoader as aF,
+  LoaderSlot as aG,
+  EventProp as aH,
+  getPropertyFromItem as aI,
+  unref as aJ,
+  VCardActions as aK,
+  VBtnGroup as aL,
+  VDefaultsProvider as aM,
+  VSpacer as aN,
+  getUid as aO,
+  onScopeDispose as aP,
+  Ripple as aQ,
+  filterInputAttrs as aR,
+  resolveDirective as aS,
+  matchesSelector as aT,
+  makeGroupProps as aU,
+  useGroup as aV,
+  makeGroupItemProps as aW,
+  makeRouterProps as aX,
+  useVariant as aY,
+  useSize as aZ,
+  useGroupItem as a_,
+  useTextColor as aa,
+  mergeProps as ab,
+  forwardRefs as ac,
+  animate as ad,
+  standardEasing as ae,
   makeDensityProps as af,
-  useDensity as ag,
-  Intersect$1 as ah,
-  filterInputAttrs as ai,
-  resolveDirective as aj,
-  cloneVNode as ak,
-  callEvent as al,
-  withCtx as am,
-  VCard as an,
-  createCommentVNode as ao,
-  withModifiers as ap,
-  VBtn as aq,
-  createTextVNode as ar,
-  createBaseVNode as as,
-  camelize as b,
+  useProxiedModel as ag,
+  useDensity as ah,
+  provideDefaults as ai,
+  isObject as aj,
+  isOn as ak,
+  onBeforeUpdate as al,
+  IconValue as am,
+  makeSizeProps as an,
+  makeVariantProps as ao,
+  useLocale as ap,
+  useDisplay as aq,
+  createRange as ar,
+  keyValues as as,
+  nextTick as at,
+  watchEffect as au,
+  watch as av,
+  clamp as aw,
+  defineFunctionalComponent as ax,
+  capitalize as ay,
+  consoleError as az,
+  ref as b,
+  genOverlays as b0,
+  VAvatar as b1,
+  makeVOverlayProps as b2,
+  VDialogTransition as b3,
+  useScopeId as b4,
+  VMenuSymbol as b5,
+  isClickInsideElement as b6,
+  VOverlay as b7,
+  getNextElement as b8,
+  focusableChildren as b9,
+  focusChild as ba,
+  debounce as bb,
+  IN_BROWSER as bc,
+  useToggleScope as bd,
+  getScrollParent as be,
+  makeTransitionProps as bf,
+  ensureValidVNode as bg,
+  makeDisplayProps as bh,
+  toRaw as bi,
+  onBeforeUnmount as bj,
+  defineComponent as bk,
+  MaybeTransition as bl,
+  deprecate as bm,
+  readonly as bn,
+  breakpoints as bo,
+  h as bp,
+  getCurrentInstanceName as bq,
+  pick as br,
+  nullifyTransforms as bs,
+  onBeforeMount as bt,
+  Intersect$1 as bu,
+  cloneVNode as bv,
+  callEvent as bw,
+  TransitionGroup as bx,
+  Transition as by,
+  camelize as bz,
   createBlock as c,
-  makeTagProps as d,
-  useRender as e,
-  createVNode as f,
-  genericComponent as g,
-  h,
-  useProxiedModel as i,
-  computed as j,
-  ref as k,
-  provide as l,
+  reactive as d,
+  onMounted as e,
+  provide as f,
+  getCurrentInstance as g,
+  convertToUnit as h,
+  inject$1 as i,
+  findChildrenWithProvide as j,
+  makeThemeProps as k,
+  genericComponent as l,
   makeComponentProps as m,
-  inject$1 as n,
+  provideTheme as n,
   openBlock as o,
   propsFactory as p,
-  forwardRefs as q,
+  useRtl as q,
   resolveDynamicComponent as r,
   shallowRef as s,
-  toRef as t,
-  useRtl as u,
-  makeBorderProps as v,
-  watch as w,
-  makeDimensionProps as x,
-  makeElevationProps as y,
-  makeLocationProps as z
+  useRender as t,
+  useResizeObserver as u,
+  createVNode as v,
+  makeTagProps as w,
+  createSimpleFunctional as x,
+  withCtx as y,
+  createTextVNode as z
 };
