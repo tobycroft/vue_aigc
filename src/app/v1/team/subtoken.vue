@@ -3,7 +3,7 @@
       class="mx-auto"
   >
     <v-card-title>
-      团队成员列表
+      子密钥管理
       <v-spacer></v-spacer>
       <v-btn
           color="primary"
@@ -16,12 +16,12 @@
     <v-divider></v-divider>
 
     <v-virtual-scroll
-        :items="teamList"
+        :items="tokenList"
         item-height="48"
     >
       <template v-slot:default="{ item }">
         <v-list-item>
-          <v-list-item-title>团队名称：{{ item.team_info.name }}</v-list-item-title>
+          <v-list-item-title>团队名称：{{ item.prefix }}</v-list-item-title>
           <v-list-item-subtitle>团队权限：{{ item.role }}</v-list-item-subtitle>
           <v-list-item-subtitle>团队备注：{{ item.team_info.content }}</v-list-item-subtitle>
           <template v-slot:prepend>
@@ -58,7 +58,7 @@ export default {
   components: {top_header},
   data() {
     return {
-      teamList: [], // 存储团队列表数据
+      tokenList: [], // 存储团队列表数据
     };
   },
   methods: {
@@ -66,8 +66,8 @@ export default {
       // 发送获取团队列表的请求
       const ret = await new Net("/v1/team/subtoken/list").PostFormData();
       if (ret.code === 0) {
-        // 更新 teamList
-        this.teamList = ret.data;
+        // 更新 tokenList
+        this.tokenList = ret.data;
       } else {
         // 处理请求失败的情况
         console.error(ret.echo);

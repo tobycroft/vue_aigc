@@ -66,7 +66,7 @@ export default {
       // 发送获取团队列表的请求
       const ret = await new Net("/v1/user/team/list").PostFormData();
       if (ret.code === 0) {
-        // 更新 teamList
+        // 更新 tokenList
         this.teamList = ret.data;
       } else {
         // 处理请求失败的情况
