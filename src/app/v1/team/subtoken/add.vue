@@ -94,7 +94,7 @@ export default {
     },
     goBack() {
       // 返回到团队 Token 列表页面
-      this.$router.push({path: "/v1/team?tab=subtoken"});
+      this.$router.push({path: "/v1/team", query: {tab: "subtoken"}});
     }
   },
   mounted() {

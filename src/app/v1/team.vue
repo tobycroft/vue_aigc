@@ -10,8 +10,8 @@
 
   </v-tabs>
 
-  <team v-if="tab===0"></team>
-  <subtoken v-if="tab===1"></subtoken>
+  <team v-if="tab===0||tab==='team'"></team>
+  <subtoken v-if="tab===1 || tab==='subtoken'"></subtoken>
 
 
 </template>
