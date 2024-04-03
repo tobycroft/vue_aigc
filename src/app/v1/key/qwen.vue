@@ -64,7 +64,7 @@ export default {
   methods: {
     async fetchInfoList() {
       // 发送获取信息列表的请求
-      const ret = await new Net("/v1/fastgpt/info/list").PostFormData();
+      const ret = await new Net("/v1/qwen/info/list").PostFormData();
       if (ret.code === 0) {
         // 更新 infoList
         this.infoList = ret.data;
@@ -74,11 +74,11 @@ export default {
       }
     },
     async addInfo() {
-      this.$router.push('/v1/fastgpt/info/create');
+      this.$router.push('/v1/qwen/info/create');
     },
     async deleteInfo(info) {
       // 发送删除信息的请求
-      const ret = await new Net("/v1/fastgpt/info/delete").PostFormData({id: info.id});
+      const ret = await new Net("/v1/qwen/info/delete").PostFormData({id: info.id});
       if (ret.code === 0) {
         // 删除成功，重新获取信息列表数据
         this.fetchInfoList();
@@ -89,7 +89,7 @@ export default {
     },
     async editInfo(info) {
       // 根据信息跳转到编辑页面
-      this.$router.push({path: "/v1/fastgpt/info/edit", query: info});
+      this.$router.push({path: "/v1/qwen/info/edit", query: info});
     },
   },
   mounted() {
