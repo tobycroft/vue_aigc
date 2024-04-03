@@ -39,7 +39,7 @@
  * 项目中引用包时，将 import 内容替换
  * import live2d from 'vue-live2d'
  */
-import Topheader from "@/components/center/header/topheader.vue";
+import Topheader from "@/components/topheader.vue";
 import live2d from '@/lib/l2d/main.vue'
 import TokenModel from "@/model/TokenModel.js";
 import vrm from "@/lib/vrm/main.vue";

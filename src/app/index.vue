@@ -21,7 +21,7 @@
 
 <script>
 
-import top_header from "@/components/center/header/topheader.vue";
+import top_header from "@/components/topheader.vue";
 import TokenModel from "@/model/TokenModel.js";
 import Alert from "@/plugins/Alert.js";
 

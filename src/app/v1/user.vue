@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import Topheader from "@/components/center/header/topheader.vue";
+import Topheader from "@/components/topheader.vue";
 import info from "@/app/v1/user/info.vue"; // 引入 Net 方法
 import team from "@/app/v1/user/team.vue";
 

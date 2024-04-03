@@ -1,5 +1,5 @@
 <script>
-import Topheader from "@/components/center/header/topheader.vue";
+import Topheader from "@/components/topheader.vue";
 import vrm from '@/lib/vrm/main.vue'
 import TokenModel from "@/model/TokenModel.js";
 

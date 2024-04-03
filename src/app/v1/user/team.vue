@@ -32,7 +32,7 @@
 <script>
 import Net from "@/plugins/Net";
 import moment from "moment";
-import top_header from "@/components/center/header/topheader.vue";
+import top_header from "@/components/topheader.vue";
 
 export default {
   components: {top_header},
