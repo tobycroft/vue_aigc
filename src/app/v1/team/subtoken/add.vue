@@ -21,9 +21,6 @@
               <v-col cols="12">
                 <v-text-field v-model="formData.amount" label="可以使用的余额,如果是-1就是无线，大于0就按正常的扣"></v-text-field>
               </v-col>
-              <v-col cols="12">
-                <v-text-field v-model="formData.from_id" label="上级id"></v-text-field>
-              </v-col>
             </v-row>
           </v-container>
           <v-btn type="submit" color="primary" block class="mt-4">添加</v-btn>
@@ -92,7 +89,7 @@ export default {
         const response = await new Net('/v1/team/subtoken/create').PostFormData(payload);
         if (response.code === 0) {
           // 添加成功，可以根据需求执行一些操作，比如跳转页面或者提示成功信息
-          this.$router.push({path: `/v1/team/subtoken`, query: this.team});
+          this.goBack()
         } else {
           console.error('Failed to create token:', response.echo);
         }
@@ -102,7 +99,7 @@ export default {
     },
     goBack() {
       // 返回到团队 Token 列表页面
-      this.$router.push({path: `/v1/team/subtoken`, query: this.team});
+      this.$router.push({path: `/v1/team?tab=subtoken`, query: this.team});
     }
   },
   mounted() {

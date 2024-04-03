@@ -2,7 +2,6 @@
   <v-container>
     <v-card>
       <v-card-title>
-        <v-btn @click="goBack" color="grey" block class="mt-4">返回</v-btn>
         添加团队 Token
       </v-card-title>
       <v-card-text>
@@ -95,7 +94,7 @@ export default {
         const response = await new Net('/v1/team/subtoken/create').PostFormData(payload);
         if (response.code === 0) {
           // 添加成功，可以根据需求执行一些操作，比如跳转页面或者提示成功信息
-          this.$router.push({path: `/v1/team/subtoken`, query: this.team});
+          this.goBack()
         } else {
           console.error('Failed to create token:', response.echo);
         }
@@ -105,7 +104,7 @@ export default {
     },
     goBack() {
       // 返回到团队 Token 列表页面
-      this.$router.push({path: `/v1/team/subtoken`, query: this.team});
+      this.$router.push({path: `/v1/team?tab=subtoken`, query: this.team});
     }
   },
   mounted() {

@@ -9,7 +9,7 @@
           color="primary"
           @click="addTeam"
       >
-        新增团队成员
+        新增子密钥
       </v-btn>
     </v-card-title>
 
@@ -21,9 +21,11 @@
     >
       <template v-slot:default="{ item }">
         <v-list-item>
-          <v-list-item-title>团队名称：{{ item.prefix }}</v-list-item-title>
-          <v-list-item-subtitle>团队权限：{{ item.role }}</v-list-item-subtitle>
-          <v-list-item-subtitle>团队备注：{{ item.team_info.content }}</v-list-item-subtitle>
+          <v-list-item-title>prefix：{{ item.name }}</v-list-item-title>
+          <v-list-item-subtitle>key:{{ item.prefix }}-{{ item.key }}</v-list-item-subtitle>
+          <v-list-item-subtitle>按量扣费：{{ item.is_limit ? '是' : '否' }}</v-list-item-subtitle>
+          <v-list-item-subtitle>剩余量：{{ item.amount }}</v-list-item-subtitle>
+          <!--          <v-list-item-subtitle>团队号：{{ item.team_id }}</v-list-item-subtitle>-->
           <template v-slot:prepend>
             <v-icon class="bg-primary">mdi-group</v-icon>
           </template>
@@ -74,7 +76,7 @@ export default {
       }
     },
     async addTeam() {
-      this.$router.push('/v1/team/subtoken/create');
+      this.$router.push('/v1/team/subtoken/add');
     },
     async deleteTeam(team) {
       // 发送删除团队的请求
