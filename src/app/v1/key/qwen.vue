@@ -74,7 +74,7 @@ export default {
       }
     },
     async addInfo() {
-      this.$router.push('/v1/qwen/info/create');
+      this.$router.push('/v1/key/qwen/add');
     },
     async deleteInfo(info) {
       // 发送删除信息的请求
@@ -89,7 +89,7 @@ export default {
     },
     async editInfo(info) {
       // 根据信息跳转到编辑页面
-      this.$router.push({path: "/v1/qwen/info/edit", query: info});
+      this.$router.push({path: "/v1/key/qwen/edit", query: info});
     },
   },
   mounted() {

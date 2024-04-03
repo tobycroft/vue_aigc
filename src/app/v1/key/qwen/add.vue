@@ -16,13 +16,10 @@
                 <v-text-field v-model="formData.key" label="Key"></v-text-field>
               </v-col>
               <v-col cols="12">
-                <v-text-field v-model="formData.base_url" label="Base URL"></v-text-field>
+                <v-text-field v-model="formData.rid" label="rid"></v-text-field>
               </v-col>
               <v-col cols="12">
                 <v-text-field v-model="formData.model" label="Model"></v-text-field>
-              </v-col>
-              <v-col cols="12">
-                <v-text-field v-model="formData.detail" label="Detail"></v-text-field>
               </v-col>
             </v-row>
           </v-container>
@@ -77,7 +74,7 @@ export default {
         const response = await new Net('/v1/qwen/info/add').PostFormData(payload);
         if (response.code === 0) {
           // 添加成功，可以根据需求执行一些操作，比如跳转页面或者提示成功信息
-          this.$router.push('/v1/key?tab=qwen');
+          this.goBack();
         } else {
           console.error('Failed to add qwen info:', response.echo);
         }
