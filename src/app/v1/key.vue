@@ -11,9 +11,9 @@
 
   </v-tabs>
 
-  <fastgpt v-if="tab===0"></fastgpt>
-  <qwen v-if="tab===1"></qwen>
-  <ifly v-if="tab===2"></ifly>
+  <fastgpt v-if="tab===0 || tab==='fastgpt'"></fastgpt>
+  <qwen v-if="tab===1 || tab==='qwen'"></qwen>
+  <ifly v-if="tab===2 || tab==='ifly'"></ifly>
 
 
 </template>
@@ -22,10 +22,16 @@
 import Topheader from "@/components/topheader.vue";
 import info from "@/app/v1/user/info.vue";
 import Fastgpt from "@/app/v1/key/fastgpt.vue";
+import fastgpt from "@/app/v1/key/fastgpt.vue"; // 引入 Net 方法
 import Qwen from "@/app/v1/key/qwen.vue";
-import Ifly from "@/app/v1/key/ifly.vue"; // 引入 Net 方法
+import Ifly from "@/app/v1/key/ifly.vue";
 
 export default {
+  computed: {
+    fastgpt() {
+      return fastgpt
+    }
+  },
   components: {Ifly, Qwen, Fastgpt, info, Topheader},
   data() {
     return {
@@ -39,9 +45,7 @@ export default {
     },
   },
   mounted() {
-    if (this.$route.query.tab) {
-      this.tab = parseInt(this.$route.query.tab);
-    }
+    this.tab = this.$route.query.tab;
   },
 };
 </script>

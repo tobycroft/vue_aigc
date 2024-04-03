@@ -1,35 +1,32 @@
 <template>
   <v-container>
     <v-card>
-      <v-card-title>
-        <v-btn @click="goBack" color="grey" block class="mt-4">返回</v-btn>
-        添加团队 Token
-      </v-card-title>
+      <v-card-title>更新 FastGPT 信息</v-card-title>
       <v-card-text>
-        <v-form @submit.prevent="createToken">
+        <v-form @submit.prevent="updateInfo">
           <v-container>
             <v-row>
               <v-col cols="12">
-                <v-select v-model="selectedCoinId" :items="coinList" label="选择GPT类型" item-text="name" item-value="id"></v-select>
+                <v-text-field v-model="formData.name" label="名称"></v-text-field>
               </v-col>
               <v-col cols="12">
-                <v-text-field v-model="formData.name" label="key名称"></v-text-field>
+                <v-text-field v-model="formData.team_id" label="团队 ID"></v-text-field>
               </v-col>
               <v-col cols="12">
-                <v-text-field v-model="formData.team_id" label="团队id"></v-text-field>
+                <v-text-field v-model="formData.key" label="Key"></v-text-field>
               </v-col>
               <v-col cols="12">
-                <v-text-field v-model="formData.prefix" label="prefix标签"></v-text-field>
+                <v-text-field v-model="formData.base_url" label="Base URL"></v-text-field>
               </v-col>
               <v-col cols="12">
-                <v-text-field v-model="formData.amount" label="可以使用的余额,如果是-1就是无线，大于0就按正常的扣"></v-text-field>
+                <v-text-field v-model="formData.model" label="Model"></v-text-field>
               </v-col>
               <v-col cols="12">
-                <v-text-field v-model="formData.from_id" label="上级id"></v-text-field>
+                <v-text-field v-model="formData.detail" label="Detail"></v-text-field>
               </v-col>
             </v-row>
           </v-container>
-          <v-btn type="submit" color="primary" block class="mt-4">添加</v-btn>
+          <v-btn type="submit" color="primary" block class="mt-4">更新</v-btn>
           <v-btn @click="goBack" color="grey" block class="mt-4">返回</v-btn>
         </v-form>
       </v-card-text>
@@ -38,79 +35,78 @@
 </template>
 
 <script>
-import Net from "@/plugins/Net";
+import Net from "@/plugins/Net.js";
 
 export default {
   data() {
     return {
-      team_info: {},
-      team: this.$route.query,
-      coinList: [],
-      selectedCoinId: null,
       formData: {
-        name: '测试key名称，随便起一个',
-        team_id: '',
-        prefix: '',
-        amount: '-1',
-        from_id: '1'
-      }
+        name: '',
+        team_id: null,
+        key: '',
+        base_url: '',
+        model: '',
+        detail: 0
+      },
+      fastGPTId: null // 用于存储 FastGPT 信息的 ID
     };
   },
   methods: {
-    async fetchTeamInfo() {
-      // 获取团队信息
-      const ret = await new Net(`/v1/user/team/get`).PostFormData(this.team);
-      if (ret.code === 0) {
-        // 填充团队信息到表单中
-        this.team_info = ret.data.team_info
-        this.formData.prefix = ret.data.team_info.prefix
-        this.formData.team_id = ret.data.team_info.id
-        // 如果还有其他字段，也可以在这里填充
-      } else {
-        console.error(ret.echo);
-      }
-    },
-    async fetchCoinList() {
+    async fetchInfo() {
       try {
-        const response = await new Net('/v1/coin/info/list').PostFormData();
+        // 根据 fastGPTId 获取 FastGPT 信息
+        const response = await new Net(`/v1/fastgpt/info/get`).PostFormData({'id': this.fastGPTId});
         if (response.code === 0) {
-          this.coinList = response.data.map(coin => ({id: coin.id, title: coin.name}));
+          // 填充 FastGPT 信息到表单中
+          const data = response.data;
+          this.formData.name = data.name;
+          this.formData.team_id = data.team_id;
+          this.formData.key = data.key;
+          this.formData.base_url = data.base_url;
+          this.formData.model = data.model;
+          this.formData.detail = data.detail;
         } else {
-          console.error('Failed to fetch coin list:', response.echo);
+          console.error('Failed to fetch FastGPT info:', response.echo);
         }
       } catch (error) {
-        console.error('Failed to fetch coin list:', error);
+        console.error('Failed to fetch FastGPT info:', error);
       }
     },
-    async createToken() {
+    async updateInfo() {
       try {
         const payload = {
+          id: this.fastGPTId,
           name: this.formData.name,
-          team_id: this.formData.team_id,
-          coin_id: this.selectedCoinId,
-          prefix: this.formData.prefix,
-          amount: this.formData.amount,
-          from_id: this.formData.from_id
+          team_id: parseInt(this.formData.team_id),
+          key: this.formData.key,
+          base_url: this.formData.base_url,
+          model: this.formData.model,
+          detail: parseInt(this.formData.detail)
         };
-        const response = await new Net('/v1/team/subtoken/create').PostFormData(payload);
+        const response = await new Net('/v1/fastgpt/info/update').PostFormData(payload);
         if (response.code === 0) {
-          // 添加成功，可以根据需求执行一些操作，比如跳转页面或者提示成功信息
-          this.$router.push({path: `/v1/team/subtoken`, query: this.team});
+          // 更新成功，可以根据需求执行一些操作，比如跳转页面或者提示成功信息
+          this.$router.push('/v1/fastgpt/info/list');
         } else {
-          console.error('Failed to create token:', response.echo);
+          console.error('Failed to update FastGPT info:', response.echo);
         }
       } catch (error) {
-        console.error('Failed to create token:', error);
+        console.error('Failed to update FastGPT info:', error);
       }
     },
     goBack() {
-      // 返回到团队 Token 列表页面
-      this.$router.push({path: `/v1/team/subtoken`, query: this.team});
+      // 返回到 FastGPT 信息列表页面
+      this.$router.push('/v1/key?tab=fastgpt');
     }
   },
   mounted() {
-    this.fetchTeamInfo()
-    this.fetchCoinList();
+    // 在组件挂载时获取 FastGPT 信息
+    this.fastGPTId = parseInt(this.$route.query.id);
+    if (!isNaN(this.fastGPTId)) {
+      this.fetchInfo();
+    } else {
+      console.error('Invalid FastGPT ID:', this.$route.query.id);
+    }
   }
 }
 </script>
