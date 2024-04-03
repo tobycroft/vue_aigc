@@ -22,8 +22,8 @@
       <template v-slot:default="{ item }">
         <v-list-item>
           <v-list-item-title>{{ item.name }}</v-list-item-title>
-          <v-list-item-subtitle>关键字：{{ item.key }}</v-list-item-subtitle>
-          <v-list-item-subtitle>网址：{{ item.base_url }}</v-list-item-subtitle>
+          <v-list-item-subtitle>key：{{ item.key }}</v-list-item-subtitle>
+          <v-list-item-subtitle>rid：{{ item.rid }}</v-list-item-subtitle>
           <template v-slot:prepend>
             <v-icon class="bg-primary">mdi-robot</v-icon>
           </template>

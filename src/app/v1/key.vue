@@ -46,7 +46,7 @@ export default {
   },
   mounted() {
     if (this.$route.query.tab) {
-      this.tab = this.$route.query.tab;
+      this.tab = parseInt(this.$route.query.tab) != null ? parseInt(this.$route.query.tab) : this.$route.query.tab;
     }
   },
 };
