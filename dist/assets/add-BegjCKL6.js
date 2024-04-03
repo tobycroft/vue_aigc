@@ -1,15 +1,15 @@
-import { N as Net } from "./Net-g6ZHJJUW.js";
-import { _ as _export_sfc, c as createBlock, y as withCtx, o as openBlock, v as createVNode, a6 as VCardTitle, E as VBtn, z as createTextVNode, V as VCardText, $ as withModifiers, W as VCard } from "./index-Dle2vv7E.js";
-import { V as VContainer } from "./VContainer-CHZ8PPvP.js";
-import { V as VForm } from "./VForm-DmQkO4Pe.js";
-import { V as VRow, a as VCol } from "./VRow-BK9xJkkx.js";
-import { V as VSelect } from "./VSelect-BokcTP_c.js";
-import { V as VTextField } from "./VTextField-DOoaYPL0.js";
+import { N as Net } from "./Net-B2d2II-f.js";
+import { _ as _export_sfc, c as createBlock, y as withCtx, o as openBlock, v as createVNode, a6 as VCardTitle, z as createTextVNode, V as VCardText, $ as withModifiers, E as VBtn, W as VCard } from "./index--rWyv6sy.js";
+import { V as VContainer } from "./VContainer-CZBboQxr.js";
+import { V as VForm } from "./VForm-wBfx81f3.js";
+import { V as VRow, a as VCol } from "./VRow-CrV3y0me.js";
+import { V as VSelect } from "./VSelect-tmnsiuvX.js";
+import { V as VTextField } from "./VTextField-BLPwl5UY.js";
 import "./TokenModel-fnmBdSAh.js";
-import "./VList-B31acWu3.js";
-import "./index-DAgmaiyx.js";
-import "./ssrBoot-DHqu0DNV.js";
-import "./VSlideGroup-kIDXMKLm.js";
+import "./VList-CQH8Vs_B.js";
+import "./index-Bk8YsJ-F.js";
+import "./ssrBoot-DvK4Ex9O.js";
+import "./VSlideGroup-DLAm3Wnv.js";
 const _sfc_main = {
   data() {
     return {
@@ -85,18 +85,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         default: withCtx(() => [
           createVNode(VCardTitle, null, {
             default: withCtx(() => [
-              createVNode(VBtn, {
-                onClick: $options.goBack,
-                color: "grey",
-                block: "",
-                class: "mt-4"
-              }, {
-                default: withCtx(() => [
-                  createTextVNode("返回")
-                ]),
-                _: 1
-              }, 8, ["onClick"]),
-              createTextVNode(" 添加团队 Token ")
+              createTextVNode("添加团队 Token")
             ]),
             _: 1
           }),
@@ -214,7 +203,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
   });
 }
-const edit = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
+const add = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
 export {
-  edit as default
+  add as default
 };
