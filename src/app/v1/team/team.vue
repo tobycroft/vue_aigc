@@ -1,38 +1,57 @@
 <template>
-  <top_header></top_header>
-  <v-container>
-    <v-card>
-      <v-card-title>团队列表</v-card-title>
-      <v-card-text>
-        <v-list>
-          <v-list-item v-for="team in teamList" :key="team.id">
-            <v-row align="center" justify="space-around">
-              <v-col >
-                <v-list-item-title>{{ team.team_info.name }}</v-list-item-title>
-                <v-list-item-subtitle v-if="team.nickname">{{ team.nickname }}</v-list-item-subtitle>
-                <v-list-item-subtitle>{{ team.role }}</v-list-item-subtitle>
-                <v-list-item-subtitle>{{ formattedDate(team.date) }}</v-list-item-subtitle>
-              </v-col>
-              <v-col >
-                <v-btn-group>
-                  <v-btn @click="subtoken(team)" color="green">团队token管理</v-btn>
-                  <v-btn @click="editTeam(team)" color="primary">修改团队信息</v-btn>
-                  <v-btn v-if="team.role === 'admin' || team.role === 'owner'" @click="deleteTeam(team)" color="error">解散团队</v-btn>
-                  <v-btn v-else @click="deleteTeam(team)" color="error">退出团队</v-btn>
-                </v-btn-group>
-              </v-col>
-            </v-row>
-          </v-list-item>
-        </v-list>
-      </v-card-text>
-    </v-card>
-  </v-container>
-</template>
+  <v-card
+      class="mx-auto"
+  >
+    <v-card-title>
+      团队成员列表
+      <v-spacer></v-spacer>
+      <v-btn
+          color="primary"
+          @click="addTeam"
+      >
+        新增团队成员
+      </v-btn>
+    </v-card-title>
 
+    <v-divider></v-divider>
+
+    <v-virtual-scroll
+        :items="teamList"
+        item-height="48"
+    >
+      <template v-slot:default="{ item }">
+        <v-list-item>
+          <v-list-item-title>团队名称：{{ item.team_info.name }}</v-list-item-title>
+          <v-list-item-subtitle>团队权限：{{ item.role }}</v-list-item-subtitle>
+          <v-list-item-subtitle>团队备注：{{ item.team_info.content }}</v-list-item-subtitle>
+          <template v-slot:prepend>
+            <v-icon class="bg-primary">mdi-group</v-icon>
+          </template>
+
+          <template v-slot:append>
+            <v-btn class="ma-2"
+                   icon
+                   color="primary"
+                   @click="editTeam(item)"
+            >
+              <v-icon>mdi-pencil</v-icon>
+            </v-btn>
+            <v-btn class="ma-2"
+                   icon
+                   color="error"
+                   @click="deleteTeam(item)"
+            >
+              <v-icon>mdi-delete</v-icon>
+            </v-btn>
+          </template>
+        </v-list-item>
+      </template>
+    </v-virtual-scroll>
+  </v-card>
+</template>
 
 <script>
 import Net from "@/plugins/Net.js";
-import moment from "moment";
 import top_header from "@/components/topheader.vue";
 
 export default {
@@ -55,7 +74,7 @@ export default {
       }
     },
     async addTeam() {
-      this.$router.push('/v1/user/team/create');
+      this.$router.push('/v1/team/team/create');
     },
     async deleteTeam(team) {
       // 发送删除团队的请求
@@ -70,16 +89,8 @@ export default {
     },
     async editTeam(team) {
       // 根据团队信息跳转到编辑页面
-      this.$router.push({path: '/v1/user/team/edit', query: team});
+      this.$router.push({path: "/v1/team/team/edit", query: team});
     },
-    async subtoken(team) {
-      // 根据团队信息跳转到编辑页面
-      this.$router.push({path: `/v1/team/subtoken`, query: team});
-    },
-    formattedDate(date) {
-      // 格式化日期
-      return moment(date).format('YYYY-MM-DD HH:mm:ss');
-    }
   },
   mounted() {
     // 在组件挂载时调用 fetchTeamList 方法获取团队列表数据

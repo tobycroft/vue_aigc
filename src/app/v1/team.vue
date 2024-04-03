@@ -5,7 +5,6 @@
           fixed-tabs
           bg-color="indigo-darken-2"
   >
-    <v-tab>我的信息</v-tab>
     <v-tab>我的团队</v-tab>
 
   </v-tabs>
@@ -18,11 +17,11 @@
 
 <script>
 import Topheader from "@/components/topheader.vue";
-import info from "@/app/v1/user/info.vue"; // 引入 Net 方法
-import team from "@/app/v1/user/fastgpt.vue";
+import Team from "@/app/v1/team/team.vue";
+import subtoken from "@/app/v1/team/subtoken.vue";
 
 export default {
-  components: {info, team, Topheader},
+  components: {Team, subtoken, Topheader},
   data() {
     return {
       tab: 0

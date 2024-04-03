@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import Net from "@/plugins/Net";
+import Net from "@/plugins/Net.js";
 
 export default {
   data() {
@@ -34,7 +34,7 @@ export default {
       }
     },
     goBack() {
-      this.$router.push("/v1/user/team");
+      this.$router.push("/v1/team");
     }
   },
 };
