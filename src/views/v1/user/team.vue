@@ -5,19 +5,19 @@
       <v-card-text>
         <v-list>
           <v-list-item v-for="team in teamList" :key="team.id">
-            <v-row align="center" justify="space-between">
-              <v-col cols="8">
+            <v-row align="center" justify="space-around">
+              <v-col >
                 <v-list-item-title>{{ team.team_info.name }}</v-list-item-title>
                 <v-list-item-subtitle v-if="team.nickname">{{ team.nickname }}</v-list-item-subtitle>
                 <v-list-item-subtitle>{{ team.role }}</v-list-item-subtitle>
                 <v-list-item-subtitle>{{ formattedDate(team.date) }}</v-list-item-subtitle>
               </v-col>
-              <v-col cols="4">
+              <v-col >
                 <v-btn-group>
-                  <v-btn class="mt-4" @click="subtoken(team)" color="green">团队token管理</v-btn>
-                  <v-btn class="mt-4" @click="editTeam(team)" color="primary">修改团队信息</v-btn>
-                  <v-btn class="mt-4" v-if="team.role === 'admin' || team.role === 'owner'" @click="deleteTeam(team)" color="error">解散团队</v-btn>
-                  <v-btn class="mt-4" v-else @click="deleteTeam(team)" color="error">退出团队</v-btn>
+                  <v-btn @click="subtoken(team)" color="green">团队token管理</v-btn>
+                  <v-btn @click="editTeam(team)" color="primary">修改团队信息</v-btn>
+                  <v-btn v-if="team.role === 'admin' || team.role === 'owner'" @click="deleteTeam(team)" color="error">解散团队</v-btn>
+                  <v-btn v-else @click="deleteTeam(team)" color="error">退出团队</v-btn>
                 </v-btn-group>
               </v-col>
             </v-row>
