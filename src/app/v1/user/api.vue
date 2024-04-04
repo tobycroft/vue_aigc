@@ -20,14 +20,51 @@
       <v-card-subtitle>
         {{ FastGPT }}
       </v-card-subtitle>
+      <v-card-actions>
+        <v-card>
+          <v-card-item>Header</v-card-item>
+          <v-card-item>Authorization:Bearer aigc-你的key</v-card-item>
+        </v-card>
+        <v-card>
+          <v-card-item>POST-json</v-card-item>
+          <v-card-item>{
+            {"chatId":"111","stream":false,"detail":false,"messages":[{"content":"hihao","role":"user"}]}
+          </v-card-item>
+        </v-card>
+      </v-card-actions>
+
       <v-card-title>QWen</v-card-title>
       <v-card-subtitle>
         {{ QWen }}
       </v-card-subtitle>
+      <v-card-actions>
+        <v-card>
+          <v-card-item>Header</v-card-item>
+          <v-card-item>Authorization:Bearer aigc-你的key</v-card-item>
+        </v-card>
+        <v-card>
+          <v-card-item>POST</v-card-item>
+          <v-card-item>
+            {"chatId":"111","stream":false,"detail":false,"messages":[{"content":"hihao","role":"user"}]}
+          </v-card-item>
+        </v-card>
+      </v-card-actions>
+
       <v-card-title>IflyTek</v-card-title>
       <v-card-subtitle>
         {{ IflyTek }}
       </v-card-subtitle>
+      <v-card-actions>
+        <v-card>
+          <v-card-item>Header</v-card-item>
+          <v-card-item>Authorization:Bearer aigc-你的key</v-card-item>
+        </v-card>
+        <v-card>
+          <v-card-item>POST</v-card-item>
+          <v-card-item>message:说话的内容</v-card-item>
+        </v-card>
+      </v-card-actions>
+
     </v-list>
 
   </v-container>
