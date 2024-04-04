@@ -9,10 +9,9 @@
     <v-spacer></v-spacer>
     <v-btn @click="navigateTo('/v1/vrm')">VRM体验</v-btn>
     <v-btn @click="navigateTo('/v1/live2d')">Live2D</v-btn>
-    <!--    <v-btn @click="navigateTo('/v1/live2d2')">Live2D本地</v-btn>-->
-    <!--    <v-btn text @click="navigateTo('/v1/index')">设置中心</v-btn>-->
     <v-btn @click="navigateTo('/v1/team')">团队</v-btn>
     <v-btn @click="navigateTo('/v1/key')">API能力</v-btn>
+    <v-btn @click="navigateTo('/v1/combi')">API+底层混合</v-btn>
     <v-btn @click="navigateTo('/v1/aigc')">底层能力</v-btn>
     <v-btn @click="navigateTo('/v1/user')">我的</v-btn>
   </v-toolbar>
