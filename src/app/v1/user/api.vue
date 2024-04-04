@@ -4,7 +4,7 @@
       <v-card>
         <v-card-title>信息准备</v-card-title>
         <v-card-subtitle>1.新建团队</v-card-subtitle>
-        <v-card-subtitle>2.在密钥页面新建密钥</v-card-subtitle>
+        <v-card-subtitle>2.在API能力页面新建密钥，填写一个或者多个均可</v-card-subtitle>
         <v-card-subtitle>3.再子密钥管理中新建一个子密钥</v-card-subtitle>
         <v-card-subtitle>4.如果你有讯飞，请填写，这样才能正常发音</v-card-subtitle>
       </v-card>
