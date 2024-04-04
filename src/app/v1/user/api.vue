@@ -1,13 +1,24 @@
 <template>
   <v-container>
     <v-list>
-      <v-list-item-title>
-        API接入
-      </v-list-item-title>
-
-      <v-list-item-subtitle>
-        API：https://aigc.aerofsx.com:444
-      </v-list-item-subtitle>
+      <v-card>
+        <v-card-title>信息准备</v-card-title>
+        <v-card-subtitle>1.新建团队</v-card-subtitle>
+        <v-card-subtitle>2.在密钥页面新建密钥</v-card-subtitle>
+        <v-card-subtitle>3.再子密钥管理中新建一个子密钥</v-card-subtitle>
+        <v-card-subtitle>4.如果你有讯飞，请填写，这样才能正常发音</v-card-subtitle>
+      </v-card>
+      <v-card>
+        <v-card-title>API接入:https://aigc.aerofsx.com:444</v-card-title>
+      </v-card>
+      <v-card-title>FastGPT</v-card-title>
+      <v-card-subtitle>
+        {{ FastGPT }}
+      </v-card-subtitle>
+      <v-card-title>QWen</v-card-title>
+      <v-card-subtitle>
+        {{ QWen }}
+      </v-card-subtitle>
     </v-list>
 
   </v-container>
@@ -20,6 +31,8 @@ import moment from "moment";
 export default {
   data() {
     return {
+      FastGPT: new Net("/v1/fastgpt/api/text").apiEndpoint,
+      QWen: new Net("/v1/qwen/api/text").apiEndpoint,
       formData: {}, // 存储接口返回的数据
     };
   },
