@@ -12,9 +12,9 @@
               <v-col cols="12">
                 <v-text-field v-model="formData.name" label="key名称"></v-text-field>
               </v-col>
-              <!--              <v-col cols="12">-->
-              <!--                <v-text-field v-model="formData.prefix" label="prefix标签"></v-text-field>-->
-              <!--              </v-col>-->
+              <v-col cols="12">
+                <v-text-field v-model="formData.prefix" label="密钥的prefix"></v-text-field>
+              </v-col>
               <v-col cols="12">
                 <v-text-field v-model="formData.amount" label="可以使用的余额,如果是-1就是无线，大于0就按正常的扣"></v-text-field>
               </v-col>
@@ -41,7 +41,7 @@ export default {
       formData: {
         name: '测试key名称，随便起一个',
         team_id: '',
-        prefix: '',
+        prefix: 'aigc',
         amount: '-1',
         from_id: '1'
       }
