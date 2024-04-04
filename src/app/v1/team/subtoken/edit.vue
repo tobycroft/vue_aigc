@@ -55,7 +55,7 @@ export default {
       const response = await new Net(`/v1/user/team/list`).PostFormData();
       if (response.code === 0) {
         // 填充团队信息到表单中
-        this.teamList = response.GetVutifySelectMap();
+        this.teamList = response.GetTeamList();
         // 如果还有其他字段，也可以在这里填充
       } else {
         console.error(response.echo);
@@ -79,7 +79,7 @@ export default {
       try {
         const response = await new Net('/v1/coin/info/list').PostFormData();
         if (response.code === 0) {
-          this.coinList = response.GetVutifySelectMap();
+          this.coinList = response.GetTeamList();
         } else {
           console.error('Failed to fetch coin list:', response.echo);
         }
