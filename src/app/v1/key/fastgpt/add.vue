@@ -77,7 +77,7 @@ export default {
         const response = await new Net('/v1/fastgpt/info/add').PostFormData(payload);
         if (response.code === 0) {
           // 添加成功，可以根据需求执行一些操作，比如跳转页面或者提示成功信息
-          this.$router.push('/v1/key?tab=fastgpt');
+          this.goBack();
         } else {
           console.error('Failed to add FastGPT info:', response.echo);
         }

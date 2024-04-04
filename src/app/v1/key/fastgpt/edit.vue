@@ -99,7 +99,7 @@ export default {
         const response = await new Net('/v1/fastgpt/info/update').PostFormData(payload);
         if (response.code === 0) {
           // 更新成功，可以根据需求执行一些操作，比如跳转页面或者提示成功信息
-          this.$router.push('/v1/fastgpt/info/list');
+          this.goBack();
         } else {
           console.error('Failed to update FastGPT info:', response.echo);
         }
