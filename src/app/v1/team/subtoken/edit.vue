@@ -89,15 +89,7 @@ export default {
     },
     async updateToken() {
       try {
-        const payload = {
-          name: this.formData.name,
-          id: this.formData.id,
-          team_id: this.formData.team_id,
-          coin_id: this.selectedCoinId,
-          prefix: this.formData.prefix,
-          amount: this.formData.amount,
-          from_id: this.formData.from_id
-        };
+        const payload = this.formData;
         const response = await new Net('/v1/team/subtoken/update').PostFormData(payload);
         if (response.code === 0) {
           // 添加成功，可以根据需求执行一些操作，比如跳转页面或者提示成功信息
