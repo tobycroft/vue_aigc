@@ -6,10 +6,12 @@
           bg-color="indigo-darken-2"
   >
     <v-tab>我的信息</v-tab>
+    <v-tab>API</v-tab>
 
   </v-tabs>
 
   <info v-if="tab===0"></info>
+  <api v-if="tab===1"></api>
 
 
 </template>
@@ -17,9 +19,10 @@
 <script>
 import Topheader from "@/components/topheader.vue";
 import info from "@/app/v1/user/info.vue";
+import api from "@/app/v1/user/api.vue";
 
 export default {
-  components: {info, Topheader},
+  components: {info, api, Topheader},
   data() {
     return {
       tab: 0
