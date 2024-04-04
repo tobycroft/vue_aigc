@@ -10,7 +10,7 @@
                 <v-select v-model="formData.team_id" :items="teamList" label="团队id" item-text="title" item-value="id"></v-select>
               </v-col>
               <v-col cols="12">
-                <v-text-field v-model="formData.name" label="key名称"></v-text-field>
+                <v-text-field v-model="formData.name" label="key名称,测试key名称，随便起一个"></v-text-field>
               </v-col>
               <v-col cols="12">
                 <v-text-field v-model="formData.prefix" label="密钥的prefix"></v-text-field>
@@ -39,7 +39,7 @@ export default {
       coinList: [],
       selectedCoinId: null,
       formData: {
-        name: '测试key名称，随便起一个',
+        name: 'key',
         team_id: '',
         prefix: 'aigc',
         amount: '-1',
