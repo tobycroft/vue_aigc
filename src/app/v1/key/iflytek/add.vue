@@ -69,14 +69,7 @@ export default {
     },
     async addInfo() {
       try {
-        const payload = {
-          name: this.formData.name,
-          team_id: parseInt(this.formData.team_id),
-          key: this.formData.key,
-          base_url: this.formData.base_url,
-          model: this.formData.model,
-          detail: parseInt(this.formData.detail)
-        };
+        const payload = this.formData;
         const response = await new Net('/v1/iflytek/info/add').PostFormData(payload);
         if (response.code === 0) {
           // 添加成功，可以根据需求执行一些操作，比如跳转页面或者提示成功信息
