@@ -13,6 +13,7 @@
     <!--    <v-btn text @click="navigateTo('/v1/index')">设置中心</v-btn>-->
     <v-btn @click="navigateTo('/v1/team')">团队</v-btn>
     <v-btn @click="navigateTo('/v1/key')">密钥</v-btn>
+    <v-btn @click="navigateTo('/v1/aigc')">底层</v-btn>
     <v-btn @click="navigateTo('/v1/user')">我的</v-btn>
   </v-toolbar>
 </template>
