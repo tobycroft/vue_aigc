@@ -35,9 +35,9 @@
 
         <v-btn @click="register"
                class="my-4"
-               color="blue"
+               color="red"
                height="40"
-               text="验证并登录"
+               text="注册"
                variant="flat"
                width="70%"
         ></v-btn>
