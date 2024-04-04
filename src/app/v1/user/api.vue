@@ -4,6 +4,10 @@
       <v-list-item-title>
         API接入
       </v-list-item-title>
+
+      <v-list-item-subtitle>
+        API：https://aigc.aerofsx.com:444
+      </v-list-item-subtitle>
     </v-list>
 
   </v-container>
