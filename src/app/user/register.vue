@@ -99,9 +99,9 @@ export default {
       localStorage.removeItem('username')
     },
     async login() {
-      var ret = await new Net("/v1/user/auth/login").PostFormData({
+      var ret = await new Net("/v1/user/auth/register").PostFormData({
         username: this.username,
-        password: md5(this.password)
+        password: this.password
       })
       if (ret.isSuccess) {
         TokenModel.Api_set_uidAndToken(ret.data["uid"], ret.data["token"])
