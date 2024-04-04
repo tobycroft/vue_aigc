@@ -9,6 +9,11 @@
         <v-card-subtitle>4.如果你有讯飞，请填写，这样才能正常发音</v-card-subtitle>
       </v-card>
       <v-card>
+        <v-card-title>VRM/Live2d的Demo说明</v-card-title>
+        <v-card-subtitle>聊天：你需要在你的账号中填写fastgpt的key等信息</v-card-subtitle>
+        <v-card-subtitle>语音/发音：你需要填写讯飞的key信息</v-card-subtitle>
+      </v-card>
+      <v-card>
         <v-card-title>API接入:https://aigc.aerofsx.com:444</v-card-title>
       </v-card>
       <v-card-title>FastGPT</v-card-title>
