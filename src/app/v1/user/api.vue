@@ -24,6 +24,10 @@
       <v-card-subtitle>
         {{ QWen }}
       </v-card-subtitle>
+      <v-card-title>IflyTek</v-card-title>
+      <v-card-subtitle>
+        {{ IflyTek }}
+      </v-card-subtitle>
     </v-list>
 
   </v-container>
@@ -38,6 +42,7 @@ export default {
     return {
       FastGPT: new Net("/v1/fastgpt/direct/text").apiEndpoint,
       QWen: new Net("/v1/qwen/direct/text").apiEndpoint,
+      IflyTek: new Net("/v1/iflytek/tts/subtoken").apiEndpoint,
       formData: {}, // 存储接口返回的数据
     };
   },
