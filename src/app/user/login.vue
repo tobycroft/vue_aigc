@@ -100,7 +100,7 @@ export default {
       this.$router.push("/user/register")
     },
     async login() {
-      var ret = await new Net("/v1/user/auth/register").PostFormData({
+      var ret = await new Net("/v1/user/auth/login").PostFormData({
         username: this.username,
         password: md5(this.password)
       })
