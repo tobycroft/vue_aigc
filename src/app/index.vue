@@ -7,8 +7,14 @@
     </v-container>
 
     <v-container>
-      <v-stepper-header>当前为控制中心</v-stepper-header>
-      <v-card-text>当前为测试版</v-card-text>
+      <v-list>
+        <v-list-item-title>
+          SDK接入IPV6地址:
+        </v-list-item-title>
+        <v-list-item-subtitle>
+          地址:https://aigc.aerofsx.com:444
+        </v-list-item-subtitle>
+      </v-list>
     </v-container>
     <!-- 主页面内容区域 -->
     <v-main>
