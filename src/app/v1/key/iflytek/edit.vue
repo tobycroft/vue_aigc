@@ -53,7 +53,7 @@ export default {
       try {
         const response = await new Net('/v1/user/team/list').PostFormData();
         if (response.code === 0) {
-          this.teamList = response.GetVutifySelectMap();
+          this.teamList = response.data.map(data => ({id: data.team_info.id, title: data.team_info.name}));
         } else {
           console.error('Failed to fetch team list:', response.echo);
         }
