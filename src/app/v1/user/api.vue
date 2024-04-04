@@ -36,8 +36,8 @@ import moment from "moment";
 export default {
   data() {
     return {
-      FastGPT: new Net("/v1/fastgpt/api/text").apiEndpoint,
-      QWen: new Net("/v1/qwen/api/text").apiEndpoint,
+      FastGPT: new Net("/v1/fastgpt/direct/text").apiEndpoint,
+      QWen: new Net("/v1/qwen/direct/text").apiEndpoint,
       formData: {}, // 存储接口返回的数据
     };
   },
