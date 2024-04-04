@@ -71,6 +71,7 @@ class Ret {
         this.echo = ret["echo"];
         switch (ret["code"]) {
             case 0:
+            case false:
                 this.isSuccess = true;
                 break;
 
