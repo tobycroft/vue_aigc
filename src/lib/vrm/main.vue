@@ -129,7 +129,7 @@ export default {
     async iflyVoice(msg = '') {
       let fm = new FormData();
       fm.set("message", msg)
-      const audio = await this.Post(`${this.aigcUrl}/v1/iflytek/tts/auto`, fm)
+      const audio = await this.Post(`${this.aigcUrl}/v1/iflytek/tts/audio`, fm)
       // play audio stream and make it play as blob as background level
       try {
         const blob = await audio.blob()
@@ -144,7 +144,7 @@ export default {
       let fd = new FormData();
       fd.set("message", msg)
       fd.set("chat_id", "111")
-      let ret = await (await this.Post(`${this.aigcUrl}/v1/fastgpt/api/auto`, fd)).json();
+      let ret = await (await this.Post(`${this.aigcUrl}/v1/fastgpt/api/text`, fd)).json();
       if (ret.code !== 0) {
         console.log("chat-error", ret.echo)
       }
