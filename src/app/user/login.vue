@@ -14,7 +14,7 @@
       <v-form @submit.prevent>
         <v-text-field autofocus v-model="username" :rules="rules" label="这里输入你的用户名"></v-text-field>
         <v-btn type="submit" block class="mt-0" color="blue" @click="gotonext">下一步</v-btn>
-        <v-btn block class="mt-4" color="grey" @click="clearout">清空数据</v-btn>
+        <v-btn block class="mt-4" color="red" @click="clearout">清空数据,并开始注册</v-btn>
       </v-form>
     </v-sheet>
 

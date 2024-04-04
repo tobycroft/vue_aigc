@@ -91,7 +91,7 @@ export default {
       }
     },
     clearout() {
-      this.$route.push("/user/login")
+      this.$router.push("/user/login")
     },
     async register() {
       var ret = await new Net("/v1/user/auth/register").PostFormData({
