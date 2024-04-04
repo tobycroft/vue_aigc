@@ -40,7 +40,7 @@ function importer(pagePath) {
             return import(`@/app/${pagePath[0].toLowerCase()}/${pagePath[1].toLowerCase()}/${pagePath[2].toLowerCase()}/${pagePath[3].toLowerCase()}/${pagePath[4].toLowerCase()}.vue`);
 
         default:
-            return import(`@/app/user/login.vue`);
+            return import(`@/app/index.vue`);
     }
 
 }

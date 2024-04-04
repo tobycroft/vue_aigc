@@ -14,7 +14,7 @@
       <v-form @submit.prevent>
         <v-text-field autofocus v-model="username" :rules="rules" label="这里输入你的用户名"></v-text-field>
         <v-btn type="submit" block class="mt-0" color="blue" @click="gotonext">下一步</v-btn>
-        <v-btn type="submit" block class="mt-4" color="grey" @click="clearout">清空数据</v-btn>
+        <v-btn block class="mt-4" color="grey" @click="clearout">清空数据</v-btn>
       </v-form>
     </v-sheet>
 
@@ -97,6 +97,7 @@ export default {
       this.show1 = true
       this.username = ''
       localStorage.removeItem('username')
+      this.$router.push("/user/register")
     },
     async login() {
       var ret = await new Net("/v1/user/auth/login").PostFormData({
@@ -105,7 +106,7 @@ export default {
       })
       if (ret.isSuccess) {
         TokenModel.Api_set_uidAndToken(ret.data["uid"], ret.data["token"])
-        this.$router.push("/center")
+        this.$router.push("/index")
       }
     },
   },
