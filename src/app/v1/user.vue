@@ -6,7 +6,7 @@
           bg-color="indigo-darken-2"
   >
     <v-tab>我的信息</v-tab>
-    <v-tab>API</v-tab>
+    <v-tab>API接入说明</v-tab>
 
   </v-tabs>
 
