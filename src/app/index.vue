@@ -36,7 +36,7 @@ export default {
   data: () => ({}),
   mounted() {
     if (!TokenModel.Api_is_login()) {
-      Alert.SetGo("/user/register")
+      Alert.SetGo("/user/login")
       Alert.SetAlert("未登录")
     }
   },
