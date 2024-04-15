@@ -5,7 +5,7 @@
           fixed-tabs
           bg-color="indigo-darken-2"
   >
-    <v-tab>API</v-tab>
+    <v-tab>网页模拟</v-tab>
 
   </v-tabs>
 
