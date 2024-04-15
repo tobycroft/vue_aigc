@@ -9,17 +9,17 @@
 
   </v-tabs>
 
-  <api v-if="tab===1"></api>
+  <qianwen v-if="tab===1"></qianwen>
 
 
 </template>
 
 <script>
 import Topheader from "@/components/topheader.vue";
-import api from "@/app/v1/user/api.vue";
+import qianwen from "@/app/v1/calling/qianwen.vue";
 
 export default {
-  components: {api, Topheader},
+  components: {qianwen,Topheader},
   data() {
     return {
       tab: 0
