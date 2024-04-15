@@ -1,10 +1,5 @@
 <script>
-import WebRTC, {VueWebRTC} from 'vue-webrtc'
-
-import Vue from 'vue'
-Vue.use(WebRTC)
-
-Vue.component(VueWebRTC.name, VueWebRTC)
+import {VueWebRTC} from 'vue-webrtc';
 
 export default {
   name: 'App',
