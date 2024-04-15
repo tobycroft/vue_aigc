@@ -22,7 +22,6 @@
     "vite-plugin-vuetify": "^2.0.3",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0",
-    "vue-webrtc": "^3.0.1",
     "vuetify": "^3.5.13"
   },
   "devDependencies": {
