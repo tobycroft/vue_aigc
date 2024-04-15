@@ -7,6 +7,7 @@
     </v-icon>
     <v-toolbar-title>AIGC-Web</v-toolbar-title>
     <v-spacer></v-spacer>
+    <v-btn @click="navigateTo('/v1/calling')">通信聊天</v-btn>
     <v-btn @click="navigateTo('/v1/vrm')">VRM体验</v-btn>
     <v-btn @click="navigateTo('/v1/live2d')">Live2D</v-btn>
     <v-btn @click="navigateTo('/v1/team')">团队</v-btn>
